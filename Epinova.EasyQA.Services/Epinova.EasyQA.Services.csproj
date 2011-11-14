@@ -48,6 +48,10 @@
       <Project>{8A738595-E142-48CA-819E-AB8B91CDE944}</Project>
       <Name>Epinova.EasyQA.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Epinova.EasyQA.Data\Epinova.EasyQA.Data.csproj">
+      <Project>{B836AD7E-CD97-45AD-882E-704A7EF92D42}</Project>
+      <Name>Epinova.EasyQA.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
