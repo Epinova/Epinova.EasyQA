@@ -1,0 +1,7 @@
+E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Core\bin\Debug\Epinova.EasyQA.Core.dll
+E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Core\bin\Debug\Epinova.EasyQA.Core.pdb
+E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Core\bin\Debug\Raven.Client.Lightweight.dll
+E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Core\bin\Debug\Raven.Abstractions.dll
+E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Core\obj\Debug\ResolveAssemblyReference.cache
+E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Core\obj\Debug\Epinova.EasyQA.Core.dll
+E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Core\obj\Debug\Epinova.EasyQA.Core.pdb
