@@ -1,65 +1,76 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using Epinova.EasyQA.Core.DataInterfaces;
 using Epinova.EasyQA.Core.Entities;
 using Epinova.EasyQA.Core.ServiceInterfaces;
+using Epinova.EasyQA.Data.Repositories;
 
 namespace Epinova.EasyQA.Services
 {
     public class QaTypeService : IQaTypeService
     {
-        private IQaTypeRepository QaTypeRepository { get; set; }
-        private ICriteriaRepository CriteriaRepository { get; set; }
-        private IChangeLogRepository ChangeLogRepository { get; set; }
+        private IQaTypeRepository _qaTypeRepository;
+        private IQaCategoryRepository _categoryRepository;
+        private ICriteriaRepository _criteriaRepository;
 
-        public QaTypeService(IQaTypeRepository qaTypeRepository, ICriteriaRepository criteriaRepository, IChangeLogRepository changelogRepository)
+        public QaTypeService(IQaTypeRepository qaTypeRepository, ICriteriaRepository criteriaRepository, IQaCategoryRepository categoryRepository)
         {
-            QaTypeRepository = qaTypeRepository;
-            CriteriaRepository = criteriaRepository;
-            ChangeLogRepository = changelogRepository;
+            if (qaTypeRepository == null)
+                throw new NullReferenceException("qaTypeRepository cannot be null!");
+
+            if (criteriaRepository == null)
+                throw new NullReferenceException("criteriaRepository cannot be null!");
+
+            if (categoryRepository == null)
+                throw new NullReferenceException("categoryRepository cannot be null!");
+
+            _qaTypeRepository = qaTypeRepository;
+            _categoryRepository = categoryRepository;
+            _criteriaRepository = criteriaRepository;
         }
 
-        public int CreateQaCriteria(int categoryId)
+        public QaTypeService() : this(new QaTypeRepository(), new CriteriaRepository(), new CategoryRepository()) { }
+
+        public QaCriteria CreateQaCriteria(int qaType, int categoryId)
         {
-            int newQaId = CriteriaRepository.CreateQaCriteria(categoryId);
-            // Change change = new Change() { CriteriaId = newQaId, OldValue = string.Empty, NewValue = string.Empty };
-            // ChangeLogRepository.Save(change);
-            return newQaId;
+            return _criteriaRepository.CreateQaCriteria(qaType, categoryId);
         }
 
-        public void UpdateQaCriteria(int criteriaId, string title)
+        public QaCriteria UpdateQaCriteria(int qaType, int criteriaId, string title)
         {
-            CriteriaRepository.UpdateQaCriteria(criteriaId, title);
+            return _criteriaRepository.UpdateQaCriteria(qaType, criteriaId, title);
         }
 
-        public int CreateQaType()
+        public QaType CreateQaType()
         {
-            return QaTypeRepository.CreateQaType();
+            return _qaTypeRepository.CreateQaType();
         }
 
-        public void UpdateQaType(int id, string title)
+        public QaType UpdateQaType(int id, string title)
         {
-            QaTypeRepository.UpdateQaType(id, title);
+            return _qaTypeRepository.UpdateQaType(id, title);
         }
 
-        public int CreateCriteriaCategory(int qaType)
+        public CriteriaCategory CreateCriteriaCategory(int qaType)
         {
-            return QaTypeRepository.CreateCriteriaCategory(qaType);
+            return _categoryRepository.CreateCriteriaCategory(qaType);
         }
 
-        public void UpdateCriteriaCategory(int id, string title)
+        public CriteriaCategory UpdateCriteriaCategory(int qaTypeId, int categoryId, string title)
         {
-            QaTypeRepository.UpdateCriteriaCategory(id, title);
+            return _categoryRepository.UpdateCriteriaCategory(qaTypeId, categoryId, title);
         }
 
         public QaType GetQaType(int id)
         {
-            return QaTypeRepository.Get(id);
+            return _qaTypeRepository.Get(id);
         }
 
-        public IList<QaType> GetQaTypes()
+        public IEnumerable<QaType> GetQaTypes()
         {
-            return QaTypeRepository.GetAll();
+            return _qaTypeRepository.GetAll();
         }
     }
 }

@@ -1,7 +1,0 @@
-E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Services\bin\Debug\Epinova.EasyQA.Services.dll
-E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Services\bin\Debug\Epinova.EasyQA.Services.pdb
-E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Services\bin\Debug\Epinova.EasyQA.Core.dll
-E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Services\bin\Debug\Epinova.EasyQA.Core.pdb
-E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Services\obj\Debug\ResolveAssemblyReference.cache
-E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Services\obj\Debug\Epinova.EasyQA.Services.dll
-E:\Repository\Epinova.EasyQA\Epinova.EasyQA.Services\obj\Debug\Epinova.EasyQA.Services.pdb
