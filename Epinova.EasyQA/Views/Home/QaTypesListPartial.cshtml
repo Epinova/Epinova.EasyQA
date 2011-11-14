@@ -1,0 +1,5 @@
+﻿@{ Layout = null; }
+
+@foreach (QaType qaType in Model) { 
+    <li>@Html.ActionLink(qaType.Name, "New", new { controller = "Qa", id = qaType.Id })</li>
+}

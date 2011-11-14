@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="pageWrap">
+        <header>
+            <p id="logindisplay">Du er logget inn som <strong>@User.Identity.Name</strong> | @Html.ActionLink("Om Epinova.EasyQA", "About", "Home")</p>
+            <h1><a href="/">Epinova.EasyQA</a></h1>
+            <nav>
+                <ul>
+                    <li class="button newQaLink"><a>Ny QA</a>
+                        <ul>
+                            @{Html.RenderAction("QaTypesListPartial", "Home");}                            
+                        </ul>
+                    </li>
+                    <li class="button editQaType">@Html.ActionLink("Rediger QA-typer", "Index", "QaType")</li>
+                </ul>
+            </nav>
+        </header>
+        <div id="contentWrap">
+            @RenderBody()
+        </div>
+    </div>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+    <script src="/Scripts/common.js"></script>
+    @RenderSection("AddScripts", false)
+</body>
+</html>

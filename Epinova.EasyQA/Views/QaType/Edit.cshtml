@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 id="title"><span class="content">@Model.Name</span> <a href="#">(Endre)</a></h1>
+
+<input type="hidden" id="sectionCount" value="@Model.CriteriaCategories.Count">
+<input type="hidden" id="qaTypeId" value="@ViewBag.Id">
+
+<div id="sectionWrapper">
+    @{var indexer = 1;}
+    @foreach (CriteriaCategory category in Model.CriteriaCategories) { 
+        <section class="editableCategory">
+            <input type="hidden" value="@category.Id" class="categoryId">
+            <h1><span class="sectionIndex">@indexer</span> <span class="content">@category.Text</span> <a href="#">(Endre)</a></h1>
+            <ol>
+            @foreach (QaCriteria criteria in category.Criterias) { 
+                <li><span class="content">@criteria.Text</span><a href="#" class="editButton">(Endre)</a><input type="hidden" value="@criteria.Id" class="criteriaId"></li>
+            }
+            </ol>
+            <span class="button addItemButton addCriteria"><a href="#">Legg til nytt kriterie</a></span>
+        </section>
+        indexer += 1;
+    }
+</div>
+<span class="button addItemButton addCategory"><a href="#">Legg til ny seksjon</a></span>
+@section AddScripts {
+    <script src="/Scripts/editQaType.js" type="text/javascript"></script>
+}
