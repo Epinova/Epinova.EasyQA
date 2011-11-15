@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QaService.cs" />
     <Compile Include="QaTypeService.cs" />
   </ItemGroup>
   <ItemGroup>

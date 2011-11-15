@@ -6,8 +6,11 @@ namespace Epinova.EasyQA.Core.DataInterfaces
 {
     public interface IQaInstanceRepository
     {
-        IList<QaInstance> GetAll();
-        QaInstance GetById(int id);
-        int SaveQaInstance(QaInstance qa);
+        QaInstance Get(int id);
+        IEnumerable<QaInstance> GetAll();
+        QaInstance SaveQaInstance(QaInstance qa);
+
+        QaInstanceCriteria AddCommentToCriteria(int qaInstanceId, int criteriaInstanceId, string comment);
+        QaInstanceCriteria UpdateCriteriaStatus(int qaInstanceId, int criteriaInstanceId, InstanceCriteriaStatus status);
     }
 }

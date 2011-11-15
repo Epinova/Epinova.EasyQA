@@ -10,32 +10,24 @@
         <th>QA-type</th>
         <th>Publisert dato</th>
         <th>Gjennomført av</th>
+        <th>Se på/endre</th>
     </tr>
 </thead>
 <tbody>
-    <tr>
-        <td>Advokatenhjelperdeg</td>
-        <td>Frontend</td>
-        <td>20.10.2011</td>
-        <td>thomas.leela</td>
-    </tr>
-    <tr>
-        <td>Advokatenhjelperdeg</td>
-        <td>Backend</td>
-        <td>20.10.2011</td>
-        <td>thomas.leela</td>
-    </tr>
-    <tr>
-        <td>Ricanet</td>
-        <td>Frontend</td>
-        <td>13.05.2011</td>
-        <td>arve.systad</td>
-    </tr>
-    <tr>
-        <td>Røde Kors</td>
-        <td>Frontend</td>
-        <td>20.10.2011</td>
-        <td>aud.marie.hauge</td>
-    </tr>
+    @if (Model.Count == 0) { 
+        <tr>
+            <td colspan="5">Ingen QA-er er opprettet enda! På tide?</td>
+        </tr>
+    }
+    
+    @foreach (QaInstance qa in Model) { 
+        <tr>
+            <td>@qa.Name</td>
+            <td>@qa.QaType.Name</td>
+            <td>@qa.PublishedDate</td>
+            <td>@qa.User</td>
+            <td>@Html.ActionLink("Se på/Endre", "Edit", new { controller = "Qa", id = qa.Id })</td>
+        </tr>
+    }
 </tbody>
 </table>
