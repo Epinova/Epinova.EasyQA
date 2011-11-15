@@ -15,6 +15,7 @@ body { background: url(/Content/gfx/bodyBg.png); color: #333; font-family: Arial
 #pageWrap .editQaType a { background: url(/Content/gfx/icons.png) no-repeat 8px -120px; }
 #pageWrap header nav ul li.newQaLink { width: 120px; position: relative;}
 #pageWrap header nav ul li.newQaLink > a { background: url(/Content/gfx/icons.png) no-repeat 8px -90px; }
+#pageWrap header nav ul li.newQaLink > a:active { background-color: transparent; text-decoration: none;}
 #pageWrap header nav ul ul { background: #F7F6F3; border-radius: 6px; list-style: none; }
 #pageWrap header nav ul ul li a { display: block; padding: 3px 6px; line-height: 20px;  }
 #pageWrap header nav ul ul li a:hover,header nav ul ul li a:focus { background: #868482; color: #F7F6F3; }
