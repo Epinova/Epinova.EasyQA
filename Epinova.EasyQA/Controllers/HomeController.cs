@@ -9,7 +9,7 @@ using Epinova.EasyQA.Core.Entities;
 using Epinova.EasyQA.Core.ServiceInterfaces;
 using Epinova.EasyQA.Data;
 using Epinova.EasyQA.Data.Repositories;
-using Services;
+using Epinova.EasyQA.Services;
 
 namespace Epinova.EasyQA.Controllers
 {

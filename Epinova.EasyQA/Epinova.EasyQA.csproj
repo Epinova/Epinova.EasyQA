@@ -116,6 +116,10 @@
       <Project>{B836AD7E-CD97-45AD-882E-704A7EF92D42}</Project>
       <Name>Epinova.EasyQA.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Epinova.EasyQA.Services\Epinova.EasyQA.Services.csproj">
+      <Project>{C98CD392-ED6B-43C0-AC5C-E604503CA058}</Project>
+      <Name>Epinova.EasyQA.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
