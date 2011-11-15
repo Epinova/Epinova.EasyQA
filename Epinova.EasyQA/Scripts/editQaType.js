@@ -43,14 +43,15 @@
         e.preventDefault();
         $.ajax({
             url: '/QaType/CreateCriteria/',
-            data: { qaType: qaTypeId, criteriaCategory: thisCriteriaCategory },
+            data: { qaType: qaTypeId, categoryId: thisCriteriaCategory },
             type: 'POST',
             success: function (data) {
                 if (data.Error) {
                     displayError(data.Error);
                 }
                 console.log(data);
-                var modifiedCriteriaMarkup = criteriaMarkup.replace('{id}', data.Id);
+                var modifiedCriteriaMarkup = criteriaMarkup.replace('{id}', data.Id)
+                                                           .replace('{text}', data.Title);
                 $(list).append(modifiedCriteriaMarkup);
             },
             error: function (e) {
@@ -74,7 +75,8 @@
                 }
                 sectionCountField.val(parseInt(sectionCountField.val()) + 1);
                 console.log("Section count = " + sectionCountField.val());
-                var modifiedcategoryMarkup = categoryMarkup.replace('{id}', data.Id).replace('{index}', sectionCountField.val());
+                var modifiedcategoryMarkup = categoryMarkup.replace('{id}', data.Id)
+                                                           .replace('{index}', sectionCountField.val());
                 $('#sectionWrapper').append(modifiedcategoryMarkup);
             },
             error: function (data) {
@@ -97,6 +99,8 @@
         e.preventDefault();
         var li = $(this).closest('li');
         var criteriaId = li.children('.criteriaId').val();
+        var categoryId = $(this).closest('section.editableCategory').children('.categoryId').val();
+        console.log("criteriaId: " + criteriaId);
         var text = $(this).val();
         $(this).addClass('loading');
         $.ajax({

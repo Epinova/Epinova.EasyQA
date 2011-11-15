@@ -105,12 +105,12 @@ namespace Epinova.EasyQA.Controllers
             return _jsonResult;
         }
 
-        public JsonResult CreateCriteria(int qaType, int criteriaCategory)
+        public JsonResult CreateCriteria(int qaType, int categoryId)
         {
             JsonResult result = new JsonResult() { };
             try
             {
-                QaCriteria newCriteria = _qaTypeService.CreateQaCriteria(qaType, criteriaCategory);
+                QaCriteria newCriteria = _qaTypeService.CreateQaCriteria(qaType, categoryId);
                 _jsonResult.Data = new NewEntityModel() { Id = newCriteria.Id, Title = newCriteria.Text };
             }
             catch (Exception ex)
@@ -122,13 +122,13 @@ namespace Epinova.EasyQA.Controllers
             return _jsonResult;
         }
 
-        public JsonResult UpdateCriteriaText(int qaType, int criteriaCategory, string text)
+        public JsonResult UpdateCriteriaText(int qaType, int criteriaId, string text)
         {
             JsonResult result = new JsonResult() { };
             try
             {
-                QaCriteria newCriteria = _qaTypeService.UpdateQaCriteria(qaType, criteriaCategory, text);
-                _jsonResult.Data = new NewEntityModel() { Id = newCriteria.Id, Title = newCriteria.Text };
+                QaCriteria updatedCriteria = _qaTypeService.UpdateQaCriteria(qaType, criteriaId, text);
+                _jsonResult.Data = new NewEntityModel() { Id = updatedCriteria.Id, Title = updatedCriteria.Text };
             }
             catch (Exception ex)
             {

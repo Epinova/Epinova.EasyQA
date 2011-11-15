@@ -8,7 +8,8 @@ namespace Epinova.EasyQA.Core.Entities
         public string Text { get; set; }
         public DateTime DateAdded { get; set; }
         public int SortOrder { get; set; }
-
+        
+        public QaCriteria() {} 
         public QaCriteria(int id, string text, DateTime dateAdded)
         {
             Id = id;
