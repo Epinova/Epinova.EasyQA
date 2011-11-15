@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Epinova.EasyQA.Core.Entities;
 
 namespace Epinova.EasyQA.Core.ServiceInterfaces
@@ -23,5 +24,15 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         /// Updates a QA Instance with a publish-state
         /// </summary>
         QaInstance UpdateQaInstance(int qaInstanceId, bool published);
+
+        /// <summary>
+        /// Returns all QA instances
+        /// </summary>
+        IEnumerable<QaInstance> GetAll();
+
+        /// <summary>
+        /// Returns the QA instance with the given ID
+        /// </summary>
+        QaInstance Get(int id);
     }
 }

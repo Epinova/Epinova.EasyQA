@@ -6,7 +6,7 @@ namespace Epinova.EasyQA.Data.Base
 {
     public class RepositoryBase
     {
-        protected DocumentStore _store;
+        private DocumentStore _store;
         protected IDocumentSession _session;
 
         public RepositoryBase()

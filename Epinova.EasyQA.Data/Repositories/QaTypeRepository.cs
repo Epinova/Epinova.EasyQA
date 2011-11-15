@@ -14,8 +14,7 @@ namespace Epinova.EasyQA.Data.Repositories
     {
         public IEnumerable<QaType> GetAll()
         {
-            IEnumerable<QaType> types = _session.Query<QaType>();
-            return types;
+            return _session.Query<QaType>();
         }
 
         public QaType Get(int id)

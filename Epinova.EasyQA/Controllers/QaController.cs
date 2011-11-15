@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Epinova.EasyQA.Core.Entities;
 using Epinova.EasyQA.Core.ServiceInterfaces;
 using Epinova.EasyQA.Services;
 
@@ -18,6 +19,7 @@ namespace Epinova.EasyQA.Controllers
         public QaController()
         {
             _qaTypeService = new QaTypeService();
+            _qaService = new QaService();
             _jsonResult = new JsonResult()
                               {
                                   ContentEncoding = System.Text.Encoding.UTF8,
@@ -34,6 +36,7 @@ namespace Epinova.EasyQA.Controllers
 
         public ActionResult Edit(int id)
         {
+            QaInstance newQaInstance = new QaInstance(_qaTypeService.GetQaType(id));
 
             return View();
         }
