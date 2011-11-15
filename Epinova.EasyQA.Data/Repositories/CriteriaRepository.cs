@@ -24,9 +24,22 @@ namespace Epinova.EasyQA.Data.Repositories
         public QaCriteria UpdateQaCriteria(int qaTypeId, int criteriaId, string text)
         {
             QaType qaTypeToUpdate = _session.Load<QaType>(qaTypeId);
-            QaCriteria criteria = qaTypeToUpdate.CriteriaCategories.Select(cat => cat.Criterias.Where(x => x.Id == criteriaId)).Single().Single();
-            criteria.Text = text;
-            _session.Store(qaTypeToUpdate);
+            QaCriteria criteria = new QaCriteria();
+            bool isUpdated = false;
+
+            foreach(CriteriaCategory cat in qaTypeToUpdate.CriteriaCategories)
+            {
+                criteria = cat.Criterias.Where(x => x.Id == criteriaId).FirstOrDefault();
+                if (criteria == null)
+                    continue;
+
+                criteria.Text = text;
+                _session.Store(qaTypeToUpdate);
+                isUpdated = true;
+            }
+            if (!isUpdated)
+                throw new NullReferenceException("No such criteria!");
+
             _session.SaveChanges();
             return criteria;
         }
