@@ -103,6 +103,7 @@
     <Content Include="Views\Qa\History.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\QaTypesListPartial.cshtml" />
+    <Content Include="Views\Qa\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

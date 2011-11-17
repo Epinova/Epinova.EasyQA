@@ -14,7 +14,7 @@ namespace Epinova.EasyQA.Data.Repositories
         {
             QaType qaTypeToUpdate = _session.Load<QaType>(qaType);
             CriteriaCategory category = qaTypeToUpdate.CriteriaCategories.Where(x => x.Id == criteriaCategory).First();
-            QaCriteria newCriteria = new QaCriteria(qaTypeToUpdate.GenerateNewCriteriaId(), Constants.DefaultCriteriaName, DateTime.Now);
+            QaCriteria newCriteria = new QaCriteria(qaTypeToUpdate.GenerateNewCriteriaId(), Constants.DefaultCriteriaName);
             category.Criterias.Add(newCriteria);
             _session.Store(qaTypeToUpdate);
             _session.SaveChanges();
