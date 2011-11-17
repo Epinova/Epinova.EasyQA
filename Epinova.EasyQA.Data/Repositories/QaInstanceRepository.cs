@@ -22,6 +22,7 @@ namespace Epinova.EasyQA.Data.Repositories
         public QaInstance SaveQaInstance(QaInstance qa)
         {
             _session.Store(qa);
+            _session.SaveChanges();
             return qa;
         }
 

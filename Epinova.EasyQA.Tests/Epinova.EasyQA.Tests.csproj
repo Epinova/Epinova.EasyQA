@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
+    <Folder Include="Mocks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Epinova.EasyQA.Core\Epinova.EasyQA.Core.csproj">

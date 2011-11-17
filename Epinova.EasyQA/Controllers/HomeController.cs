@@ -29,8 +29,13 @@ namespace Epinova.EasyQA.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Welcome to ASP.NET MVC!";
-            List<QaInstance> qaInstances = _qaService.GetAll().ToList();
-            return View(qaInstances);
+            IEnumerable<QaInstance> qaInstances = _qaService.GetAll();
+            if(qaInstances.Count() > 0)
+            {
+                return View(qaInstances.ToList());
+            }
+
+            return View(new List<QaInstance>());
         }
 
         [Authorize]

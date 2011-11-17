@@ -28,6 +28,14 @@ namespace Epinova.EasyQA.Services
             _qaInstanceRepository = qaInstanceRepository;
         }
 
+        public QaInstance CreateQaInstance(int qaTypeId)
+        {
+            QaInstance newQaInstance = new QaInstance(_qaTypeRepository.Get(qaTypeId));
+            
+            _qaInstanceRepository.SaveQaInstance(newQaInstance);
+            return newQaInstance;
+        }
+
         public QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, string comment)
         {
             throw new NotImplementedException();

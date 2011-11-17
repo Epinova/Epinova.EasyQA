@@ -14,7 +14,15 @@ namespace Epinova.EasyQA.Tests.EntityTests
         [SetUp]
         public void SetUp()
         {
-
+            qaType = new QaType()
+                            {
+                                CriteriaCategories =
+                                    {
+                                        new CriteriaCategory(){ Id = 1, Text = "asd", Criterias = { new QaCriteria() { Id= 1 }, new QaCriteria() { Id = 3}}},
+                                        new CriteriaCategory(){ Id = 2, Text = "asd", Criterias = { }},
+                                        new CriteriaCategory(){ Id = 5, Text = "asd", Criterias = { new QaCriteria() { Id= 2 }}},
+                                    }
+                            };
         }
 
         [Test]
@@ -27,7 +35,12 @@ namespace Epinova.EasyQA.Tests.EntityTests
                 totalCatCount += category.Criterias.Count;    
             }
 
-            qaInstance.Criterias.Count.ShouldEqual(totalCatCount);
+            int instanceCount = 0;
+            foreach (QaInstanceCategory category in qaInstance.Categories)
+            {
+                instanceCount += category.Criterias.Count;
+            }
+            instanceCount.ShouldEqual(totalCatCount);
         }
     }
 }

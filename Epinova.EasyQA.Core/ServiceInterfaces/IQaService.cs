@@ -6,6 +6,12 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
     public interface IQaService
     {
         /// <summary>
+        /// Creates a new QA instance based on an existing QA type.
+        /// </summary>
+        /// <returns></returns>
+        QaInstance CreateQaInstance(int qaTypeId);
+
+        /// <summary>
         /// Updates a criteria instance with a new status and comment
         /// </summary>
         QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, string comment);

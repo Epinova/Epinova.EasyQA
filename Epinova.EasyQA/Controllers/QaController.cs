@@ -36,14 +36,13 @@ namespace Epinova.EasyQA.Controllers
 
         public ActionResult Edit(int id)
         {
-            QaInstance newQaInstance = new QaInstance(_qaTypeService.GetQaType(id));
-
-            return View();
+            return View(_qaService.Get(id));
         }
 
         public ActionResult New(int id)
         {
-            return RedirectToAction("Edit", new { id = 1 });
+            QaInstance newQa = _qaService.CreateQaInstance(id);
+            return RedirectToAction("Edit", new { id = newQa.Id});
         }
     }
 }

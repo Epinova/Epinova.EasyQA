@@ -53,6 +53,7 @@
     <Compile Include="Entities\QaCriteria.cs" />
     <Compile Include="Entities\QaInstance.cs" />
     <Compile Include="DataInterfaces\IQaInstanceRepository.cs" />
+    <Compile Include="Entities\QaInstanceCategory.cs" />
     <Compile Include="Entities\QaType.cs" />
     <Compile Include="InstanceCriteriaStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
