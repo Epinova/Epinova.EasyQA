@@ -14,12 +14,12 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         /// <summary>
         /// Updates a criteria instance with a new status and comment
         /// </summary>
-        QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, string comment);
+        QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, int qaId, string comment);
 
         /// <summary>
         /// Updates a criteria instance with a new status
         /// </summary>
-        QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, InstanceCriteriaStatus status);
+        QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, int qaId, InstanceCriteriaStatus status);
 
         /// <summary>
         /// Updates a QA Instance with a new name

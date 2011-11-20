@@ -5,4 +5,36 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>View</h2>
+<h1 id="title">@Model.Name</h1>
+
+@{var categoryIndexer = 1; }
+@{var criteriaIndexer = 1; }
+@foreach (QaInstanceCategory category in Model.Categories)
+{ 
+<section>
+    <h1>@categoryIndexer. @category.Text</h1>
+    <ul class="viewQaInstanceList">
+        @foreach (QaInstanceCriteria criteria in category.Criterias)
+        { 
+        <li>
+            @if (criteria.Status == InstanceCriteriaStatus.NeedsExplanation)
+            { 
+                <span class="status statusQ">NeedsExplanation</span>
+            }
+            else if (criteria.Status == InstanceCriteriaStatus.NotOk) { 
+                <span class="status statusN">NotOk</span>
+            }
+            else if (criteria.Status == InstanceCriteriaStatus.Ok) { 
+                <span class="status statusY">Ok</span>
+            }
+            <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span>
+            <div class="commentArea">
+                @criteria.Comment
+            </div>
+        </li>    
+            criteriaIndexer += 1;
+        }        
+    </ul>
+</section>
+    categoryIndexer++;
+}

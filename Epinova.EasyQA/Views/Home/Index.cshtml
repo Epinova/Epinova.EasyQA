@@ -22,11 +22,11 @@
     
     @foreach (QaInstance qa in Model) { 
         <tr>
-            <td>@qa.Name</td>
+            <td>@Html.ActionLink(qa.Name, "View", new { controller = "Qa", id = qa.Id })</td>
             <td>@qa.QaTypeName</td>
             <td>@qa.PublishedDate</td>
             <td>@qa.User</td>
-            <td>@Html.ActionLink("Se på/Endre", "Edit", new { controller = "Qa", id = qa.Id })</td>
+            <td>@Html.ActionLink("Endre", "Edit", new { controller = "Qa", id = qa.Id })</td>
         </tr>
     }
 </tbody>

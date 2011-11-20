@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Epinova.EasyQA.Core;
 using Epinova.EasyQA.Core.DataInterfaces;
 using Epinova.EasyQA.Core.Entities;
@@ -36,19 +37,47 @@ namespace Epinova.EasyQA.Services
             return newQaInstance;
         }
 
-        public QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, string comment)
+        public QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, int qaId, string comment)
         {
-            throw new NotImplementedException();
+            QaInstance qa = _qaInstanceRepository.Get(qaId);
+
+            QaInstanceCriteria criteria;
+            foreach (QaInstanceCategory cat in qa.Categories)
+            {
+                criteria = cat.Criterias.Where(x => x.Id == criteriaId).FirstOrDefault();
+                if (criteria != null) { 
+                    criteria.Comment = comment;
+                    _qaInstanceRepository.SaveQaInstance(qa);
+                    return criteria;
+                }
+            }
+
+            throw new NullReferenceException("No criteria with ID " + criteriaId + " in QA Instance #" + qaId);
         }
 
-        public QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, InstanceCriteriaStatus status)
+        public QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, int qaId, InstanceCriteriaStatus status)
         {
-            throw new NotImplementedException();
+            QaInstance qa = _qaInstanceRepository.Get(qaId);
+
+            QaInstanceCriteria criteria;
+            foreach (QaInstanceCategory cat in qa.Categories)
+            {
+                criteria = cat.Criterias.Where(x => x.Id == criteriaId).FirstOrDefault();
+                if (criteria != null) { 
+                    criteria.Status = status;
+                    _qaInstanceRepository.SaveQaInstance(qa);
+                    return criteria;
+                }
+            }
+            throw new NullReferenceException("No criteria with ID " + criteriaId + " in QA Instance #" + qaId);
         }
+
 
         public QaInstance UpdateQaInstance(int qaInstanceId, string name)
         {
-            throw new NotImplementedException();
+            QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
+            qa.Name = name;
+            return _qaInstanceRepository.SaveQaInstance(qa);
         }
 
         public QaInstance UpdateQaInstance(int qaInstanceId, bool published)
