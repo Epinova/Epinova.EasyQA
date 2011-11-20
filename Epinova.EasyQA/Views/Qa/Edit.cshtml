@@ -4,23 +4,25 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<input type="hidden" value="@(Model.Id)" id="qaId">
 <h1 id="title"><span class="content">@Model.Name</span> <a href="#">(Endre)</a></h1>
 
 @{var categoryIndexer = 1; }
+@{var criteriaIndexer = 1; }
 @foreach (QaInstanceCategory category in Model.Categories) { 
 <section class="editableCategory">
     <h1>@categoryIndexer. @category.Text</h1>
     <ul class="qaInstanceList">
-        @{var criteriaIndexer = 1; }
+
         @foreach (QaInstanceCriteria criteria in category.Criterias) { 
         <li>
             <input type="hidden" class="criteriaInstanceId" value="@(criteria.Id)">
-            <input type="radio" name="r@(criteriaIndexer)" value="q" class="radioQuestion"> <input type="radio" name="r@(criteriaIndexer)" value="n" class="radioNo"> <input type="radio" name="r@(criteriaIndexer)" value="y" class="radioYes"> 
+            <input type="radio" name="r@(criteriaIndexer)" @(criteria.Status==InstanceCriteriaStatus.NeedsExplanation ? "checked" : string.Empty) value="q" class="radioQuestion statusChooser"> 
+            <input type="radio" name="r@(criteriaIndexer)" value="n" @(criteria.Status==InstanceCriteriaStatus.NotOk ? "checked" : string.Empty) class="radioNo statusChooser"> 
+            <input type="radio" name="r@(criteriaIndexer)" value="y" @(criteria.Status==InstanceCriteriaStatus.Ok ? "checked" : string.Empty) class="radioYes statusChooser"> 
             <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span><a href="#" class="addComment">Legg til kommentar</a>
             <div class="commentArea">
                 <textarea>@criteria.Comment</textarea>
-                <input type="button" value="Lagre" class="button">
             </div>
         </li>    
             criteriaIndexer += 1;

@@ -6,7 +6,7 @@
 <h1>Edit QA-type</h1>
 <span class="button editQaType">@Html.ActionLink("Ny QA-type", "New")</span>
 
-<ul>
+<ul class="editQaTypeList">
 @foreach (QaType qaType in Model) { 
     <li>@Html.ActionLink(qaType.Name, "Edit", new { id = qaType.Id })</li>
   }

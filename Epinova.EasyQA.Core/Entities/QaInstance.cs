@@ -17,6 +17,7 @@ namespace Epinova.EasyQA.Core.Entities
         public QaInstance(QaType qaType)
         {
             QaTypeName = qaType.Name;
+            Name = Constants.DefaultQaInstanceName;
 
             int idCounter = 0;
             Categories = new List<QaInstanceCategory>();

@@ -43,57 +43,69 @@ body { background: url(/Content/gfx/bodyBg.png); color: #333; font-family: Arial
 #contentWrap table tbody tr:nth-of-type(odd) td { background: rgba(255,255,255, .7); }
 #contentWrap #tableFilterInput { background-image: url(/Content/gfx/icons.png); background-position: 8px -60px; padding-left: 32px; }
 #contentWrap input[type=text], #contentWrap input[type=search]  { background-color: rgba(255,255,255,.5); background-repeat: no-repeat; height: 30px; width: 200px; border-radius: 6px; border: 1px solid #868482; margin: 20px 0; padding: 0 10px; color: #333; clear: both; display: block; }
-#contentWrap input[type=text].loading { background-image: url(/Content/gfx/inputLoader.gif); background-repeat: no-repeat; background-position: right center; }
+#contentWrap input[type=text].loading, #contentWrap textarea.loading { background-image: url(/Content/gfx/inputLoader.gif); background-repeat: no-repeat; background-position: right 3px; }
 #contentWrap input[type=text]:focus, #contentWrap input[type=search]:focus, #contentWrap #tableFilterInput:focus { border: 1px solid #333; background-color: rgba(255,255,255,1); }  
-#contentWrap h1 { border-bottom: 1px solid #333; line-height: 1.6em; }
+#contentWrap h1 { border-bottom: 1px solid #333; line-height: 1.6em; margin-top: 1em; }
+#contentWrap section h1 {border: 0; }
 #contentWrap .button { margin: 20px 0; float: left; }
 #contentWrap a { color: #333; padding:3px;}
 #contentWrap ul a:hover, #contentWrap p a:hover, #contentWrap ul a:focus, #contentWrap p a:focus  { color: #F7F6F3; background: #333; }
-#contentWrap ul { margin: 20px 14px; }
+#contentWrap ul { margin: 0 14px 1em 14px; }
 #contentWrap .editQaType.button { float: right; } 
-#contentWrap h1:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
+#contentWrap .editableCategory h1:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
 #contentWrap h1 a { display: none; }
 #contentWrap h1:hover a { display: inline; }
 				   
 /* Edit QA instance */
 
-#contentWrap .qaInstanceList { margin: 20px 0; }
-#contentWrap .qaInstanceList div.radio { float: left; width: 30px; }
-#contentWrap .qaInstanceList div.radio span { display: block; }
-#contentWrap .qaInstanceList div.radio span input { width: 21px; height: 21px; margin-left: 5px; cursor: pointer}
-#contentWrap .qaInstanceList .number { float: left; width: 30px; }
-#contentWrap .qaInstanceList .content { float: left; width: 758px; }
-#contentWrap .qaInstanceList div.question span { background: url(/Content/gfx/icons.png) no-repeat 8px -242px; }
-#contentWrap .qaInstanceList div.question span.checked { background: url(/Content/gfx/icons.png) no-repeat 8px -332px; }
-#contentWrap .qaInstanceList div.yes span { background: url(/Content/gfx/icons.png) no-repeat 8px -182px; }
-#contentWrap .qaInstanceList div.yes span.checked { background: url(/Content/gfx/icons.png) no-repeat 8px -272px; }
-#contentWrap .qaInstanceList div.no span { background: url(/Content/gfx/icons.png) no-repeat 8px -212px;  }
-#contentWrap .qaInstanceList div.no span.checked { background: url(/Content/gfx/icons.png) no-repeat 8px -302px;  }
-#contentWrap .qaInstanceList li { clear: both; list-style-type: none; overflow: hidden; }
-#contentWrap .qaInstanceList li:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
-#contentWrap .qaInstanceList li:hover a.addComment { display: block; }
-#contentWrap .qaInstanceList a.addComment { display: none; float: right; padding: 0; text-indent: -999999px; width: 22px; height: 1.8em; background: url(/Content/gfx/icons.png) no-repeat 4px -153px; }
-#contentWrap .qaInstanceList a.addComment:hover { background-color: rgba(255,255,255,1); border-radius: 6px; }
+#contentWrap .editableCategory .qaInstanceList { margin: 0 0 20px 0; }
+#contentWrap .editableCategory .qaInstanceList div.radio { float: left; width: 30px; }
+#contentWrap .editableCategory .qaInstanceList div.radio span { display: block; }
+#contentWrap .editableCategory .qaInstanceList div.radio span input { width: 21px; height: 21px; margin-left: 5px; cursor: pointer}
+#contentWrap .editableCategory .qaInstanceList .number { float: left; width: 22px; }
+#contentWrap .editableCategory .qaInstanceList .content { float: left; width: 766px; }
+#contentWrap .editableCategory .qaInstanceList div.question span { background: url(/Content/gfx/icons.png) no-repeat 8px -242px; }
+#contentWrap .editableCategory .qaInstanceList div.question span.checked { background: url(/Content/gfx/icons.png) no-repeat 8px -332px; }
+#contentWrap .editableCategory .qaInstanceList div.yes span { background: url(/Content/gfx/icons.png) no-repeat 8px -182px; }
+#contentWrap .editableCategory .qaInstanceList div.yes span.checked { background: url(/Content/gfx/icons.png) no-repeat 8px -272px; }
+#contentWrap .editableCategory .qaInstanceList div.no span { background: url(/Content/gfx/icons.png) no-repeat 8px -212px;  }
+#contentWrap .editableCategory .qaInstanceList div.no span.checked { background: url(/Content/gfx/icons.png) no-repeat 8px -302px;  }
+#contentWrap .editableCategory .qaInstanceList li { clear: both; list-style-type: none; overflow: hidden; }
+#contentWrap .editableCategory .qaInstanceList li:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
+#contentWrap .editableCategory .qaInstanceList li:hover a.addComment { display: block; }
+#contentWrap .editableCategory .qaInstanceList a.addComment { display: none; float: right; padding: 0; text-indent: -999999px; width: 22px; height: 1.8em; background: url(/Content/gfx/icons.png) no-repeat 4px -153px; }
+#contentWrap .editableCategory .qaInstanceList a.addComment:hover { background-color: rgba(255,255,255,1); border-radius: 6px; }
 #contentWrap .qaInstanceButton { height: 40px; line-height: 40px; float: right; margin-left: 20px;}
 #contentWrap .qaInstanceButton a { line-height: 40px; padding: 13px 12px 13px 44px; font-size: 15px; } 
 #contentWrap .publish a { background: url(/Content/gfx/tickBig.png) no-repeat 8px 10px;  }
 #contentWrap .unpublish a { background: url(/Content/gfx/crossBig.png) no-repeat 8px 10px;  }
-#contentWrap .qaInstanceList .commentArea {clear: both; padding-left: 120px; display: none; overflow: hidden; } 
-#contentWrap .qaInstanceList .commentArea textarea { border: 1px solid #868482; background: rgba(255,255,255,.2); width: 600px; height: 80px; float: left; margin-bottom: 10px; border-radius: 6px; padding: 10px; font-family: Arial, Helvetica, Sans-Serif;}
-#contentWrap .qaInstanceList .commentArea textarea:focus { border: 1px solid #333; background: rgba(255,255,255,1) }
-#contentWrap .qaInstanceList .commentArea .button { float: left; height: 40px; width: 100px; margin-top: 62px; }
+#contentWrap .editableCategory .qaInstanceList .commentArea {clear: both; padding-left: 120px; display: none; overflow: hidden; } 
+#contentWrap .editableCategory .qaInstanceList .commentArea textarea { border: 1px solid #868482; background-color: rgba(255,255,255,.2); width: 600px; height: 80px; float: left; margin-bottom: 10px; border-radius: 6px; padding: 10px; font-family: Arial, Helvetica, Sans-Serif;}
+#contentWrap .editableCategory .qaInstanceList .commentArea textarea:focus { border: 1px solid #333; background-color: rgba(255,255,255,1) }
+#contentWrap .editableCategory .qaInstanceList .commentArea textarea.loading {}
 
 /* Edit QA type */ 
 
 #contentWrap .addItemButton { clear: both; }
 #contentWrap .addItemButton a {  background: url(/Content/gfx/icons.png) no-repeat 8px -360px;  }
-#contentWrap ol { margin: 20px; }
+#contentWrap ol { margin: 0 20px; }
 #contentWrap ol li { padding: 0 8px; }
 #contentWrap ol li a { display: none;  }
-#contentWrap ol li:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
+#contentWrap .editableCategory ol li:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
 #contentWrap ol li:hover a { display: inline;  }
-#contentWrap #sectionWrapper section { clear: both; overflow:hidden; margin-top: 20px; }
+#contentWrap #sectionWrapper section { clear: both; overflow:hidden; }
 #contentWrap input.editing { display: inline; width: 600px; clear: none; margin-bottom: 5px; margin-top: 5px;}
+
+/* View QA instance */
+
+#contentWrap .viewQaInstanceList { margin-left: 0; }
+#contentWrap .viewQaInstanceList li { list-style-type:none; }
+#contentWrap .viewQaInstanceList li .status { float: left; width: 20px; text-indent: -99999px; outline: 0; }
+#contentWrap .viewQaInstanceList li .statusN { background: url(/Content/gfx/icons.png) no-repeat 0 -304px; }
+#contentWrap .viewQaInstanceList li .statusY { background: url(/Content/gfx/icons.png) no-repeat 0 -272px; }
+#contentWrap .viewQaInstanceList li .statusQ { background: url(/Content/gfx/icons.png) no-repeat 0 -334px; }
+#contentWrap .viewQaInstanceList li .commentArea { margin-left: 42px; font-size: .9em; }
+#contentWrap .viewQaInstanceList li .number { float: left; width: 22px; }
 
 
 /* Login-box */
@@ -103,3 +115,6 @@ body { background: url(/Content/gfx/bodyBg.png); color: #333; font-family: Arial
 #contentWrap #loginBox label { font-weight: bold; display: block; margin: 20px 20px 0 20px; }
 #contentWrap #loginBox input { margin: 5px 20px 0 20px; }
 #contentWrap #loginBox input[type=submit] { background: #333; color: #FFF; padding: 5px 15px; border: 1px solid #333; border-radius: 6px; display: block; }
+
+/* Edit QA index */
+#contentWrap .editQaTypeList { margin-top: 20px; }
