@@ -25,15 +25,5 @@ namespace Epinova.EasyQA.Data.Repositories
             _session.SaveChanges();
             return qa;
         }
-
-        public QaInstanceCriteria AddCommentToCriteria(int qaInstanceId, int criteriaInstanceId, string comment)
-        {
-            throw new NotImplementedException();
-        }
-
-        public QaInstanceCriteria UpdateCriteriaStatus(int qaInstanceId, int criteriaInstanceId, InstanceCriteriaStatus status)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

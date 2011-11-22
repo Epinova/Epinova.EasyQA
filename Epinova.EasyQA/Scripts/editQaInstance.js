@@ -85,4 +85,48 @@
             }
         });
     });
+
+    $('#publishButton').live('click', function (e) {
+        $('#publishLoader').show();
+        $.ajax({
+            url: '/Qa/Publish/',
+            type: 'POST',
+            data: '{ "qaId": ' + qaId + ' }',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.Error) {
+                    displayError(data.Error);
+                }
+                $('#publishLoader').hide();
+                $('#publishButton').hide();
+                $('#unpublishButton').show();
+            },
+            error: function (data) {
+                displayError(data);
+                console.log(data);
+            }
+        });
+    });
+
+    $('#unpublishButton').live('click', function (e) {
+        $('#publishLoader').show();
+        $.ajax({
+            url: '/Qa/UnPublish/',
+            type: 'POST',
+            data: '{ "qaId": ' + qaId + ' }',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.Error) {
+                    displayError(data.Error);
+                }
+                $('#publishLoader').hide();
+                $('#publishButton').show();
+                $('#unpublishButton').hide();
+            },
+            error: function (data) {
+                displayError(data);
+                console.log(data);
+            }
+        });
+    });
 })();

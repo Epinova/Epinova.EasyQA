@@ -9,7 +9,7 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         /// Creates a new QA instance based on an existing QA type.
         /// </summary>
         /// <returns></returns>
-        QaInstance CreateQaInstance(int qaTypeId);
+        QaInstance CreateQaInstance(int qaTypeId, string username);
 
         /// <summary>
         /// Updates a criteria instance with a new status and comment
@@ -37,8 +37,19 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         IEnumerable<QaInstance> GetAll();
 
         /// <summary>
+        /// Returns all QA instances which a specified user has access to.
+        /// </summary>
+        IEnumerable<QaInstance> GetAll(string username);
+
+        /// <summary>
         /// Returns the QA instance with the given ID
         /// </summary>
         QaInstance Get(int id);
+
+
+        /// <summary>
+        /// Returns the QA instance with the given ID
+        /// </summary>
+        QaInstance Get(string username, int id);
     }
 }

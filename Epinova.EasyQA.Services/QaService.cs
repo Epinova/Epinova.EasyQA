@@ -29,9 +29,9 @@ namespace Epinova.EasyQA.Services
             _qaInstanceRepository = qaInstanceRepository;
         }
 
-        public QaInstance CreateQaInstance(int qaTypeId)
+        public QaInstance CreateQaInstance(int qaTypeId, string username)
         {
-            QaInstance newQaInstance = new QaInstance(_qaTypeRepository.Get(qaTypeId));
+            QaInstance newQaInstance = new QaInstance(_qaTypeRepository.Get(qaTypeId), username);
             
             _qaInstanceRepository.SaveQaInstance(newQaInstance);
             return newQaInstance;
@@ -82,12 +82,31 @@ namespace Epinova.EasyQA.Services
 
         public QaInstance UpdateQaInstance(int qaInstanceId, bool published)
         {
-            throw new NotImplementedException();
+            QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
+            qa.Published = published;
+            qa.PublishedDate = DateTime.Now;
+            return _qaInstanceRepository.SaveQaInstance(qa);
         }
 
         public IEnumerable<QaInstance> GetAll()
         {
             return _qaInstanceRepository.GetAll();
+        }
+
+
+        public IEnumerable<QaInstance> GetAll(string username)
+        {
+            IEnumerable<QaInstance> qas = _qaInstanceRepository.GetAll();
+            IEnumerable<QaInstance> qasToReturn = qas.Where(qa => qa.Published || qa.User == username);
+            return qasToReturn;
+        }
+
+        public QaInstance Get(string username, int id)
+        {
+            QaInstance qa = _qaInstanceRepository.Get(id);
+            if (!qa.Published && qa.User != username)
+                throw new AccessViolationException("No access!");
+            return qa;
         }
 
         public QaInstance Get(int id)

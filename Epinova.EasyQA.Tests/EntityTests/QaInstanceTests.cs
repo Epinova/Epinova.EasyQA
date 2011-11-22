@@ -28,7 +28,7 @@ namespace Epinova.EasyQA.Tests.EntityTests
         [Test]
         public void QaInstanceConstructor_ValidQaType_QaInstanceHasCorrectNumberOfCriterias()
         {
-            QaInstance qaInstance = new QaInstance(qaType);
+            QaInstance qaInstance = new QaInstance(qaType, "user");
             int totalCatCount = 0;
             foreach(CriteriaCategory category in qaType.CriteriaCategories)
             {
