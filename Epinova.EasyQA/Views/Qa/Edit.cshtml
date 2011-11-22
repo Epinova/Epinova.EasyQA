@@ -31,46 +31,10 @@
 </section>
 }
 
-@*<section class="editableCategory">
-<h1>1 kildekode</h1>
-<ul class="qaInstanceList">
-    <li>
-        <input type="radio" name="r1" value="q" class="radioQuestion"> <input type="radio" name="r1" value="n" class="radioNo"> <input type="radio" name="r1" value="y" class="radioYes"> 
-        <span class="number">1.</span> <span class="content">Prosjektet er enkelt å hente fra svn.</span><input type="hidden" value="1" id="criteriaId"><input type="hidden" value="1" id="sortorder"><a href="#" class="addComment">Legg til kommentar</a>
-        <div class="commentArea">
-            <textarea></textarea>
-            <input type="button" value="Lagre" class="button">
-        </div>
-    </li>
-    <li>
-        <input type="radio" value="q" name="r2" class="radioQuestion"> <input type="radio" name="r2" value="n" class="radioNo"> <input type="radio" name="r2" value="y" class="radioYes"> 
-        <span class="number">2.</span> <span class="content">Prosjektet bygger uten warnings.</span><input type="hidden" value="2" id="criteriaId"><input type="hidden" value="2" id="sortorder"><a href="#" class="addComment">Legg til kommentar</a>
-        <div class="commentArea">
-            <textarea></textarea>
-            <input type="button" value="Lagre" class="button">
-        </div>
-    </li>
-    <li>
-        <input type="radio" value="q" name="r3" class="radioQuestion"> <input type="radio" value="n" name="r3" class="radioNo"> <input type="radio" value="y" name="r3" class="radioYes"> 
-        <span class="number">3.</span> <span class="content">Prosjektet inneholder kun filer som er i bruk. Lang tekst her, lang lang lang. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s. </span><input type="hidden" value="1" id="criteriaId"><input type="hidden" value="3" id="sortorder"><a href="#" class="addComment">Legg til kommentar</a>
-        <div class="commentArea">
-            <textarea></textarea>
-            <input type="button" value="Lagre" class="button">
-        </div>
-    </li>
-    <li>
-        <input type="radio" value="q" name="r4" class="radioQuestion"> <input type="radio" value="n" name="r4" class="radioNo"> <input type="radio" value="y" name="r4" class="radioYes"> 
-        <span class="number">14.</span> <span class="content">Det er samsvar mellom filer i prosjektet og svn.</span><input type="hidden" value="1" id="criteriaId"><input type="hidden" value="4" id="sortorder"><a href="#" class="addComment">Legg til kommentar</a>
-        <div class="commentArea">
-            <textarea></textarea>
-            <input type="button" value="Lagre" class="button">
-        </div>
-    </li>
-</ul>
-</section>*@
-<div class="button qaInstanceButton publish"><a href="#">Publiser</a></div>
-<div class="button qaInstanceButton unpublish"><a href="#">Avpubliser</a></div>
-
+    
+    <div id="publishButton" class="button qaInstanceButton publish" @Html.Raw(Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">Publiser</a></div>
+    <div id="unpublishButton" class="button qaInstanceButton unpublish" @Html.Raw(!Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">Avpubliser</a></div>
+    <div id="publishLoader">Laster...</div>
 @section AddScripts {
     <script src="/Scripts/jquery.uniform.min.js"></script>
     <script src="/Scripts/editQaInstance.js"></script>

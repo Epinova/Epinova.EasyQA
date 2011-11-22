@@ -14,11 +14,12 @@ namespace Epinova.EasyQA.Core.Entities
         public string User { get; set; } // Skal inneholde bruker som opprettet den. Kun denne personen kan se den om den ikke enda er publisert.
 
         public QaInstance() {}
-        public QaInstance(QaType qaType)
+        public QaInstance(QaType qaType, string username)
         {
             QaTypeName = qaType.Name;
             Name = Constants.DefaultQaInstanceName;
-
+			Published = false;
+            User = username;
             int idCounter = 0;
             Categories = new List<QaInstanceCategory>();
 
@@ -33,6 +34,7 @@ namespace Epinova.EasyQA.Core.Entities
                                                       Corrected = false,
                                                       Id = ++idCounter,
                                                       Text = criteria.Text,
+                                                      Status = InstanceCriteriaStatus.NotSet
                                                   });
                 }
                 Categories.Add(instanceCategory);

@@ -38,18 +38,18 @@ namespace Epinova.EasyQA.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View(_qaService.Get(id));
+            return View(_qaService.Get(HttpContext.User.Identity.Name, id));
         }
 
         public ActionResult View(int id)
         {
-            return View(_qaService.Get(id));
+            return View(_qaService.Get(HttpContext.User.Identity.Name, id));
         }
 
 
         public ActionResult New(int id)
         {
-            QaInstance newQa = _qaService.CreateQaInstance(id);
+            QaInstance newQa = _qaService.CreateQaInstance(id, HttpContext.User.Identity.Name);
             return RedirectToAction("Edit", new { id = newQa.Id});
         }
 
@@ -97,6 +97,36 @@ namespace Epinova.EasyQA.Controllers
 
                 QaInstanceCriteria criteria = _qaService.UpdateCriteriaInstance(criteriaId, qaId, newStatus);
                 _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Title = criteria.Status.ToString() };
+            }
+            catch (Exception ex)
+            {
+                // logging   
+                _jsonResult.Data = new NewEntityModel() { Id = -1, Error = ex.Message };
+            }
+            return _jsonResult;
+        }
+
+        public ActionResult Publish(int qaId)
+        {           
+            try
+            {
+                QaInstance qa = _qaService.UpdateQaInstance(qaId, true);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Title = qa.Name };
+            }
+            catch (Exception ex)
+            {
+                // logging   
+                _jsonResult.Data = new NewEntityModel() { Id = -1, Error = ex.Message };
+            }
+            return _jsonResult;
+        }
+
+        public ActionResult UnPublish(int qaId)
+        {
+            try
+            {
+                QaInstance qa = _qaService.UpdateQaInstance(qaId, true);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Title = qa.Name };
             }
             catch (Exception ex)
             {
