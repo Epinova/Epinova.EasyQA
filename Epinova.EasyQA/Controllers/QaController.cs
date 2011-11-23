@@ -125,7 +125,7 @@ namespace Epinova.EasyQA.Controllers
         {
             try
             {
-                QaInstance qa = _qaService.UpdateQaInstance(qaId, true);
+                QaInstance qa = _qaService.UpdateQaInstance(qaId, false);
                 _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Title = qa.Name };
             }
             catch (Exception ex)
