@@ -2,23 +2,24 @@
 a { text-decoration: underline; }
 body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial, Helvetica,sans-serif; line-height: 1.8;}
 
+
 #pageWrap { width: 900px; margin: auto; }
 #pageWrap #errorWindow { background: #CC0000; padding: 20px; color: #FFF; position: absolute; width: 860px; display: none;}
-#pageWrap header h1 { font-family: Consolas, Courier, Monospace; font-size: 2.2em; clear: both;}
-#pageWrap header #logindisplay { float: right; margin-bottom: 40px; font-size: .8em; }
-#pageWrap header a { color: #333; }
-#pageWrap header a:hover { color: #868482; }
-#pageWrap header nav > ul { list-style-type: none; margin-top: -45px; }
-#pageWrap header nav > ul > li { float: right; margin-left: 20px; }
-#pageWrap header nav ul ul { display: none; }
-#pageWrap header nav ul li:hover ul { display: block; }
+#pageWrap > header h1 { font-family: Consolas, Courier, Monospace; font-size: 2.2em; clear: both;}
+#pageWrap > header #logindisplay { float: right; margin-bottom: 40px; font-size: .8em; }
+#pageWrap > header a { color: #333; }
+#pageWrap > header a:hover { color: #868482; }
+#pageWrap > header nav > ul { list-style-type: none; margin-top: -45px; }
+#pageWrap > header nav > ul > li { float: right; margin-left: 20px; }
+#pageWrap > header nav ul ul { display: none; }
+#pageWrap > header nav ul li:hover ul { display: block; }
 #pageWrap .editQaType a { background: url(/Styles/gfx/icons.png) no-repeat 8px -120px; }
-#pageWrap header nav ul li.newQaLink { width: 120px; position: relative;}
-#pageWrap header nav ul li.newQaLink > a { background: url(/Styles/gfx/icons.png) no-repeat 8px -90px; }
-#pageWrap header nav ul li.newQaLink > a:active { background-color: transparent; text-decoration: none;}
-#pageWrap header nav ul ul { background: #F7F6F3; border-radius: 6px; list-style: none; }
-#pageWrap header nav ul ul li a { display: block; padding: 3px 6px; line-height: 20px;  }
-#pageWrap header nav ul ul li a:hover,header nav ul ul li a:focus { background: #868482; color: #F7F6F3; }
+#pageWrap > header nav ul li.newQaLink { width: 120px; position: relative;}
+#pageWrap > header nav ul li.newQaLink > a { background: url(/Styles/gfx/icons.png) no-repeat 8px -90px; }
+#pageWrap > header nav ul li.newQaLink > a:active { background-color: transparent; text-decoration: none;}
+#pageWrap > header nav ul ul { background: #F7F6F3; border-radius: 6px; list-style: none; }
+#pageWrap > header nav ul ul li a { display: block; padding: 3px 6px; line-height: 20px;  }
+#pageWrap > header nav ul ul li a:hover,header nav ul ul li a:focus { background: #868482; color: #F7F6F3; }
 #pageWrap section h1 { font-size: 1.6em; }
 #pageWrap .button > a, .button > span {  padding: 8px 10px 8px 36px; cursor: pointer; font-weight: bold; color: #333; text-decoration: none; border-radius: 6px; }
 #pageWrap .button > a:hover { color: #333; }
@@ -37,7 +38,7 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 #pageWrap .button a:active { text-decoration: underline; background-color: rgba(0,0,0,.1); }
 
 #contentWrap { clear: both; padding-top: 20px; font-size: .85em; }
-#contentWrap table { background: rgba(255,255,255,0.5); text-align: left; border-collapse: collapse; margin-top: 20px; }
+#contentWrap table { background: rgba(255,255,255,0.5); text-align: left; border-collapse: collapse; margin-top: 20px; width: 100%; }
 #contentWrap table thead th { border-bottom: 1px solid #333; }
 #contentWrap table td, #contentWrap table th { padding: 5px 20px; }
 #contentWrap table tbody tr:nth-of-type(odd) td { background: rgba(255,255,255, .7); }
