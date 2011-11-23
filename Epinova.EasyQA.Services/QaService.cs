@@ -104,7 +104,10 @@ namespace Epinova.EasyQA.Services
         public QaInstance Get(string username, int id)
         {
             QaInstance qa = _qaInstanceRepository.Get(id);
-            if (!qa.Published && qa.User != username)
+            if (qa.Published)
+                return qa;
+
+            if (qa.User != username)
                 throw new AccessViolationException("No access!");
             return qa;
         }
