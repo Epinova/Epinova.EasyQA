@@ -4,10 +4,20 @@
 }
 
 <h1>Edit QA-type</h1>
-<span class="button editQaType">@Html.ActionLink("Ny QA-type", "New")</span>
-
-<ul class="editQaTypeList">
+<table>
+<thead>
+    <tr>
+        <th>Navn</th>
+        <th>Antall kriterier</th>
+    </tr>
+</thead>
+<tbody>
 @foreach (QaType qaType in Model) { 
-    <li>@Html.ActionLink(qaType.Name, "Edit", new { id = qaType.Id })</li>
+    <tr>
+        <td>@Html.ActionLink(qaType.Name, "Edit", new { id = qaType.Id })</td>
+        <td>@qaType.TotalCriteriaCount</td>
+    </tr>
   }
-</ul>
+</tbody>
+</table>
+<span class="button editQaType">@Html.ActionLink("Ny QA-type", "New")</span>

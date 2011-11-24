@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Epinova.EasyQA.Core.Entities
 {
@@ -24,6 +25,14 @@ namespace Epinova.EasyQA.Core.Entities
         public QaType()
         {
             CriteriaCategories = new List<CriteriaCategory>();
+        }
+
+        public int TotalCriteriaCount
+        {
+            get
+            {
+                return CriteriaCategories.SelectMany(category => category.Criterias).Count();
+            }            
         }
     }
 }

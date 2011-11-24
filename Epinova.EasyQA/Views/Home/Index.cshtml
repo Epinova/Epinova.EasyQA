@@ -24,7 +24,7 @@
         <tr>
             <td>@Html.ActionLink(qa.Name, "View", new { controller = "Qa", id = qa.Id })</td>
             <td>@qa.QaTypeName</td>
-            <td>@qa.PublishedDate</td>
+            <td>@(qa.Published ? @qa.PublishedDate.ToShortDateString() + " " +  @qa.PublishedDate.ToShortTimeString() : "Ikke publisert")</td>
             <td>@qa.User</td>
             <td>@Html.ActionLink("Endre", "Edit", new { controller = "Qa", id = qa.Id })</td>
         </tr>
