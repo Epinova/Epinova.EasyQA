@@ -38,6 +38,8 @@
     var addCriteriaButtons = $('.addCriteria');
     var criteriaMarkup = '<li><span class="content">{text}</span><a href="#" class="editButton">(Endre)</a><input type="hidden" value="{id}" class="criteriaId"></li>';
     addCriteriaButtons.live('click', function (e) {
+        var clickedButton = $(this);
+        $(clickedButton).siblings('.loader').show();
         var list = $(this).siblings('ol');
         var thisCriteriaCategory = $(this).closest('.editableCategory').children('.categoryId').val();
         e.preventDefault();
@@ -53,6 +55,7 @@
                 var modifiedCriteriaMarkup = criteriaMarkup.replace('{id}', data.Id)
                                                            .replace('{text}', data.Title);
                 $(list).append(modifiedCriteriaMarkup);
+                $(clickedButton).siblings('.loader').hide();
             },
             error: function (e) {
                 displayError(e);
@@ -64,6 +67,8 @@
     var addCategoryButtons = $('.addCategory');
     var categoryMarkup = '<section class="editableCategory"><input type="hidden" value="{id}" class="categoryId"><h1><span class="sectionIndex">{index}</span> <span class="content">(uten navn)</span> <a href="#">(Endre)</a></h1><ol></ol><span class="button addItemButton addCriteria"><a href="#">Legg til nytt kriterie</a></span></section>';
     addCategoryButtons.live('click', function (e) {
+        var clickedButton = $(this);
+        $(clickedButton).siblings('.loader').show();
         e.preventDefault();
         $.ajax({
             url: '/QaType/CreateCategory/',
@@ -78,6 +83,7 @@
                 var modifiedcategoryMarkup = categoryMarkup.replace('{id}', data.Id)
                                                            .replace('{index}', sectionCountField.val());
                 $('#sectionWrapper').append(modifiedcategoryMarkup);
+                $(clickedButton).siblings('.loader').hide();
             },
             error: function (data) {
                 console.log(data)

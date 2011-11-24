@@ -1,10 +1,11 @@
 ﻿* { margin: 0; padding: 0; }
 a { text-decoration: underline; }
 body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial, Helvetica,sans-serif; line-height: 1.8;}
-
+.clear { clear: both; }
 
 #pageWrap { width: 900px; margin: auto; }
 #pageWrap #errorWindow { background: #CC0000; padding: 20px; color: #FFF; position: absolute; width: 860px; display: none;}
+#pageWrap > header { }
 #pageWrap > header h1 { font-family: Consolas, Courier, Monospace; font-size: 2.2em; clear: both;}
 #pageWrap > header #logindisplay { float: right; margin-bottom: 40px; font-size: .8em; }
 #pageWrap > header a { color: #333; }
@@ -19,7 +20,7 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 #pageWrap > header nav ul li.newQaLink > a:active { background-color: transparent; text-decoration: none;}
 #pageWrap > header nav ul ul { background: #F7F6F3; border-radius: 6px; list-style: none; }
 #pageWrap > header nav ul ul li a { display: block; padding: 3px 6px; line-height: 20px;  }
-#pageWrap > header nav ul ul li a:hover,header nav ul ul li a:focus { background: #868482; color: #F7F6F3; }
+#pageWrap > header nav ul ul li a:hover,header nav ul ul li a:focus { background: #868482; color: #F7F6F3; border-radius: 6px; }
 #pageWrap section h1 { font-size: 1.6em; }
 #pageWrap .button > a, .button > span {  padding: 8px 10px 8px 36px; cursor: pointer; font-weight: bold; color: #333; text-decoration: none; border-radius: 6px; }
 #pageWrap .button > a:hover { color: #333; }
@@ -37,16 +38,18 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 				   
 #pageWrap .button a:active { text-decoration: underline; background-color: rgba(0,0,0,.1); }
 
-#contentWrap { clear: both; padding-top: 20px; font-size: .85em; }
+#contentWrap { clear: both; padding: 20px; font-size: .85em; background: rgba(255,255,255,.4); border: 1px solid rga(255,255,255,.8); border-radius: 6px; margin-top: 20px; overflow: hidden; }
+#contentWrap p { margin: 1em 0; }
 #contentWrap table { background: rgba(255,255,255,0.5); text-align: left; border-collapse: collapse; margin-top: 20px; width: 100%; }
 #contentWrap table thead th { border-bottom: 1px solid #333; }
 #contentWrap table td, #contentWrap table th { padding: 5px 20px; }
+#contentWrap table a:hover { color: #FFf; background: #333;  }
 #contentWrap table tbody tr:nth-of-type(odd) td { background: rgba(255,255,255, .7); }
 #contentWrap #tableFilterInput { background-image: url(/Styles/gfx/icons.png); background-position: 8px -60px; padding-left: 32px; }
 #contentWrap input[type=text], #contentWrap input[type=password], #contentWrap input[type=search]  { background-color: rgba(255,255,255,.5); background-repeat: no-repeat; height: 30px; width: 200px; border-radius: 6px; border: 1px solid #868482; margin: 20px 0; padding: 0 10px; color: #333; clear: both; display: block; }
 #contentWrap input[type=text].loading, #contentWrap textarea.loading { background-image: url(/Styles/gfx/inputLoader.gif); background-repeat: no-repeat; background-position: right 3px; }
 #contentWrap input[type=text]:focus, #contentWrap input[type=search]:focus, #contentWrap #tableFilterInput:focus { border: 1px solid #333; background-color: rgba(255,255,255,1); }  
-#contentWrap h1 { border-bottom: 1px solid #333; line-height: 1.6em; margin-top: 1em; }
+#contentWrap h1 { border-bottom: 1px solid #333; line-height: 1.6em; }
 #contentWrap section h1 {border: 0; }
 #contentWrap .button { margin: 20px 0; float: left; }
 #contentWrap a { color: #333; padding:3px;}
@@ -56,7 +59,9 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 #contentWrap .editableCategory h1:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
 #contentWrap h1 a { display: none; }
 #contentWrap h1:hover a { display: inline; }
-				   
+
+#contentWrap section { margin-top: 20px; }  
+
 /* Edit QA instance */
 
 #contentWrap .editableCategory .qaInstanceList { margin: 0 0 20px 0; }
@@ -64,7 +69,7 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 #contentWrap .editableCategory .qaInstanceList div.radio span { display: block; }
 #contentWrap .editableCategory .qaInstanceList div.radio span input { width: 21px; height: 21px; margin-left: 5px; cursor: pointer}
 #contentWrap .editableCategory .qaInstanceList .number { float: left; width: 22px; }
-#contentWrap .editableCategory .qaInstanceList .content { float: left; width: 766px; }
+#contentWrap .editableCategory .qaInstanceList .content { float: left; width: 726px; }
 #contentWrap .editableCategory .qaInstanceList div.question span { background: url(/Styles/gfx/icons.png) no-repeat 8px -242px; }
 #contentWrap .editableCategory .qaInstanceList div.question span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px -332px; }
 #contentWrap .editableCategory .qaInstanceList div.yes span { background: url(/Styles/gfx/icons.png) no-repeat 8px -182px; }
@@ -94,8 +99,11 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 #contentWrap ol li a { display: none;  }
 #contentWrap .editableCategory ol li:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
 #contentWrap ol li:hover a { display: inline;  }
+#contentWrap #sectionWrapper { overflow: hidden; }
 #contentWrap #sectionWrapper section { clear: both; overflow:hidden; }
 #contentWrap input.editing { display: inline; width: 600px; clear: none; margin-bottom: 5px; margin-top: 5px;}
+#contentWrap .loader { background: url(/Styles/gfx/inputLoader.gif) no-repeat rgba(255,255,255,.5) center center; width: 30px; height: 30px; border-radius: 6px; float: left; border: 1px solid rgba(255,255,255,.5); text-indent: -99999px; margin: 20px 0 0 20px; display: none; }
+
 
 /* View QA instance */
 
@@ -116,10 +124,18 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 #contentWrap #loginBox h1 { border-bottom: 1px solid #333; margin: 20px; }
 #contentWrap #loginBox label { font-weight: bold; display: block; margin: 20px 20px 0 20px; }
 #contentWrap #loginBox input { margin: 5px 20px 0 20px; }
-#contentWrap #loginBox input[type=submit] { background: #333; color: #FFF; padding: 5px 15px; border: 1px solid #333; border-radius: 6px; display: block; }
+#contentWrap #loginBox input[type=submit] { margin-top: 20px; padding: 5px 15px;  display: block;  border: 1px solid #868482; border-radius: 6px; background-color: transparent; background-image: linear-gradient(bottom, #DCDAD7 0%, #F7F6F3 100%); height: 30px; font-size: 12px; line-height: 31px;
+				   background-image: -o-linear-gradient(bottom, #DCDAD7 0%, #F7F6F3 100%);
+				   background-image: -moz-linear-gradient(bottom, #DCDAD7 0%, #F7F6F3 100%);
+				   background-image: -webkit-linear-gradient(bottom, #DCDAD7 0%, #F7F6F3 100%);
+				   background-image: -ms-linear-gradient(bottom, #DCDAD7 0%, #F7F6F3 100%);}
+				   
+#contentWrap #loginBox input[type=submit]:hover {background-color: transparent;
+				  background-image : linear-gradient(bottom, #F7F6F3 0%, #DCDAD7 100%); 
+				   background-image: -o-linear-gradient(bottom, #F7F6F3 0%, #DCDAD7 100%);
+				   background-image: -moz-linear-gradient(bottom, #F7F6F3 0%, #DCDAD7 100%);
+				   background-image: -webkit-linear-gradient(bottom, #F7F6F3 0%, #DCDAD7 100%);
+				   background-image: -ms-linear-gradient(bottom, #F7F6F3 0%, #DCDAD7 100% ); }
 
 /* Edit QA index */
 #contentWrap .editQaTypeList { margin-top: 20px; }
-
-/* Text content */
-#textContentWrapper { background: rgba(255,255,255,.5); border-radius: 6px; padding: 20px; }
