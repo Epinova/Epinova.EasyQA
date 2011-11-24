@@ -8,7 +8,7 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 #pageWrap #errorWindow { background: #CC0000; padding: 20px; color: #FFF; position: absolute; width: 860px; display: none;}
 #pageWrap > header { }
 #pageWrap > header h1 { font-family: Consolas, Courier, Monospace; font-size: 2.2em; clear: both;}
-#pageWrap > header #logindisplay { float: right; margin-bottom: 40px; font-size: .8em; }
+#pageWrap > header #logindisplay { float: right; margin-bottom: 20px; font-size: .8em; }
 #pageWrap > header nav > ul { list-style-type: none; margin-top: -45px; }
 #pageWrap > header nav > ul > li { float: right; margin-left: 20px; }
 #pageWrap > header nav ul ul { display: none; }
