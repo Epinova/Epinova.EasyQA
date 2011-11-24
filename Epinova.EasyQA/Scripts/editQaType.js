@@ -4,6 +4,11 @@
     var titleFieldLink = $('#title a');
     var loadingClass = 'loading';
 
+    $('input').live('keypress', function (e) {
+        if (e.keyCode == 13)
+            $(this).blur();
+    });
+
     titleFieldLink.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
@@ -28,8 +33,7 @@
                 editField.remove();
             },
             error: function (data) {
-                console.log("ERRROROOROR");
-                console.log(data);
+                displayError(data);
             }
         });
     });
@@ -51,7 +55,6 @@
                 if (data.Error) {
                     displayError(data.Error);
                 }
-                console.log(data);
                 var modifiedCriteriaMarkup = criteriaMarkup.replace('{id}', data.Id)
                                                            .replace('{text}', data.Title);
                 $(list).append(modifiedCriteriaMarkup);
@@ -116,7 +119,7 @@
             success: function (data) {
                 $(li).find('.editableCriteria').remove();
                 $(li).attr('value', data.Sortorder);
-                $(li).find('.content').text(text);
+                $(li).find('.content').text(data.Title);
             },
             error: function (e) {
                 displayError(e);
@@ -154,7 +157,7 @@
                     return;
                 }
                 $(h1field).find('.editableCategoryTitle').remove();
-                $(h1field).find('.content').text(text);
+                $(h1field).find('.content').text(data.Title);
             },
             error: function (e) {
                 displayError(e.d);

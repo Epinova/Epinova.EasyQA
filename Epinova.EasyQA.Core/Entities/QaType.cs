@@ -27,12 +27,8 @@ namespace Epinova.EasyQA.Core.Entities
             CriteriaCategories = new List<CriteriaCategory>();
         }
 
-        public int TotalCriteriaCount
-        {
-            get
-            {
-                return CriteriaCategories.SelectMany(category => category.Criterias).Count();
-            }            
+        public int GetTotalCriteriaCount() {
+            return CriteriaCategories.SelectMany(category => category.Criterias).Count();
         }
     }
 }

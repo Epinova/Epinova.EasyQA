@@ -15,7 +15,7 @@
 @foreach (QaType qaType in Model) { 
     <tr>
         <td>@Html.ActionLink(qaType.Name, "Edit", new { id = qaType.Id })</td>
-        <td>@qaType.TotalCriteriaCount</td>
+        <td>@qaType.GetTotalCriteriaCount()</td>
     </tr>
   }
 </tbody>

@@ -32,10 +32,11 @@ namespace Epinova.EasyQA.Data.Repositories
                 criteria = cat.Criterias.Where(x => x.Id == criteriaId).FirstOrDefault();
                 if (criteria == null)
                     continue;
-
+                
                 criteria.Text = text;
                 _session.Store(qaTypeToUpdate);
                 isUpdated = true;
+                break;
             }
             if (!isUpdated)
                 throw new NullReferenceException("No such criteria!");
