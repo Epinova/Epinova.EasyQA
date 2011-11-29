@@ -37,7 +37,7 @@ namespace Epinova.EasyQA.Services
             return newQaInstance;
         }
 
-        public QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, int qaId, string comment)
+        public QaInstanceCriteria UpdateCriteriaComment(int criteriaId, int qaId, string comment)
         {
             QaInstance qa = _qaInstanceRepository.Get(qaId);
 
@@ -55,7 +55,7 @@ namespace Epinova.EasyQA.Services
             throw new NullReferenceException("No criteria with ID " + criteriaId + " in QA Instance #" + qaId);
         }
 
-        public QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, int qaId, InstanceCriteriaStatus status)
+        public QaInstanceCriteria UpdateCriteriaStatus(int criteriaId, int qaId, InstanceCriteriaStatus status)
         {
             QaInstance qa = _qaInstanceRepository.Get(qaId);
 
@@ -72,15 +72,32 @@ namespace Epinova.EasyQA.Services
             throw new NullReferenceException("No criteria with ID " + criteriaId + " in QA Instance #" + qaId);
         }
 
+        public QaInstanceCriteria UpdateCriteriaCorrected(int criteriaId, int qaId, bool corrected)
+        {
+            QaInstance qa = _qaInstanceRepository.Get(qaId);
 
-        public QaInstance UpdateQaInstance(int qaInstanceId, string name)
+            QaInstanceCriteria criteria;
+            foreach (QaInstanceCategory cat in qa.Categories)
+            {
+                criteria = cat.Criterias.Where(x => x.Id == criteriaId).FirstOrDefault();
+                if (criteria != null)
+                {
+                    criteria.Corrected = corrected;
+                    _qaInstanceRepository.SaveQaInstance(qa);
+                    return criteria;
+                }
+            }
+            throw new NullReferenceException("No criteria with ID " + criteriaId + " in QA Instance #" + qaId);
+        }
+        
+        public QaInstance UpdateQaName(int qaInstanceId, string name)
         {
             QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
             qa.Name = name;
             return _qaInstanceRepository.SaveQaInstance(qa);
         }
 
-        public QaInstance UpdateQaInstance(int qaInstanceId, bool published)
+        public QaInstance UpdateQaPublished(int qaInstanceId, bool published)
         {
             QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
             qa.Published = published;
@@ -88,11 +105,38 @@ namespace Epinova.EasyQA.Services
             return _qaInstanceRepository.SaveQaInstance(qa);
         }
 
+        public QaInstance UpdateQaSummary(int qaInstanceId, string summary)
+        {
+            QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
+            qa.Summary = summary;
+            return _qaInstanceRepository.SaveQaInstance(qa);
+        }
+
+        public QaInstance UpdateQaMisc(int qaInstanceId, string misc)
+        {
+            QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
+            qa.Miscellaneous = misc;
+            return _qaInstanceRepository.SaveQaInstance(qa);
+        }
+
+        public QaInstance UpdateQaProjectMembers(int qaInstanceId, string projectMembers)
+        {
+            QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
+            qa.ProjectMembers = projectMembers;
+            return _qaInstanceRepository.SaveQaInstance(qa);
+        }
+
+        public QaInstance UpdateQaPresentAtReview(int qaInstanceId, string presentAtReview)
+        {
+            QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
+            qa.PresentAtReview = presentAtReview;
+            return _qaInstanceRepository.SaveQaInstance(qa);
+        }
+
         public IEnumerable<QaInstance> GetAll()
         {
             return _qaInstanceRepository.GetAll();
         }
-
 
         public IEnumerable<QaInstance> GetAll(string username)
         {

@@ -11,7 +11,11 @@ namespace Epinova.EasyQA.Core.Entities
         public string QaTypeName { get; set; }
         public List<QaInstanceCategory> Categories { get; set; }
         public bool Published { get; set; }
-        public string User { get; set; } // Skal inneholde bruker som opprettet den. Kun denne personen kan se den om den ikke enda er publisert.
+        public string User { get; set; }
+        public string ProjectMembers { get; set; }
+        public string PresentAtReview { get; set; }
+        public string Miscellaneous { get; set; }
+        public string Summary { get; set; }
 
         public QaInstance() {}
         public QaInstance(QaType qaType, string username)

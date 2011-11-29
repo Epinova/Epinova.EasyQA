@@ -34,6 +34,7 @@ namespace Epinova.EasyQA.Controllers
         {
             _qaTypeService = qaTypeService;
             _qaService = qaService;
+
         }
 
         public ActionResult Edit(int id)
@@ -57,8 +58,8 @@ namespace Epinova.EasyQA.Controllers
         {
             try
             {
-                QaInstance qaInstance = _qaService.UpdateQaInstance(id, title);
-                _jsonResult.Data = new NewEntityModel() { Id = qaInstance.Id, Title = qaInstance.Name };
+                QaInstance qaInstance = _qaService.UpdateQaName(id, title);
+                _jsonResult.Data = new NewEntityModel() { Id = qaInstance.Id, Text = qaInstance.Name };
             }
             catch (Exception ex)
             {
@@ -72,8 +73,8 @@ namespace Epinova.EasyQA.Controllers
         {
             try
             {
-                QaInstanceCriteria criteria = _qaService.UpdateCriteriaInstance(criteriaId, qaId, text);
-                _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Title = text };
+                QaInstanceCriteria criteria = _qaService.UpdateCriteriaComment(criteriaId, qaId, text);
+                _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Text = text };
             }
             catch (Exception ex)
             {
@@ -95,8 +96,8 @@ namespace Epinova.EasyQA.Controllers
                 else 
                     newStatus = InstanceCriteriaStatus.NeedsExplanation;
 
-                QaInstanceCriteria criteria = _qaService.UpdateCriteriaInstance(criteriaId, qaId, newStatus);
-                _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Title = criteria.Status.ToString() };
+                QaInstanceCriteria criteria = _qaService.UpdateCriteriaStatus(criteriaId, qaId, newStatus);
+                _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Text = criteria.Status.ToString() };
             }
             catch (Exception ex)
             {
@@ -110,8 +111,8 @@ namespace Epinova.EasyQA.Controllers
         {           
             try
             {
-                QaInstance qa = _qaService.UpdateQaInstance(qaId, true);
-                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Title = qa.Name };
+                QaInstance qa = _qaService.UpdateQaPublished(qaId, true);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
             }
             catch (Exception ex)
             {
@@ -125,8 +126,68 @@ namespace Epinova.EasyQA.Controllers
         {
             try
             {
-                QaInstance qa = _qaService.UpdateQaInstance(qaId, false);
-                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Title = qa.Name };
+                QaInstance qa = _qaService.UpdateQaPublished(qaId, false);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
+            }
+            catch (Exception ex)
+            {
+                // logging   
+                _jsonResult.Data = new NewEntityModel() { Id = -1, Error = ex.Message };
+            }
+            return _jsonResult;
+        }
+
+        public ActionResult UpdateProjectMembers(int qaId, string projectMembers)
+        {
+            try
+            {
+                QaInstance qa = _qaService.UpdateQaProjectMembers(qaId, projectMembers);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
+            }
+            catch (Exception ex)
+            {
+                // logging   
+                _jsonResult.Data = new NewEntityModel() { Id = -1, Error = ex.Message };
+            }
+            return _jsonResult;
+        }
+
+        public ActionResult UpdatePresentAtReview(int qaId, string presentAtReview)
+        {
+            try
+            {
+                QaInstance qa = _qaService.UpdateQaPresentAtReview(qaId, presentAtReview);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
+            }
+            catch (Exception ex)
+            {
+                // logging   
+                _jsonResult.Data = new NewEntityModel() { Id = -1, Error = ex.Message };
+            }
+            return _jsonResult;
+        }
+
+        public ActionResult UpdateSummary(int qaId, string summary)
+        {
+            try
+            {
+                QaInstance qa = _qaService.UpdateQaSummary(qaId, summary);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
+            }
+            catch (Exception ex)
+            {
+                // logging   
+                _jsonResult.Data = new NewEntityModel() { Id = -1, Error = ex.Message };
+            }
+            return _jsonResult;
+        }
+
+        public ActionResult UpdateMisc(int qaId, string misc)
+        {
+            try
+            {
+                QaInstance qa = _qaService.UpdateQaMisc(qaId, misc);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
             }
             catch (Exception ex)
             {

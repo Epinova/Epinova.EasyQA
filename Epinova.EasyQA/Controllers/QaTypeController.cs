@@ -59,7 +59,7 @@ namespace Epinova.EasyQA.Controllers
             try
             {
                 QaType qaType = _qaTypeService.UpdateQaType(id, text);
-                _jsonResult.Data = new NewEntityModel() { Id = qaType.Id, Title = qaType.Name };
+                _jsonResult.Data = new NewEntityModel() { Id = qaType.Id, Text = qaType.Name };
             }
             catch(Exception ex)
             {
@@ -77,7 +77,7 @@ namespace Epinova.EasyQA.Controllers
             {
                 CriteriaCategory newCategory = _qaTypeService.CreateCriteriaCategory(qaType);
 
-                _jsonResult.Data = new NewEntityModel() { Id = newCategory.Id, Title = newCategory.Text };
+                _jsonResult.Data = new NewEntityModel() { Id = newCategory.Id, Text = newCategory.Text };
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace Epinova.EasyQA.Controllers
             {
                 CriteriaCategory category = _qaTypeService.UpdateCriteriaCategory(qaTypeId, categoryId, text);
 
-                _jsonResult.Data = new NewEntityModel() { Id = category.Id, Title = category.Text };
+                _jsonResult.Data = new NewEntityModel() { Id = category.Id, Text = category.Text };
             }
             catch (Exception ex)
             {
@@ -111,7 +111,7 @@ namespace Epinova.EasyQA.Controllers
             try
             {
                 QaCriteria newCriteria = _qaTypeService.CreateQaCriteria(qaType, categoryId);
-                _jsonResult.Data = new NewEntityModel() { Id = newCriteria.Id, Title = newCriteria.Text };
+                _jsonResult.Data = new NewEntityModel() { Id = newCriteria.Id, Text = newCriteria.Text };
             }
             catch (Exception ex)
             {
@@ -128,7 +128,7 @@ namespace Epinova.EasyQA.Controllers
             try
             {
                 QaCriteria updatedCriteria = _qaTypeService.UpdateQaCriteria(qaType, criteriaId, text);
-                _jsonResult.Data = new NewEntityModel() { Id = updatedCriteria.Id, Title = updatedCriteria.Text };
+                _jsonResult.Data = new NewEntityModel() { Id = updatedCriteria.Id, Text = updatedCriteria.Text };
             }
             catch (Exception ex)
             {

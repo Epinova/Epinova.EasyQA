@@ -47,10 +47,12 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap table a:hover { color: #FFf; background: #333;  }
 #contentWrap table tbody tr:nth-of-type(odd) td { background: rgba(255,255,255, .7); }
 #contentWrap #tableFilterInput { background-image: url(/Styles/gfx/icons.png); background-position: 8px -60px; padding-left: 32px; }
-#contentWrap input[type=text], #contentWrap input[type=password], #contentWrap input[type=search]  { background-color: rgba(255,255,255,.5); background-repeat: no-repeat; height: 30px; width: 200px; border-radius: 6px; border: 1px solid #868482; margin: 20px 0; padding: 0 10px; color: #333; clear: both; display: block; }
+#contentWrap input[type=text], #contentWrap input[type=password], #contentWrap input[type=search]  { background-color: rgba(255,255,255,.5); background-repeat: no-repeat; height: 30px; width: 200px; border-radius: 6px; border: 1px solid #868482; margin: 0 0 20px 0; padding: 0 10px; color: #333; clear: both; display: block; }
 #contentWrap input[type=text].loading, #contentWrap textarea.loading { background-image: url(/Styles/gfx/inputLoader.gif); background-repeat: no-repeat; background-position: right 3px; }
 #contentWrap input[type=text]:focus, #contentWrap input[type=search]:focus, #contentWrap #tableFilterInput:focus { border: 1px solid #333; background-color: rgba(255,255,255,1); }  
-#contentWrap h1 { border-bottom: 1px solid #333; line-height: 1.6em; }
+#contentWrap label { font-weight: bold; padding-top: 15px; clear: both;  }
+#contentWrap h1 { border-bottom: 1px solid #333; line-height: 1.6em; clear: both;  }
+#contentWrap h1#title { margin-bottom: 20px; }
 #contentWrap section h1 {border: 0; }
 #contentWrap .button { margin: 20px 0; float: left; }
 #contentWrap a { color: #333; padding:3px;}
@@ -87,9 +89,9 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap .publish a { background: url(/Styles/gfx/tickBig.png) no-repeat 8px 10px;  }
 #contentWrap .unpublish a { background: url(/Styles/gfx/crossBig.png) no-repeat 8px 10px;  }
 #contentWrap .editableCategory .qaInstanceList .commentArea {clear: both; padding-left: 112px; display: none; overflow: hidden; } 
-#contentWrap .editableCategory .qaInstanceList .commentArea textarea { border: 1px solid #868482; background-color: rgba(255,255,255,.2); width: 600px; height: 80px; float: left; margin-bottom: 10px; border-radius: 6px; padding: 10px; font-family: Arial, Helvetica, Sans-Serif;}
-#contentWrap .editableCategory .qaInstanceList .commentArea textarea:focus { border: 1px solid #333; background-color: rgba(255,255,255,1) }
-#contentWrap .editableCategory .qaInstanceList .commentArea textarea.loading {}
+#contentWrap textarea { border: 1px solid #868482; background-color: rgba(255,255,255,.2); width: 600px; height: 80px; float: left; margin-bottom: 10px; border-radius: 6px; padding: 10px; font-family: Arial, Helvetica, Sans-Serif;}
+#contentWrap textarea:focus { border: 1px solid #333; background-color: rgba(255,255,255,1) }
+
 
 /* Edit QA type */ 
 
