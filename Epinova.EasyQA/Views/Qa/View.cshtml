@@ -1,7 +1,8 @@
 ﻿@model Epinova.EasyQA.Core.Entities.QaInstance
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = Model.Name;
+    ViewBag.MarkdownEngine = new Markdown(new MarkdownOptions() { AutoHyperlink = true });
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -38,7 +39,7 @@
             }
             <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span>
             <div class="commentArea">
-                @criteria.Comment
+                @Html.Raw(ViewBag.MarkdownEngine.Transform(criteria.Comment))
             </div>
         </li>    
             criteriaIndexer += 1;
@@ -50,9 +51,9 @@
 
 <section>
     <h1>Andre funn</h1>
-    @Model.Miscellaneous
+    @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Miscellaneous))
 </section>
 <section>
     <h1>Oppsummering</h1>
-    @Model.Summary
+    @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Summary))
 </section>

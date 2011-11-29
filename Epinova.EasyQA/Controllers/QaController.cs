@@ -8,6 +8,7 @@ using Epinova.EasyQA.Core.Entities;
 using Epinova.EasyQA.Core.ServiceInterfaces;
 using Epinova.EasyQA.Models;
 using Epinova.EasyQA.Services;
+using MarkdownSharp;
 
 namespace Epinova.EasyQA.Controllers
 {
@@ -34,7 +35,6 @@ namespace Epinova.EasyQA.Controllers
         {
             _qaTypeService = qaTypeService;
             _qaService = qaService;
-
         }
 
         public ActionResult Edit(int id)
