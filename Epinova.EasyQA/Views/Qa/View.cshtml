@@ -6,7 +6,16 @@
 }
 
 <h1 id="title">@Model.Name</h1>
+<dl>
+    <dt>QA utført av:</dt>
+        <dd>@Model.User</dd>
 
+    <dt>Prosjektdeltakere:</dt>
+        <dd>@Model.ProjectMembers</dd>
+
+    <dt>Tilstede ved gjennomgang:</dt>
+        <dd>@Model.PresentAtReview</dd>
+</dl>
 @{var categoryIndexer = 1; }
 @{var criteriaIndexer = 1; }
 @foreach (QaInstanceCategory category in Model.Categories)
@@ -38,3 +47,12 @@
 </section>
     categoryIndexer++;
 }
+
+<section>
+    <h1>Andre funn</h1>
+    @Model.Miscellaneous
+</section>
+<section>
+    <h1>Oppsummering</h1>
+    @Model.Summary
+</section>

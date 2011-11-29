@@ -26,8 +26,92 @@
                 if (data.Error) {
                     displayError(data.Error);
                 }
-                editField.parent().text(data.Title);
+                editField.parent().text(data.Text);
                 editField.remove();
+            },
+            error: function (data) {
+                console.log("ERRROROOROR");
+                console.log(data);
+            }
+        });
+    });
+
+    $('#projectMembers').live('blur', function (e) {
+        var inputField = $(this);
+        $(inputField).addClass(loadingClass);
+        $.ajax({
+            url: '/Qa/UpdateProjectMembers/',
+            type: 'POST',
+            data: '{ "qaId": ' + qaId + ', "projectMembers": "' + inputField.val() + '" }',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.Error) {
+                    displayError(data.Error);
+                }
+                $(inputField).removeClass(loadingClass);
+            },
+            error: function (data) {
+                console.log("ERRROROOROR");
+                console.log(data);
+            }
+        });
+    });
+
+    $('#presentAtReview').live('blur', function (e) {
+        var inputField = $(this);
+        $(inputField).addClass(loadingClass);
+        $.ajax({
+            url: '/Qa/UpdatePresentAtReview/',
+            type: 'POST',
+            data: '{ "qaId": ' + qaId + ', "presentAtReview": "' + inputField.val() + '" }',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.Error) {
+                    displayError(data.Error);
+                }
+                $(inputField).removeClass(loadingClass);
+            },
+            error: function (data) {
+                console.log("ERRROROOROR");
+                console.log(data);
+            }
+        });
+    });
+
+    $('#summary').live('blur', function (e) {
+        var inputField = $(this);
+        $(inputField).addClass(loadingClass);
+        $.ajax({
+            url: '/Qa/UpdateSummary/',
+            type: 'POST',
+            data: '{ "qaId": ' + qaId + ', "summary": "' + inputField.val() + '" }',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.Error) {
+                    displayError(data.Error);
+                }
+                $(inputField).removeClass(loadingClass);
+            },
+            error: function (data) {
+                console.log("ERRROROOROR");
+                console.log(data);
+            }
+        });
+    });
+
+    $('#misc').live('blur', function (e) {
+        var inputField = $(this);
+        $(inputField).addClass(loadingClass);
+        $.ajax({
+            url: '/Qa/UpdateMisc/',
+            type: 'POST',
+            data: '{ "qaId": ' + qaId + ', "misc": "' + inputField.val() + '" }',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.Error) {
+                    displayError(data.Error);
+                }
+                $(inputField).removeClass(loadingClass);
             },
             error: function (data) {
                 console.log("ERRROROOROR");
@@ -56,7 +140,6 @@
             }
         });
     });
-
 
     $('.addComment').live('click', function (e) {
         e.preventDefault();

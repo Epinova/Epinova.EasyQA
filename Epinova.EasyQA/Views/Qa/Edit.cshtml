@@ -6,6 +6,12 @@
 }
 <input type="hidden" value="@(Model.Id)" id="qaId">
 <h1 id="title"><span class="content">@Model.Name</span> <a href="#">(Endre)</a></h1>
+<div class="clear"></div>
+<label for="projectMembers">Prosjektdeltakere</label>
+<input type="text" id="projectMembers" value="@Model.ProjectMembers">
+
+<label for="presentAtReview">Tilstede ved gjennomgang</label>
+<input type="text" id="presentAtReview" value="@Model.PresentAtReview">
 
 @{var categoryIndexer = 1; }
 @{var criteriaIndexer = 1; }
@@ -30,8 +36,17 @@
     </ul>
 </section>
 }
+<section>
+    <h1>Andre funn</h1>
+    <textarea id="misc">@Model.Miscellaneous</textarea>
+</section>
 
-    
+<section>
+    <h1>Oppsummering</h1>
+    <textarea id="summary">@Model.Summary</textarea>
+</section>
+<div class="clear"></div>
+
     <div id="publishButton" class="button qaInstanceButton publish" @Html.Raw(Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">Publiser</a></div>
     <div id="unpublishButton" class="button qaInstanceButton unpublish" @Html.Raw(!Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">Avpubliser</a></div>
     <div id="publishLoader">Laster...</div>

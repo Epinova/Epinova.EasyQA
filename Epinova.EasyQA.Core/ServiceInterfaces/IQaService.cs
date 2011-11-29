@@ -14,22 +14,48 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         /// <summary>
         /// Updates a criteria instance with a new status and comment
         /// </summary>
-        QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, int qaId, string comment);
+        QaInstanceCriteria UpdateCriteriaComment(int criteriaId, int qaId, string comment);
 
         /// <summary>
         /// Updates a criteria instance with a new status
         /// </summary>
-        QaInstanceCriteria UpdateCriteriaInstance(int criteriaId, int qaId, InstanceCriteriaStatus status);
+        QaInstanceCriteria UpdateCriteriaStatus(int criteriaId, int qaId, InstanceCriteriaStatus status);
+
+        /// <summary>
+        /// Updates a criterias corrected state
+        /// </summary>
+        QaInstanceCriteria UpdateCriteriaCorrected(int criteriaId, int qaId, bool corrected);
 
         /// <summary>
         /// Updates a QA Instance with a new name
         /// </summary>
-        QaInstance UpdateQaInstance(int qaInstanceId, string name);
+        QaInstance UpdateQaName(int qaInstanceId, string name);
 
         /// <summary>
         /// Updates a QA Instance with a publish-state
         /// </summary>
-        QaInstance UpdateQaInstance(int qaInstanceId, bool published);
+        QaInstance UpdateQaPublished(int qaInstanceId, bool published);
+
+
+        /// <summary>
+        /// Updates the summary of the QA
+        /// </summary>
+        QaInstance UpdateQaSummary(int qaInstanceId, string summary);
+
+        /// <summary>
+        /// Updates the Miscellaneous-field of the QA
+        /// </summary>
+        QaInstance UpdateQaMisc(int qaInstanceId, string misc);
+
+        /// <summary>
+        /// Updates the project members of the QA
+        /// </summary>
+        QaInstance UpdateQaProjectMembers(int qaInstanceId, string projectMembers);
+
+        /// <summary>
+        /// Updates who were present at the QA review
+        /// </summary>
+        QaInstance UpdateQaPresentAtReview(int qaInstanceId, string presentAtReview);
 
         /// <summary>
         /// Returns all QA instances
@@ -45,7 +71,6 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         /// Returns the QA instance with the given ID
         /// </summary>
         QaInstance Get(int id);
-
 
         /// <summary>
         /// Returns the QA instance with the given ID
