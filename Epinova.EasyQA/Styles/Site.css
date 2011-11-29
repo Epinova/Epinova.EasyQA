@@ -89,6 +89,7 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap .publish a { background: url(/Styles/gfx/tickBig.png) no-repeat 8px 10px;  }
 #contentWrap .unpublish a { background: url(/Styles/gfx/crossBig.png) no-repeat 8px 10px;  }
 #contentWrap .editableCategory .qaInstanceList .commentArea {clear: both; padding-left: 112px; display: none; overflow: hidden; } 
+
 #contentWrap textarea { border: 1px solid #868482; background-color: rgba(255,255,255,.2); width: 600px; height: 80px; float: left; margin-bottom: 10px; border-radius: 6px; padding: 10px; font-family: Arial, Helvetica, Sans-Serif;}
 #contentWrap textarea:focus { border: 1px solid #333; background-color: rgba(255,255,255,1) }
 
@@ -110,13 +111,17 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 
 /* View QA instance */
 
+#contentWrap dl { overflow: hidden; }
+#contentWrap dl dt { font-weight: bold; float: left; clear: left; padding-right: 10px; }
 #contentWrap .viewQaInstanceList { margin-left: 0; }
 #contentWrap .viewQaInstanceList li { list-style-type:none; }
 #contentWrap .viewQaInstanceList li .status { float: left; width: 20px; text-indent: -99999px; outline: 0; }
 #contentWrap .viewQaInstanceList li .statusN { background: url(/Styles/gfx/icons.png) no-repeat 0 -304px; }
 #contentWrap .viewQaInstanceList li .statusY { background: url(/Styles/gfx/icons.png) no-repeat 0 -272px; }
 #contentWrap .viewQaInstanceList li .statusQ { background: url(/Styles/gfx/icons.png) no-repeat 0 -334px; }
-#contentWrap .viewQaInstanceList li .commentArea { margin-left: 42px; font-size: .9em; }
+#contentWrap .viewQaInstanceList li .commentArea { margin-left: 42px; font-size: .9em; color: #666; }
+#contentWrap .viewQaInstanceList li .commentArea ul li { list-style-type: square;  }
+#contentWrap .viewQaInstanceList li .commentArea p { margin-top: 0;  }
 #contentWrap .viewQaInstanceList li .number { float: left; width: 22px; }
 #contentWrap #publishLoader { background: url(/Styles/gfx/inputLoader.gif) no-repeat rgba(255,255,255,.5) center center; width: 40px; height: 40px; border-radius: 6px; float: right; text-indent: -99999px; margin-top: 20px; display: none; }
 
