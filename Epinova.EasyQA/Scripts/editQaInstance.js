@@ -6,6 +6,33 @@
     var qaId = $('#qaId').val();
     var loadingClass = 'loading';
 
+    function postAjax(url, data, elementToGetLoadingClass, successCallback) {
+        if (elementToGetLoadingClass) {
+            elementToGetLoadingClass.addClass(loadingClass);
+        }
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: data,
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                if (data.Error) {
+                    displayError(data.Error);
+                }
+                if (elementToGetLoadingClass) {
+                    elementToGetLoadingClass.removeClass(loadingClass);
+                }
+                if (typeof (successCallback) == 'function') {
+                    successCallback(data);
+                }
+            },
+            error: function (data) {
+                displayError(data);
+                console.error(data);
+            }
+        });
+    }
+
     titleFieldLink.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
@@ -15,130 +42,38 @@
     var editableTitle = $('.editableTitle');
     editableTitle.live('blur', function (e) {
         var editField = $(this);
-        editField.addClass(loadingClass);
-        var title = $(this).val();
-        $.ajax({
-            url: '/Qa/UpdateTitle/',
-            type: 'POST',
-            data: '{ "id": ' + qaId + ', "title": "' + title + '" }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-                editField.parent().text(data.Text);
-                editField.remove();
-            },
-            error: function (data) {
-                console.log("ERRROROOROR");
-                console.log(data);
-            }
+        postAjax('/Qa/UpdateTitle/', '{ "id": ' + qaId + ', "title": "' + $(this).val() + '" }', editField, function (data) {
+            editField.parent().text(data.Text);
+            editField.remove();
         });
     });
 
     $('#projectMembers').live('blur', function (e) {
         var inputField = $(this);
-        $(inputField).addClass(loadingClass);
-        $.ajax({
-            url: '/Qa/UpdateProjectMembers/',
-            type: 'POST',
-            data: '{ "qaId": ' + qaId + ', "projectMembers": "' + inputField.val() + '" }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-                $(inputField).removeClass(loadingClass);
-            },
-            error: function (data) {
-                console.log("ERRROROOROR");
-                console.log(data);
-            }
-        });
+        postAjax('/Qa/UpdateProjectMembers/', '{ "qaId": ' + qaId + ', "projectMembers": "' + inputField.val() + '" }', inputField, null);
     });
 
     $('#presentAtReview').live('blur', function (e) {
         var inputField = $(this);
-        $(inputField).addClass(loadingClass);
-        $.ajax({
-            url: '/Qa/UpdatePresentAtReview/',
-            type: 'POST',
-            data: '{ "qaId": ' + qaId + ', "presentAtReview": "' + inputField.val() + '" }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-                $(inputField).removeClass(loadingClass);
-            },
-            error: function (data) {
-                console.log("ERRROROOROR");
-                console.log(data);
-            }
-        });
+        postAjax('/Qa/UpdatePresentAtReview/', '{ "qaId": ' + qaId + ', "presentAtReview": "' + inputField.val() + '" }', inputField, null);
     });
 
     $('#summary').live('blur', function (e) {
         var inputField = $(this);
-        $(inputField).addClass(loadingClass);
-        $.ajax({
-            url: '/Qa/UpdateSummary/',
-            type: 'POST',
-            data: '{ "qaId": ' + qaId + ', "summary": "' + inputField.val() + '" }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-                $(inputField).removeClass(loadingClass);
-            },
-            error: function (data) {
-                console.log("ERRROROOROR");
-                console.log(data);
-            }
-        });
+        postAjax('/Qa/UpdateSummary/', '{ "qaId": ' + qaId + ', "summary": "' + inputField.val() + '" }', inputField, null);
     });
 
     $('#misc').live('blur', function (e) {
         var inputField = $(this);
-        $(inputField).addClass(loadingClass);
-        $.ajax({
-            url: '/Qa/UpdateMisc/',
-            type: 'POST',
-            data: '{ "qaId": ' + qaId + ', "misc": "' + inputField.val() + '" }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-                $(inputField).removeClass(loadingClass);
-            },
-            error: function (data) {
-                console.log("ERRROROOROR");
-                console.log(data);
-            }
-        });
+        postAjax('/Qa/UpdateMisc/', '{ "qaId": ' + qaId + ', "misc": "' + inputField.val() + '" }', inputField, null);
     });
 
     $('.statusChooser').live('click', function (e) {
         e.preventDefault();
         var criteriaId = $(this).closest('li').children('.criteriaInstanceId').val();
         var status = $(this).val();
-        $.ajax({
-            url: '/Qa/UpdateCriteriaStatus/',
-            type: 'POST',
-            data: '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "status": "' + status + '" }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-            },
-            error: function (data) {
-                console.log("ERRROROOROR");
-                console.log(data);
-            }
-        });
+
+        postAjax('/Qa/UpdateCriteriaStatus/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "status": "' + status + '" }', null, null);
     });
 
     $('.addComment').live('click', function (e) {
@@ -150,66 +85,24 @@
         var text = $(this).val();
         var criteriaId = $(this).closest('li').children('.criteriaInstanceId').val();
         var textArea = $(this);
-        textArea.addClass(loadingClass);
-        $.ajax({
-            url: '/Qa/UpdateCriteriaComment/',
-            type: 'POST',
-            data: '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "text": "' + text + '" }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-                textArea.removeClass(loadingClass);
-            },
-            error: function (data) {
-                console.log("ERRROROOROR");
-                console.log(data);
-            }
-        });
+        postAjax('/Qa/UpdateCriteriaComment/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "text": "' + $(this).val() + '" }', textArea, null);
     });
 
     $('#publishButton').live('click', function (e) {
         $('#publishLoader').show();
-        $.ajax({
-            url: '/Qa/Publish/',
-            type: 'POST',
-            data: '{ "qaId": ' + qaId + ' }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-                $('#publishLoader').hide();
-                $('#publishButton').hide();
-                $('#unpublishButton').show();
-            },
-            error: function (data) {
-                displayError(data);
-                console.log(data);
-            }
+        postAjax('/Qa/Publish/', '{ "qaId": ' + qaId + ' }', null, function () {
+            $('#publishLoader').hide();
+            $('#publishButton').hide();
+            $('#unpublishButton').show();
         });
     });
 
     $('#unpublishButton').live('click', function (e) {
         $('#publishLoader').show();
-        $.ajax({
-            url: '/Qa/UnPublish/',
-            type: 'POST',
-            data: '{ "qaId": ' + qaId + ' }',
-            contentType: 'application/json; charset=utf-8',
-            success: function (data) {
-                if (data.Error) {
-                    displayError(data.Error);
-                }
-                $('#publishLoader').hide();
-                $('#publishButton').show();
-                $('#unpublishButton').hide();
-            },
-            error: function (data) {
-                displayError(data);
-                console.log(data);
-            }
+        postAjax('/Qa/UnPublish/', '{ "qaId": ' + qaId + ' }', null, function () {
+            $('#publishLoader').hide();
+            $('#publishButton').show();
+            $('#unpublishButton').hide();
         });
     });
 })();
