@@ -81,7 +81,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EntityTests\QaInstanceTests.cs" />
+    <Compile Include="Mocks\CategoryRepositoryMock.cs" />
+    <Compile Include="Mocks\CriteriaRepository.cs" />
+    <Compile Include="Mocks\QaInstanceRepositoryMock.cs" />
+    <Compile Include="Mocks\QaTypeRepositoryMock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceTests\QaServiceTests.cs" />
     <Compile Include="TestHelpers\AssertionHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -89,7 +94,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="Mocks\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Epinova.EasyQA.Core\Epinova.EasyQA.Core.csproj">
