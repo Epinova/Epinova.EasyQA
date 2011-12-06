@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using Epinova.EasyQA.Core;
 using Epinova.EasyQA.Core.Entities;
 using Epinova.EasyQA.Core.ServiceInterfaces;
 using Epinova.EasyQA.Models;
 using Epinova.EasyQA.Services;
+using Epinova.EasyQA.Utilities;
 using MarkdownSharp;
 
 namespace Epinova.EasyQA.Controllers
@@ -195,6 +198,18 @@ namespace Epinova.EasyQA.Controllers
                 _jsonResult.Data = new NewEntityModel() { Id = -1, Error = ex.Message };
             }
             return _jsonResult;
+        }
+
+        public JsonResult FindUser(string id)
+        {
+            JsonResult jsonResult = new JsonResult()
+            {
+                ContentEncoding = System.Text.Encoding.UTF8,
+                ContentType = "application/json",
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+            jsonResult.Data = new { Users = CacheManager.Usernames.Where(x => x.StartsWith(id)).ToList() };
+            return jsonResult; 
         }
     }
 }

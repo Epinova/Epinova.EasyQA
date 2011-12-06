@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Caching;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Epinova.EasyQA.Core;
 
 namespace Epinova.EasyQA
 {
@@ -38,7 +40,7 @@ namespace Epinova.EasyQA
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
-
+            
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }

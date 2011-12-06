@@ -80,6 +80,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\QaControllerTests.cs" />
     <Compile Include="EntityTests\QaInstanceTests.cs" />
     <Compile Include="Mocks\CategoryRepositoryMock.cs" />
     <Compile Include="Mocks\CriteriaRepository.cs" />
@@ -92,13 +93,15 @@
   <ItemGroup>
     <Content Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Epinova.EasyQA.Core\Epinova.EasyQA.Core.csproj">
       <Project>{8A738595-E142-48CA-819E-AB8B91CDE944}</Project>
       <Name>Epinova.EasyQA.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Epinova.EasyQA\Epinova.EasyQA.csproj">
+      <Project>{BF9F8DD0-5885-4FFD-8E39-B577AD5FC2F8}</Project>
+      <Name>Epinova.EasyQA</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
