@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="Models\NewEntityModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\CacheManager.cs" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\editQaType.js" />
   </ItemGroup>

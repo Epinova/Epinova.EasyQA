@@ -6,5 +6,7 @@ namespace Epinova.EasyQA.Core
         public const string DefaultQaInstanceName = "(uten navn)";
         public const string DefaultCategoryName = "(uten navn)";
         public const string DefaultCriteriaName = "(uten navn)";
+
+        public const string UserNameListCacheName = "EQAUsers";
     }
 }
