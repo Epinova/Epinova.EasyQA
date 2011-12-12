@@ -208,7 +208,10 @@ namespace Epinova.EasyQA.Controllers
                 ContentType = "application/json",
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
-            jsonResult.Data = new { Users = CacheManager.Usernames.Where(x => x.StartsWith(id)).ToList() };
+            if (string.IsNullOrEmpty(id))
+                jsonResult.Data = new { Users = new List<string>() };
+            else 
+                jsonResult.Data = new { Users = CacheManager.Usernames.Where(x => x.StartsWith(id)).ToList() };
             return jsonResult; 
         }
     }
