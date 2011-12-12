@@ -78,4 +78,140 @@
             $('#unpublishButton').hide();
         });
     });
+
+    var autoSuggestList = $('#projectMembersAutoComplete ul');
+    var activeSelectionClass = 'activeSelection';
+
+    $(document).click(function () {
+        $('#projectMembersAutoComplete ul').hide();
+    })
+
+    $('#projectMembers').live('keydown', function (e) {
+        switch (e.keyCode) {
+            case 38: // up
+                e.preventDefault();
+                if ($(autoSuggestList).children('.' + activeSelectionClass + '').length == 0)
+                    return;
+
+                moveSelection("up");
+                return;
+            case 40: // down
+                e.preventDefault();
+                var suggestions = $(autoSuggestList).children();
+                if (suggestions.length == 0)
+                    return;
+
+                if ($(autoSuggestList).children('.' + activeSelectionClass + '').length == 0) {
+                    $(suggestions[0]).addClass(activeSelectionClass);
+                }
+                else {
+                    moveSelection("down");
+                }
+                return;
+            case 13: // enter
+                e.preventDefault();
+                if ($(autoSuggestList).children('.' + activeSelectionClass + '').length == 1) {
+                    var text = $(autoSuggestList).children('.' + activeSelectionClass + '').text();
+
+                    $(this).val(textToInsert);
+                }
+        }
+
+        var inputField = $(this);
+        var inputValue;
+
+        if (e.keyCode != 8) // backspace
+            inputValue = inputField.val() + letterFromKeyCode(e.keyCode).toLowerCase();
+        else {
+            inputValue = inputField.val();
+            inputValue = inputValue.substr(0, inputValue.length - 1);
+        }
+
+        var currentWord = getCurrentWord(inputValue, document.getElementById('projectMembers').selectionStart);
+        console.log("|" + currentWord + "|");
+
+        postAjax('/Qa/FindUser/', '{ "id": "' + currentWord + '"}', inputField, function (data) {
+            autoSuggestList.empty();
+            if (data.Users.length > 0) {
+                console.log(data.Users);
+                autoSuggestList.show();
+                autoSuggestList.empty();
+                for (var i = 0; i < data.Users.length; i++) {
+                    autoSuggestList.append($('<li>' + data.Users[i] + '</li>'));
+                }
+            } else {
+                autoSuggestList.hide();
+            }
+        });
+    });
+
+
+//    function removeCurrentWord(inputValue, caretPosition) {
+
+//    }
+
+//    function getCurrentWordPositions() { }
+    function getCurrentWord(inputValue, caretPosition) {
+        inputValue = $.trim(inputValue);
+        if (inputValue.indexOf(" ") == -1)
+            return inputValue;
+
+        var closestSpaceBackwardsPosition = -1;
+        var notFound = true;
+        var currentSearchPosition = caretPosition;
+        var currentPosition;
+
+        while (notFound) {
+            currentPosition = inputValue.indexOf(" ", currentSearchPosition);
+            if (inputValue[currentSearchPosition] == " ")
+                closestSpaceBackwardsPosition = currentSearchPosition;
+
+            if (caretPosition == 0) {
+                closestSpaceBackwardsPosition = -1;
+                notFound = false;
+            }
+            else if (closestSpaceBackwardsPosition != -1 || currentSearchPosition <= 0 || inputValue == "") {
+                notFound = false;
+            }
+            currentSearchPosition--;
+        }
+
+        var closestSpaceForwardsPosition = -1;
+        notFound = true;
+        currentSearchPosition = caretPosition;
+        while (notFound) {
+            closestSpaceForwardsPosition = inputValue.indexOf(" ", currentSearchPosition);
+            if (closestSpaceForwardsPosition != -1 || caretPosition == inputValue.length || currentSearchPosition >= inputValue.length || inputValue == "") {
+                notFound = false;
+            }
+            currentSearchPosition++;
+        }
+
+        if (closestSpaceForwardsPosition == -1)
+            return inputValue.slice(closestSpaceBackwardsPosition + 1);
+        if (closestSpaceBackwardsPosition == -1)
+            return inputValue.slice(0, closestSpaceForwardsPosition);
+    }
+
+    function moveSelection(direction) {
+        var suggestions = $(autoSuggestList).children();
+        var currentSelectedIndex = -1;
+        for (var j = 0; j < suggestions.length; j++) {
+            if ($(suggestions[j]).hasClass(activeSelectionClass)) {
+                currentSelectedIndex = j;
+            }
+        }
+
+        $(suggestions[currentSelectedIndex]).removeClass(activeSelectionClass);
+        if (direction == "down")
+            $(suggestions[currentSelectedIndex + 1]).addClass(activeSelectionClass);
+        else
+            $(suggestions[currentSelectedIndex - 1]).addClass(activeSelectionClass);
+    }
+
+    function letterFromKeyCode(n) {
+        if (n >= 65 && n < 127)
+            return String.fromCharCode(n);
+        return "";
+    }
 })();
