@@ -132,9 +132,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\editQaInstance.js" />
     <Content Include="Scripts\jquery.uniform.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
     <Content Include="Styles\Site.css" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -144,6 +141,12 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Epinova.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="readme.txt" />
     <Content Include="Views\Qa\Edit.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
