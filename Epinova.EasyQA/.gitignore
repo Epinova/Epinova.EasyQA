@@ -3,4 +3,4 @@
 /App_Data/
 *.user
 *.suo
-/Web.config
+Web.config
