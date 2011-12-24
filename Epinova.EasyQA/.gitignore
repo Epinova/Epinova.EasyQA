@@ -1,6 +1,11 @@
 /obj/
+
 /bin/
+
 /App_Data/
+
 *.user
+
 *.suo
+
 Web.Config
