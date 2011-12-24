@@ -13,9 +13,13 @@ namespace Epinova.EasyQA.Data
                 if (_store == null)
                 {
                     _store = new DocumentStore() { ConnectionStringName = "EasyQaRaven" };
+<<<<<<< HEAD
                     _store.DefaultDatabase = ConfigurationManager.AppSettings["DefaultDb"];
                     _store.Initialize();
                     
+=======
+                    _store.Initialize();
+>>>>>>> 0304d19823908e6f8d019f9dfdc9d2d549b6dd57
                 }
                 return _store;
             }

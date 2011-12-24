@@ -132,6 +132,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\editQaInstance.js" />
     <Content Include="Scripts\jquery.uniform.min.js" />
+<<<<<<< HEAD
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -141,6 +142,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+=======
+>>>>>>> 0304d19823908e6f8d019f9dfdc9d2d549b6dd57
     <Content Include="Styles\Site.css" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -150,6 +153,15 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
+<<<<<<< HEAD
+=======
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Epinova.config">
+      <SubType>Designer</SubType>
+    </Content>
+>>>>>>> 0304d19823908e6f8d019f9dfdc9d2d549b6dd57
     <None Include="readme.txt" />
     <Content Include="Views\Qa\Edit.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
@@ -195,7 +207,11 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
+<<<<<<< HEAD
           <DevelopmentServerPort>4569</DevelopmentServerPort>
+=======
+          <DevelopmentServerPort>20703</DevelopmentServerPort>
+>>>>>>> 0304d19823908e6f8d019f9dfdc9d2d549b6dd57
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>
