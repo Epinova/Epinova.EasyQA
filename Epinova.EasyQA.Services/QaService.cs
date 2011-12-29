@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Security;
+using Epinova.EasyQA.Common.Utilities;
 using Epinova.EasyQA.Core;
 using Epinova.EasyQA.Core.DataInterfaces;
 using Epinova.EasyQA.Core.Entities;
@@ -122,6 +123,12 @@ namespace Epinova.EasyQA.Services
 
         public QaInstance UpdateQaProjectMembers(int qaInstanceId, List<string> projectMembers)
         {
+            foreach (string projectMember in projectMembers)
+            {
+                if(!UserManager.Usernames.Contains(projectMember))
+                    throw new ArgumentException("No such user: " + projectMember);
+            }
+
             QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
             qa.ProjectMembers = projectMembers;
             return _qaInstanceRepository.SaveQaInstance(qa);

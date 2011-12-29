@@ -47,6 +47,10 @@
     <Compile Include="QaTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Epinova.EasyQA.Common\Epinova.EasyQA.Common.csproj">
+      <Project>{0A301405-D0CC-4E96-9AA7-0D2D72708AA2}</Project>
+      <Name>Epinova.EasyQA.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epinova.EasyQA.Core\Epinova.EasyQA.Core.csproj">
       <Project>{8A738595-E142-48CA-819E-AB8B91CDE944}</Project>
       <Name>Epinova.EasyQA.Core</Name>
