@@ -119,7 +119,6 @@
     </Compile>
     <Compile Include="Models\NewEntityModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utilities\CacheManager.cs" />
     <Content Include="Scripts\common.js" />
     <Content Include="Scripts\editQaType.js" />
   </ItemGroup>
@@ -132,18 +131,6 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\editQaInstance.js" />
     <Content Include="Scripts\jquery.uniform.min.js" />
-<<<<<<< HEAD
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-=======
->>>>>>> 0304d19823908e6f8d019f9dfdc9d2d549b6dd57
     <Content Include="Styles\Site.css" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -153,16 +140,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
-<<<<<<< HEAD
-=======
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Web.Epinova.config">
-      <SubType>Designer</SubType>
-    </Content>
->>>>>>> 0304d19823908e6f8d019f9dfdc9d2d549b6dd57
-    <None Include="readme.txt" />
     <Content Include="Views\Qa\Edit.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
@@ -177,6 +157,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Epinova.EasyQA.Common\Epinova.EasyQA.Common.csproj">
+      <Project>{0A301405-D0CC-4E96-9AA7-0D2D72708AA2}</Project>
+      <Name>Epinova.EasyQA.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Epinova.EasyQA.Core\Epinova.EasyQA.Core.csproj">
       <Project>{8A738595-E142-48CA-819E-AB8B91CDE944}</Project>
       <Name>Epinova.EasyQA.Core</Name>
@@ -207,11 +191,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-<<<<<<< HEAD
-          <DevelopmentServerPort>4569</DevelopmentServerPort>
-=======
           <DevelopmentServerPort>20703</DevelopmentServerPort>
->>>>>>> 0304d19823908e6f8d019f9dfdc9d2d549b6dd57
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

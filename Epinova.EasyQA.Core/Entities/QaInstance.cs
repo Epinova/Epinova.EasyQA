@@ -12,7 +12,7 @@ namespace Epinova.EasyQA.Core.Entities
         public List<QaInstanceCategory> Categories { get; set; }
         public bool Published { get; set; }
         public string User { get; set; }
-        public string ProjectMembers { get; set; }
+        public List<string> ProjectMembers { get; set; }
         public string PresentAtReview { get; set; }
         public string Miscellaneous { get; set; }
         public string Summary { get; set; }

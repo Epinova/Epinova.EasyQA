@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Security;
 using Epinova.EasyQA.Core;
 using Epinova.EasyQA.Core.DataInterfaces;
 using Epinova.EasyQA.Core.Entities;
@@ -119,7 +120,7 @@ namespace Epinova.EasyQA.Services
             return _qaInstanceRepository.SaveQaInstance(qa);
         }
 
-        public QaInstance UpdateQaProjectMembers(int qaInstanceId, string projectMembers)
+        public QaInstance UpdateQaProjectMembers(int qaInstanceId, List<string> projectMembers)
         {
             QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
             qa.ProjectMembers = projectMembers;

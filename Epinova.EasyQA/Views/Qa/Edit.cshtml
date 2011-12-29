@@ -8,7 +8,10 @@
 <h1 id="title"><span class="content">@Model.Name</span> <a href="#">(Endre)</a></h1>
 <div class="clear"></div>
 <label for="projectMembers">Prosjektdeltakere</label>
-<input type="text" id="projectMembers" autocomplete="off" value="@Model.ProjectMembers">
+<div id="projectMembersContainer">
+  <input type="text" id="projectMembers" autocomplete="off" value="@Model.ProjectMembers">
+</div>
+
 <div id="projectMembersAutoComplete">
     <ul></ul>
 </div>

@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epinova.EasyQA.Data", "Epin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epinova.EasyQA.Services", "Epinova.EasyQA.Services\Epinova.EasyQA.Services.csproj", "{C98CD392-ED6B-43C0-AC5C-E604503CA058}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epinova.EasyQA.Common", "Epinova.EasyQA.Common\Epinova.EasyQA.Common.csproj", "{0A301405-D0CC-4E96-9AA7-0D2D72708AA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{C98CD392-ED6B-43C0-AC5C-E604503CA058}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C98CD392-ED6B-43C0-AC5C-E604503CA058}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C98CD392-ED6B-43C0-AC5C-E604503CA058}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A301405-D0CC-4E96-9AA7-0D2D72708AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A301405-D0CC-4E96-9AA7-0D2D72708AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A301405-D0CC-4E96-9AA7-0D2D72708AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A301405-D0CC-4E96-9AA7-0D2D72708AA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

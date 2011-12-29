@@ -4,12 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Caching;
 using System.Web.Security;
-using Epinova.EasyQA.Core;
 
-namespace Epinova.EasyQA.Utilities
+namespace Epinova.EasyQA.Common.Utilities
 {
-    public static class CacheManager
+    public static class UserManager
     {
+        const string UserNameListCacheName = "EQAUsers";
 
         private static List<string> _usernames;
         public static List<string> Usernames
@@ -17,9 +17,9 @@ namespace Epinova.EasyQA.Utilities
             get {
                 if (_usernames == null)
                 {
-                    if (HttpRuntime.Cache[Constants.UserNameListCacheName] == null)
-                        HttpRuntime.Cache[Constants.UserNameListCacheName] = RetrieveUsernames(Membership.GetAllUsers());
-                    _usernames = HttpRuntime.Cache[Constants.UserNameListCacheName] as List<string>;
+                    if (HttpRuntime.Cache[UserNameListCacheName] == null)
+                        HttpRuntime.Cache[UserNameListCacheName] = RetrieveUsernames(Membership.GetAllUsers());
+                    _usernames = HttpRuntime.Cache[UserNameListCacheName] as List<string>;
                 }
                 return _usernames;
             }

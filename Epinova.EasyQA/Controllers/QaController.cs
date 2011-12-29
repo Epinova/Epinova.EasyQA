@@ -5,12 +5,12 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Epinova.EasyQA.Common.Utilities;
 using Epinova.EasyQA.Core;
 using Epinova.EasyQA.Core.Entities;
 using Epinova.EasyQA.Core.ServiceInterfaces;
 using Epinova.EasyQA.Models;
 using Epinova.EasyQA.Services;
-using Epinova.EasyQA.Utilities;
 using MarkdownSharp;
 
 namespace Epinova.EasyQA.Controllers
@@ -144,7 +144,7 @@ namespace Epinova.EasyQA.Controllers
         {
             try
             {
-                QaInstance qa = _qaService.UpdateQaProjectMembers(qaId, projectMembers);
+                QaInstance qa = _qaService.UpdateQaProjectMembers(qaId, projectMembers.Split(' ').ToList());
                 _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
             }
             catch (Exception ex)
@@ -211,7 +211,7 @@ namespace Epinova.EasyQA.Controllers
             if (string.IsNullOrEmpty(id))
                 jsonResult.Data = new { Users = new List<string>() };
             else 
-                jsonResult.Data = new { Users = CacheManager.Usernames.Where(x => x.StartsWith(id)).ToList() };
+                jsonResult.Data = new { Users = UserManager.Usernames.Where(x => x.StartsWith(id)).ToList() };
             return jsonResult; 
         }
     }

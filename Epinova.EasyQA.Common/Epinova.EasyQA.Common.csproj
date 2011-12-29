@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C98CD392-ED6B-43C0-AC5C-E604503CA058}</ProjectGuid>
+    <ProjectGuid>{0A301405-D0CC-4E96-9AA7-0D2D72708AA2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Epinova.EasyQA.Services</RootNamespace>
-    <AssemblyName>Epinova.EasyQA.Services</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Epinova.EasyQA.Common</RootNamespace>
+    <AssemblyName>Epinova.EasyQA.Common</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -34,27 +34,14 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QaService.cs" />
-    <Compile Include="QaTypeService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Epinova.EasyQA.Core\Epinova.EasyQA.Core.csproj">
-      <Project>{8A738595-E142-48CA-819E-AB8B91CDE944}</Project>
-      <Name>Epinova.EasyQA.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Epinova.EasyQA.Data\Epinova.EasyQA.Data.csproj">
-      <Project>{B836AD7E-CD97-45AD-882E-704A7EF92D42}</Project>
-      <Name>Epinova.EasyQA.Data</Name>
-    </ProjectReference>
+    <Compile Include="Utilities\UserManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

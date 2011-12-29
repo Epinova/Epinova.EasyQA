@@ -1,6 +1,6 @@
 using System;
+using Epinova.EasyQA.Common.Utilities;
 using Epinova.EasyQA.Controllers;
-using Epinova.EasyQA.Utilities;
 using NUnit.Framework;
 using System.Collections.Generic;
 
@@ -15,7 +15,7 @@ namespace Epinova.EasyQA.Tests.Controllers
         public void Setup()
         {
             qaController = new QaController();
-            CacheManager.Usernames = new List<string> { "arve.systad", "ola.nordman", "kari.nordman" };
+            UserManager.Usernames = new List<string> { "arve.systad", "ola.nordman", "kari.nordman" };
         }
 
         [Test]
