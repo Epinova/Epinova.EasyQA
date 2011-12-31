@@ -48,10 +48,15 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         QaInstance UpdateQaMisc(int qaInstanceId, string misc);
 
         /// <summary>
-        /// Updates the project members of the QA
+        /// Adds a new project member to the QA
         /// </summary>
-        QaInstance UpdateQaProjectMembers(int qaInstanceId, List<string> projectMembers);
+        QaInstance AddQaProjectMember(int qaInstanceId, string projectMember);
 
+        /// <summary>
+        /// Removes a project member from the QA
+        /// </summary>
+        QaInstance RemoveQaProjectMember(int qaInstanceId, string projectMember);
+        
         /// <summary>
         /// Updates who were present at the QA review
         /// </summary>

@@ -9,7 +9,13 @@
 <div class="clear"></div>
 <label for="projectMembers">Prosjektdeltakere</label>
 <div id="projectMembersContainer">
-  <input type="text" id="projectMembers" autocomplete="off" value="@Model.ProjectMembers">
+  <input type="text" id="projectMembers" autocomplete="off">
+  <div>
+    @foreach (string member in Model.ProjectMembers)
+    {
+      <span>@member <a href="#">X</a></span>    
+    }
+  </div>
 </div>
 
 <div id="projectMembersAutoComplete">
@@ -21,23 +27,25 @@
 
 @{var categoryIndexer = 1; }
 @{var criteriaIndexer = 1; }
-@foreach (QaInstanceCategory category in Model.Categories) { 
+@foreach (QaInstanceCategory category in Model.Categories)
+{ 
 <section class="editableCategory">
     <h1>@categoryIndexer. @category.Text</h1>
     <ul class="qaInstanceList">
 
-        @foreach (QaInstanceCriteria criteria in category.Criterias) { 
+        @foreach (QaInstanceCriteria criteria in category.Criterias)
+        { 
         <li>
             <input type="hidden" class="criteriaInstanceId" value="@(criteria.Id)">
-            <input type="radio" name="r@(criteriaIndexer)" @(criteria.Status==InstanceCriteriaStatus.NeedsExplanation ? "checked" : string.Empty) value="q" class="radioQuestion statusChooser"> 
-            <input type="radio" name="r@(criteriaIndexer)" value="n" @(criteria.Status==InstanceCriteriaStatus.NotOk ? "checked" : string.Empty) class="radioNo statusChooser"> 
-            <input type="radio" name="r@(criteriaIndexer)" value="y" @(criteria.Status==InstanceCriteriaStatus.Ok ? "checked" : string.Empty) class="radioYes statusChooser"> 
+            <input type="radio" name="r@(criteriaIndexer)" @(criteria.Status == InstanceCriteriaStatus.NeedsExplanation ? "checked" : string.Empty) value="q" class="radioQuestion statusChooser"> 
+            <input type="radio" name="r@(criteriaIndexer)" value="n" @(criteria.Status == InstanceCriteriaStatus.NotOk ? "checked" : string.Empty) class="radioNo statusChooser"> 
+            <input type="radio" name="r@(criteriaIndexer)" value="y" @(criteria.Status == InstanceCriteriaStatus.Ok ? "checked" : string.Empty) class="radioYes statusChooser"> 
             <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span><a href="#" class="addComment">Legg til kommentar</a>
             <div class="commentArea">
                 <textarea>@criteria.Comment</textarea>
             </div>
         </li>    
-            criteriaIndexer += 1;
+          criteriaIndexer += 1;
         }        
     </ul>
 </section>

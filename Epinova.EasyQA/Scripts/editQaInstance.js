@@ -4,7 +4,6 @@
     $('input.radioYes').uniform({ radioClass: 'radio yes' });
     var titleFieldLink = $('#title a');
     var qaId = $('#qaId').val();
-    var loadingClass = 'loading';
 
     titleFieldLink.live('click', function (e) {
         e.preventDefault();
@@ -19,11 +18,6 @@
             editField.parent().text(data.Text);
             editField.remove();
         });
-    });
-
-    $('#projectMembers').live('blur', function (e) {
-        var inputField = $(this);
-        postAjax('/Qa/UpdateProjectMembers/', '{ "qaId": ' + qaId + ', "projectMembers": "' + inputField.val() + '" }', inputField, null);
     });
 
     $('#presentAtReview').live('blur', function (e) {
@@ -55,7 +49,6 @@
     });
 
     $('.commentArea textarea').live('blur', function (e) {
-        var text = $(this).val();
         var criteriaId = $(this).closest('li').children('.criteriaInstanceId').val();
         var textArea = $(this);
         postAjax('/Qa/UpdateCriteriaComment/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "text": "' + $(this).val() + '" }', textArea, null);
@@ -87,6 +80,7 @@
     })
 
     $('#projectMembers').live('keydown', function (e) {
+        var inputField = $(this);
         switch (e.keyCode) {
             case 38: // up
                 e.preventDefault();
@@ -112,8 +106,12 @@
                 e.preventDefault();
                 if ($(autoSuggestList).children('.' + activeSelectionClass + '').length == 1) {
                     var text = $(autoSuggestList).children('.' + activeSelectionClass + '').text();
-
-                    $(this).val(textToInsert);
+                    console.log("ProjectMember: " + text);
+                    postAjax('/Qa/AddProjectMember/', '{ "qaId": ' + qaId + ', "projectMember": "' + text + '" }', inputField, function () {
+                        inputField.val('');
+                        var newElement = $('<span>' + text + ' <a href="#">X</a></span>');
+                        $('#projectMembersContainer div').append(newElement);
+                    });
                 }
         }
 
@@ -146,11 +144,11 @@
     });
 
 
-//    function removeCurrentWord(inputValue, caretPosition) {
+    //    function removeCurrentWord(inputValue, caretPosition) {
 
-//    }
+    //    }
 
-//    function getCurrentWordPositions() { }
+    //    function getCurrentWordPositions() { }
     function getCurrentWord(inputValue, caretPosition) {
         inputValue = $.trim(inputValue);
         if (inputValue.indexOf(" ") == -1)

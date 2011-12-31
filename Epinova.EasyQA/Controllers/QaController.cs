@@ -140,11 +140,14 @@ namespace Epinova.EasyQA.Controllers
             return _jsonResult;
         }
 
-        public ActionResult UpdateProjectMembers(int qaId, string projectMembers)
+        public ActionResult AddProjectMember(int qaId, string projectMember)
         {
+            if (string.IsNullOrEmpty(projectMember.Trim()))
+                return null;
+
             try
             {
-                QaInstance qa = _qaService.UpdateQaProjectMembers(qaId, projectMembers.Split(' ').ToList());
+                QaInstance qa = _qaService.AddQaProjectMember(qaId, projectMember);
                 _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
             }
             catch (Exception ex)

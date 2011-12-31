@@ -121,17 +121,22 @@ namespace Epinova.EasyQA.Services
             return _qaInstanceRepository.SaveQaInstance(qa);
         }
 
-        public QaInstance UpdateQaProjectMembers(int qaInstanceId, List<string> projectMembers)
+        public QaInstance AddQaProjectMember(int qaInstanceId, string projectMember)
         {
-            foreach (string projectMember in projectMembers)
-            {
-                if(!UserManager.Usernames.Contains(projectMember))
-                    throw new ArgumentException("No such user: " + projectMember);
-            }
+            if(!UserManager.Usernames.Contains(projectMember))
+                throw new ArgumentException("No such user: " + projectMember);
 
             QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
-            qa.ProjectMembers = projectMembers;
+            if(qa.ProjectMembers == null)
+                qa.ProjectMembers = new List<string>();
+
+            qa.ProjectMembers.Add(projectMember);
             return _qaInstanceRepository.SaveQaInstance(qa);
+        }
+
+        public QaInstance RemoveQaProjectMember(int qaInstanceId, string projectMember)
+        {
+            throw new NotImplementedException();
         }
 
         public QaInstance UpdateQaPresentAtReview(int qaInstanceId, string presentAtReview)
