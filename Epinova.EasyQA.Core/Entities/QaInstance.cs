@@ -26,6 +26,7 @@ namespace Epinova.EasyQA.Core.Entities
             User = username;
             int idCounter = 0;
             Categories = new List<QaInstanceCategory>();
+            ProjectMembers = new List<string>();
 
             foreach (CriteriaCategory category in qaType.CriteriaCategories)
             {
@@ -42,6 +43,50 @@ namespace Epinova.EasyQA.Core.Entities
                                                   });
                 }
                 Categories.Add(instanceCategory);
+            }
+        }
+
+        private int _score = -1;
+        /// <summary>
+        /// Gets the score (100 is max) for this QA, and basically gives a percentage of right vs wrong. Ignores criterias that has not been set as right/wrong/needs explanation.
+        /// </summary>
+        public int Score
+        {
+            get
+            {
+                if(_score > -1)
+                    return _score;
+
+                int ok = 0;
+                int totalCount = 0;
+                int needsExplanation = 0;
+
+                foreach (QaInstanceCategory category in Categories)
+                {
+                    foreach (QaInstanceCriteria criteria in category.Criterias)
+                    {
+                        totalCount++;
+                        switch(criteria.Status)
+                        {
+                            case InstanceCriteriaStatus.Ok:
+                                ok++;
+                                break;
+                            case InstanceCriteriaStatus.NotSet:
+                                totalCount--;
+                                break;
+                            case InstanceCriteriaStatus.NeedsExplanation:
+                                needsExplanation++;
+                                break;
+                        }
+                    }
+                }
+                if (totalCount == 0)
+                    return 0;
+
+
+
+                _score = (int)(((ok + ((double)needsExplanation / 2)) / totalCount) * 100);
+                return _score;
             }
         }
     }

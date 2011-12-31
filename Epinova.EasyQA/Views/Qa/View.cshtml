@@ -12,7 +12,12 @@
         <dd>@Model.User</dd>
 
     <dt>Prosjektdeltakere:</dt>
-        <dd>@Model.ProjectMembers</dd>
+        <dd>
+          @foreach (string member in Model.ProjectMembers)
+          {
+              @(member+", ")
+          }
+        </dd>
 
     <dt>Tilstede ved gjennomgang:</dt>
         <dd>@Model.PresentAtReview</dd>
