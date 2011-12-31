@@ -136,7 +136,12 @@ namespace Epinova.EasyQA.Services
 
         public QaInstance RemoveQaProjectMember(int qaInstanceId, string projectMember)
         {
-            throw new NotImplementedException();
+            if (!UserManager.Usernames.Contains(projectMember))
+                throw new ArgumentException("No such user: " + projectMember);
+
+            QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
+            qa.ProjectMembers.Remove(projectMember);
+            return _qaInstanceRepository.SaveQaInstance(qa);
         }
 
         public QaInstance UpdateQaPresentAtReview(int qaInstanceId, string presentAtReview)

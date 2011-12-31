@@ -77,7 +77,16 @@
 
     $(document).click(function () {
         $('#projectMembersAutoComplete ul').hide();
-    })
+    });
+
+    $('#projectMembersContainer div span a').live('click', function () {
+        var elementToRemove = $(this).parent();
+        var member = $(this).siblings('span').text();
+
+        postAjax('/Qa/RemoveProjectMember/', '{ "qaId": ' + qaId + ', "projectMember": "' + member + '" }', null, function () {
+            elementToRemove.remove();
+        });
+    });
 
     $('#projectMembers').live('keydown', function (e) {
         var inputField = $(this);
@@ -103,14 +112,20 @@
                 }
                 return;
             case 13: // enter
+            case 32: // space
+            case 9: // tab
+                if ($(autoSuggestList).children().length < 1)
+                    return;
+
                 e.preventDefault();
                 if ($(autoSuggestList).children('.' + activeSelectionClass + '').length == 1) {
                     var text = $(autoSuggestList).children('.' + activeSelectionClass + '').text();
                     console.log("ProjectMember: " + text);
                     postAjax('/Qa/AddProjectMember/', '{ "qaId": ' + qaId + ', "projectMember": "' + text + '" }', inputField, function () {
                         inputField.val('');
-                        var newElement = $('<span>' + text + ' <a href="#">X</a></span>');
+                        var newElement = $('<span><span>' + text + '</span> <a href="#">X</a></span>');
                         $('#projectMembersContainer div').append(newElement);
+                        $(autoSuggestList).empty();
                     });
                 }
         }

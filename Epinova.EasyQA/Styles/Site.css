@@ -132,8 +132,9 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap #projectMembersContainer { clear: both; overflow: hidden; }
 #contentWrap #projectMembersContainer div { float: left; width: 638px; }
 #contentWrap #projectMembersContainer div span { background: rgba(255, 255, 255, .5); padding: 5px; margin-left: 15px; border-bottom: 1px solid #333; }
+#contentWrap #projectMembersContainer div span span { border: 0; padding: 0; margin: 0; background: transparent;}
 #contentWrap #projectMembersContainer div span a { background: #333; border-radius: .5em; color: #FFF; font-size: .8em; padding: 0 .3em; font-weight: bold; text-decoration: none; }
-#contentWrap #projectMembersContainer div span a:hover { background: red; }
+#contentWrap #projectMembersContainer div span a:hover { background: #CC0000; }
 
 /* Login-box */
 

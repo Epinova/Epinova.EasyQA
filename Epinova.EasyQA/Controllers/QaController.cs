@@ -158,6 +158,23 @@ namespace Epinova.EasyQA.Controllers
             return _jsonResult;
         }
 
+        public ActionResult RemoveProjectMember(int qaId, string projectMember)
+        {
+            if (string.IsNullOrEmpty(projectMember.Trim()))
+                return null;
+
+            try
+            {
+                QaInstance qa = _qaService.RemoveQaProjectMember(qaId, projectMember);
+                _jsonResult.Data = new NewEntityModel() { Id = qa.Id, Text = qa.Name };
+            } catch (Exception ex)
+            {
+                // logging   
+                _jsonResult.Data = new NewEntityModel() { Id = -1, Error = ex.Message };
+            }
+            return _jsonResult;
+        }
+
         public ActionResult UpdatePresentAtReview(int qaId, string presentAtReview)
         {
             try
