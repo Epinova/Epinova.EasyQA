@@ -28,6 +28,10 @@
 { 
 <section>
     <h1>@categoryIndexer. @category.Text</h1>
+    @if (ViewBag.CanMarkAsFixed)
+    {
+    <h2>I can fix.</h2>
+    }
     <ul class="viewQaInstanceList">
         @foreach (QaInstanceCriteria criteria in category.Criterias)
         { 

@@ -47,7 +47,14 @@ namespace Epinova.EasyQA.Controllers
 
         public ActionResult View(int id)
         {
-            return View(_qaService.Get(HttpContext.User.Identity.Name, id));
+            var model = _qaService.Get(HttpContext.User.Identity.Name, id);
+
+            if (model.ProjectMembers.Contains(HttpContext.User.Identity.Name))
+            {
+                ViewBag.CanMarkAsFixed = true;
+            }
+
+            return View(model);
         }
 
 
