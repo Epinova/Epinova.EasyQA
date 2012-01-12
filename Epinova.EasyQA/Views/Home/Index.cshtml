@@ -23,12 +23,19 @@
     
     @foreach (QaInstance qa in Model) { 
         <tr>
-            <td>@Html.ActionLink(qa.Name, "View", new { controller = "Qa", id = qa.Id })</td>
+            <td>@Html.ActionLink(qa.Name, "View", new { controller = "Qa", id = qa.Id })
+                @if (qa.Score > 90) { 
+                    @:   <img src="/Styles/gfx/star.png" alt="Over 90% godkjent">
+                }
+                else if (qa.Score > 70)
+                {
+                    @: <img src="/Styles/gfx/star-half.png" alt="Over 70% godkjent">
+                }
+            </td>
             <td>@qa.QaTypeName</td>
             <td>@(qa.Published ? @qa.PublishedDate.ToShortDateString() + " " +  @qa.PublishedDate.ToShortTimeString() : "Ikke publisert")</td>
             <td>@qa.User</td>
             <td>@Html.ActionLink("Endre", "Edit", new { controller = "Qa", id = qa.Id })</td>
-            <td>@qa.Score</td>
         </tr>
     }
 </tbody>
