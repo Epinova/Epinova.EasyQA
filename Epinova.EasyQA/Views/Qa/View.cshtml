@@ -22,29 +22,33 @@
     <dt>Tilstede ved gjennomgang:</dt>
         <dd>@Model.PresentAtReview</dd>
 </dl>
+<input type="hidden" value="@Model.Id" id="qaId">
 @{var categoryIndexer = 1; }
 @{var criteriaIndexer = 1; }
 @foreach (QaInstanceCategory category in Model.Categories)
 { 
 <section>
     <h1>@categoryIndexer. @category.Text</h1>
-    @if (ViewBag.CanMarkAsFixed)
-    {
-    <h2>I can fix.</h2>
-    }
     <ul class="viewQaInstanceList">
         @foreach (QaInstanceCriteria criteria in category.Criterias)
         { 
         <li>
+            <input type="hidden" value="@criteria.Id" class="criteriaInstanceId">
             @if (criteria.Status == InstanceCriteriaStatus.NeedsExplanation)
             { 
                 <span class="status statusQ">NeedsExplanation</span>
             }
             else if (criteria.Status == InstanceCriteriaStatus.NotOk) { 
                 <span class="status statusN">NotOk</span>
+                if (ViewBag.CanMarkAsFixed) { 
+                    @:<input type="checkbox" name="fixed" @(criteria.Fixed ? "checked" : string.Empty) value="f" class="radioFixed statusChooser">
+                }
             }
             else if (criteria.Status == InstanceCriteriaStatus.Ok) { 
                 <span class="status statusY">Ok</span>
+            }   
+            @if (!ViewBag.CanMarkAsFixed && criteria.Fixed) {
+                <span class="status statusF" title="Fixed">Fixed</span>
             }
             <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span>
             <div class="commentArea">
@@ -66,3 +70,8 @@
     <h1>Oppsummering</h1>
     @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Summary))
 </section>
+
+@section AddScripts {
+    <script src="/Scripts/jquery.uniform.min.js"></script>
+    <script src="/Scripts/editQaInstance.js"></script>
+}

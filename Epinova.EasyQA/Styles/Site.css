@@ -65,13 +65,13 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap h1:hover a { display: inline; }
 
 #contentWrap section { margin-top: 20px; }  
-
+ 
 /* Edit QA instance */
 
 #contentWrap .editableCategory .qaInstanceList { margin: 0 0 20px 0; }
-#contentWrap .editableCategory .qaInstanceList div.radio { float: left; width: 30px; }
-#contentWrap .editableCategory .qaInstanceList div.radio span { display: block; }
-#contentWrap .editableCategory .qaInstanceList div.radio span input { width: 21px; height: 21px; margin-left: 5px; cursor: pointer}
+#contentWrap div.radio, #contentWrap div.checker { float: left; width: 30px; }
+#contentWrap div.radio span, #contentWrap div.checker span { display: block; }
+#contentWrap div.radio span input, #contentWrap div.checker span input { width: 21px; height: 21px; margin-left: 5px; cursor: pointer}
 #contentWrap .editableCategory .qaInstanceList .number { float: left; width: 22px; }
 #contentWrap .editableCategory .qaInstanceList .content { float: left; width: 716px; }
 #contentWrap .editableCategory .qaInstanceList div.question span { background: url(/Styles/gfx/icons.png) no-repeat 8px -242px; }
@@ -80,6 +80,8 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap .editableCategory .qaInstanceList div.yes span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px -272px; }
 #contentWrap .editableCategory .qaInstanceList div.no span { background: url(/Styles/gfx/icons.png) no-repeat 8px -212px;  }
 #contentWrap .editableCategory .qaInstanceList div.no span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px -302px;  }
+#contentWrap div.fixed span { background: url(/Styles/gfx/icons.png) no-repeat 8px -422px;  }
+#contentWrap div.fixed span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px 4px;  }
 #contentWrap .editableCategory .qaInstanceList li { clear: both; list-style-type: none; overflow: hidden; }
 #contentWrap .editableCategory .qaInstanceList li:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
 #contentWrap .editableCategory .qaInstanceList li:hover a.addComment { display: block; }
@@ -117,9 +119,10 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap .viewQaInstanceList { margin-left: 0; }
 #contentWrap .viewQaInstanceList li { list-style-type:none; }
 #contentWrap .viewQaInstanceList li .status { float: left; width: 20px; text-indent: -99999px; outline: 0; }
-#contentWrap .viewQaInstanceList li .statusN { background: url(/Styles/gfx/icons.png) no-repeat 0 -304px; }
-#contentWrap .viewQaInstanceList li .statusY { background: url(/Styles/gfx/icons.png) no-repeat 0 -272px; }
-#contentWrap .viewQaInstanceList li .statusQ { background: url(/Styles/gfx/icons.png) no-repeat 0 -334px; }
+#contentWrap .viewQaInstanceList li .statusN { background: url(/Styles/gfx/icons.png) no-repeat 0 -303px; }
+#contentWrap .viewQaInstanceList li .statusY { background: url(/Styles/gfx/icons.png) no-repeat 0 -271px; }
+#contentWrap .viewQaInstanceList li .statusQ { background: url(/Styles/gfx/icons.png) no-repeat 0 -333px; }
+#contentWrap .viewQaInstanceList li .statusF { background: url(/Styles/gfx/icons.png) no-repeat 0 4px; } 
 #contentWrap .viewQaInstanceList li .commentArea { margin-left: 42px; font-size: .9em; color: #666; }
 #contentWrap .viewQaInstanceList li .commentArea ul li { list-style-type: square;  }
 #contentWrap .viewQaInstanceList li .commentArea p { margin-top: 0;  }

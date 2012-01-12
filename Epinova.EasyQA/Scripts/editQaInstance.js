@@ -2,6 +2,8 @@
     $('input.radioQuestion').uniform({ radioClass: 'radio question' });
     $('input.radioNo').uniform({ radioClass: 'radio no' });
     $('input.radioYes').uniform({ radioClass: 'radio yes' });
+    $('input.radioFixed').uniform({ checkboxClass: 'radio fixed' });
+
     var titleFieldLink = $('#title a');
     var qaId = $('#qaId').val();
 
@@ -19,7 +21,7 @@
             editField.remove();
         });
     });
-
+     
     $('#presentAtReview').live('blur', function (e) {
         var inputField = $(this);
         postAjax('/Qa/UpdatePresentAtReview/', '{ "qaId": ' + qaId + ', "presentAtReview": "' + inputField.val() + '" }', inputField, null);
@@ -39,7 +41,7 @@
         e.preventDefault();
         var criteriaId = $(this).closest('li').children('.criteriaInstanceId').val();
         var status = $(this).val();
-
+        
         postAjax('/Qa/UpdateCriteriaStatus/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "status": "' + status + '" }', null, null);
     });
 

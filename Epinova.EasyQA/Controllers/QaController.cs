@@ -49,10 +49,7 @@ namespace Epinova.EasyQA.Controllers
         {
             var model = _qaService.Get(HttpContext.User.Identity.Name, id);
 
-            if (model.ProjectMembers.Contains(HttpContext.User.Identity.Name))
-            {
-                ViewBag.CanMarkAsFixed = true;
-            }
+            ViewBag.CanMarkAsFixed = model.ProjectMembers.Contains(HttpContext.User.Identity.Name);
 
             return View(model);
         }
@@ -98,16 +95,24 @@ namespace Epinova.EasyQA.Controllers
         {
             try
             {
-                InstanceCriteriaStatus newStatus;
-                if(status == "y")
-                    newStatus = InstanceCriteriaStatus.Ok;
-                else if(status == "n")
-                    newStatus = InstanceCriteriaStatus.NotOk;
-                else 
-                    newStatus = InstanceCriteriaStatus.NeedsExplanation;
+                if (status == "f") 
+                {
+                    QaInstanceCriteria criteria = _qaService.ToggleCriteriaFixed(criteriaId, qaId);
 
-                QaInstanceCriteria criteria = _qaService.UpdateCriteriaStatus(criteriaId, qaId, newStatus);
-                _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Text = criteria.Status.ToString() };
+                    _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Text = criteria.Status.ToString() };
+                }
+                else { 
+                    InstanceCriteriaStatus newStatus;
+                    if (status == "y")
+                        newStatus = InstanceCriteriaStatus.Ok;
+                    else if (status == "n")
+                        newStatus = InstanceCriteriaStatus.NotOk;
+                    else
+                        newStatus = InstanceCriteriaStatus.NeedsExplanation;
+                
+                    QaInstanceCriteria criteria = _qaService.UpdateCriteriaStatus(criteriaId, qaId, newStatus);
+                    _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Text = criteria.Status.ToString() };
+                }
             }
             catch (Exception ex)
             {

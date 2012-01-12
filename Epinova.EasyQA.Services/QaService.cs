@@ -74,7 +74,7 @@ namespace Epinova.EasyQA.Services
             throw new NullReferenceException("No criteria with ID " + criteriaId + " in QA Instance #" + qaId);
         }
 
-        public QaInstanceCriteria UpdateCriteriaCorrected(int criteriaId, int qaId, bool corrected)
+        public QaInstanceCriteria ToggleCriteriaFixed(int criteriaId, int qaId)
         {
             QaInstance qa = _qaInstanceRepository.Get(qaId);
 
@@ -84,7 +84,7 @@ namespace Epinova.EasyQA.Services
                 criteria = cat.Criterias.Where(x => x.Id == criteriaId).FirstOrDefault();
                 if (criteria != null)
                 {
-                    criteria.Corrected = corrected;
+                    criteria.Fixed = !criteria.Fixed;
                     _qaInstanceRepository.SaveQaInstance(qa);
                     return criteria;
                 }
