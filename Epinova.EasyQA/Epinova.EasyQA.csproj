@@ -182,8 +182,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="packages.config" />
-    <Content Include="Web.config">
+    <Content Include="C:\Users\Arve Systad\Desktop\Web.config">
       <SubType>Designer</SubType>
+      <Link>Web.config</Link>
     </Content>
     <Content Include="Views\Qa\Edit.cshtml" />
     <Content Include="Views\QaType\Edit.cshtml" />
