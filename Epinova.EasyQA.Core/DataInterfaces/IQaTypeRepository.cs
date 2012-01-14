@@ -20,7 +20,7 @@ namespace Epinova.EasyQA.Core.DataInterfaces
         /// Creates a new QA type
         /// </summary>
         /// <returns>The ID of the saved QA type.</returns>
-        QaType CreateQaType();
+        QaType CreateQaType(string name);
 
         /// <summary>
         /// Updates a QA-type with a new title

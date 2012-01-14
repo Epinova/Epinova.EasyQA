@@ -6,7 +6,7 @@ namespace Epinova.EasyQA.Tests.Mocks
 {
     public class CriteriaRepository : ICriteriaRepository
     {
-        public QaCriteria CreateQaCriteria(int qaType, int criteriaCategory)
+        public QaCriteria CreateQaCriteria(int qaType, int criteriaCategory, string criteriaText)
         {
             throw new NotImplementedException();
         }

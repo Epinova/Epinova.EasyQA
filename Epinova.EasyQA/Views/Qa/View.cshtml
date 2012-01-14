@@ -8,10 +8,10 @@
 
 <h1 id="title">@Model.Name</h1>
 <dl>
-    <dt>QA utført av:</dt>
+    <dt>@Resources.Home.DoneBy:</dt>
         <dd>@Model.User</dd>
 
-    <dt>Prosjektdeltakere:</dt>
+    <dt>@Resources.Qa.ProjectMembers:</dt>
         <dd>
           @foreach (string member in Model.ProjectMembers)
           {
@@ -19,7 +19,7 @@
           }
         </dd>
 
-    <dt>Tilstede ved gjennomgang:</dt>
+    <dt>@Resources.Qa.PresentAtReview</dt>
         <dd>@Model.PresentAtReview</dd>
 </dl>
 <input type="hidden" value="@Model.Id" id="qaId">
@@ -63,11 +63,11 @@
 }
 
 <section>
-    <h1>Andre funn</h1>
+    <h1>@Resources.Qa.Miscellaneous</h1>
     @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Miscellaneous))
 </section>
 <section>
-    <h1>Oppsummering</h1>
+    <h1>@Resources.Qa.Summary</h1>
     @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Summary))
 </section>
 

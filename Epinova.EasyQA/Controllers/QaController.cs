@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using Epinova.EasyQA.App_GlobalResources;
 using Epinova.EasyQA.Common.Utilities;
 using Epinova.EasyQA.Core;
 using Epinova.EasyQA.Core.Entities;
@@ -18,13 +19,11 @@ namespace Epinova.EasyQA.Controllers
     [Authorize]
     public class QaController : Controller
     {
-        IQaTypeService _qaTypeService;
         IQaService _qaService;
         JsonResult _jsonResult;
 
         public QaController()
         {
-            _qaTypeService = new QaTypeService();
             _qaService = new QaService();
             _jsonResult = new JsonResult()
                               {
@@ -36,7 +35,6 @@ namespace Epinova.EasyQA.Controllers
 
         public QaController(IQaTypeService qaTypeService, IQaService qaService)
         {
-            _qaTypeService = qaTypeService;
             _qaService = qaService;
         }
 
@@ -57,7 +55,7 @@ namespace Epinova.EasyQA.Controllers
 
         public ActionResult New(int id)
         {
-            QaInstance newQa = _qaService.CreateQaInstance(id, HttpContext.User.Identity.Name);
+            QaInstance newQa = _qaService.CreateQaInstance(id, HttpContext.User.Identity.Name, Qa.DefaultName);
             return RedirectToAction("Edit", new { id = newQa.Id});
         }
 
@@ -65,6 +63,9 @@ namespace Epinova.EasyQA.Controllers
         {
             try
             {
+                if (string.IsNullOrEmpty(title))
+                    title = App_GlobalResources.Qa.DefaultName;
+
                 QaInstance qaInstance = _qaService.UpdateQaName(id, title);
                 _jsonResult.Data = new NewEntityModel() { Id = qaInstance.Id, Text = qaInstance.Name };
             }

@@ -49,7 +49,7 @@ namespace Epinova.EasyQA.Controllers
 
         public ActionResult New()
         {
-            QaType newQaType = _qaTypeService.CreateQaType();
+            QaType newQaType = _qaTypeService.CreateQaType(App_GlobalResources.QaType.DefaultQaTypeName);
             return RedirectToAction("Edit", new { id = newQaType.Id });
         }
 
@@ -75,7 +75,7 @@ namespace Epinova.EasyQA.Controllers
             JsonResult result = new JsonResult() { };
             try
             {
-                CriteriaCategory newCategory = _qaTypeService.CreateCriteriaCategory(qaType);
+                CriteriaCategory newCategory = _qaTypeService.CreateCriteriaCategory(qaType, App_GlobalResources.QaType.DefaultCategoryName);
 
                 _jsonResult.Data = new NewEntityModel() { Id = newCategory.Id, Text = newCategory.Text };
             }
@@ -110,7 +110,7 @@ namespace Epinova.EasyQA.Controllers
             JsonResult result = new JsonResult() { };
             try
             {
-                QaCriteria newCriteria = _qaTypeService.CreateQaCriteria(qaType, categoryId);
+                QaCriteria newCriteria = _qaTypeService.CreateQaCriteria(qaType, categoryId, @App_GlobalResources.QaType.DefaultCriteriaText);
                 _jsonResult.Data = new NewEntityModel() { Id = newCriteria.Id, Text = newCriteria.Text };
             }
             catch (Exception ex)

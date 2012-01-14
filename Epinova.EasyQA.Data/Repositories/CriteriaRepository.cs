@@ -10,11 +10,11 @@ namespace Epinova.EasyQA.Data.Repositories
 {
     public class CriteriaRepository : RepositoryBase, ICriteriaRepository
     {
-        public QaCriteria CreateQaCriteria(int qaType, int criteriaCategory)
+        public QaCriteria CreateQaCriteria(int qaType, int criteriaCategory, string criteriaText)
         {
             QaType qaTypeToUpdate = _session.Load<QaType>(qaType);
             CriteriaCategory category = qaTypeToUpdate.CriteriaCategories.Where(x => x.Id == criteriaCategory).First();
-            QaCriteria newCriteria = new QaCriteria(qaTypeToUpdate.GenerateNewCriteriaId(), Constants.DefaultCriteriaName);
+            QaCriteria newCriteria = new QaCriteria(qaTypeToUpdate.GenerateNewCriteriaId(), criteriaText);
             category.Criterias.Add(newCriteria);
             _session.Store(qaTypeToUpdate);
             _session.SaveChanges();

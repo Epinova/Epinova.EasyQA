@@ -18,10 +18,10 @@ namespace Epinova.EasyQA.Core.Entities
         public string Summary { get; set; }
 
         public QaInstance() {}
-        public QaInstance(QaType qaType, string username)
+        public QaInstance(QaType qaType, string username, string name)
         {
             QaTypeName = qaType.Name;
-            Name = Constants.DefaultQaInstanceName;
+            Name = "uten navn";
 			Published = false;
             User = username;
             int idCounter = 0;
@@ -36,7 +36,7 @@ namespace Epinova.EasyQA.Core.Entities
                     instanceCategory.Criterias.Add(new QaInstanceCriteria()
                                                   {
                                                       Comment = string.Empty,
-                                                      Corrected = false,
+                                                      Fixed = false,
                                                       Id = ++idCounter,
                                                       Text = criteria.Text,
                                                       Status = InstanceCriteriaStatus.NotSet

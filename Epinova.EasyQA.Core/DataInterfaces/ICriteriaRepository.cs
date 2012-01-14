@@ -9,8 +9,9 @@ namespace Epinova.EasyQA.Core.DataInterfaces
         /// </summary>
         /// <param name="qaType">The QA type to which the new criteria will belong</param>
         /// <param name="criteriaCategory">The category to which the new criteria will belong</param>
+        /// <param name="criteriaText">The default text</param>
         /// <returns>The ID of the newly created criteria</returns>
-        QaCriteria CreateQaCriteria(int qaType, int criteriaCategory);
+        QaCriteria CreateQaCriteria(int qaType, int criteriaCategory, string criteriaText);
 
         /// <summary>
         /// Updates a criteria

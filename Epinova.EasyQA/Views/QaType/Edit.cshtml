@@ -1,9 +1,9 @@
 ﻿@{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = Resources.Common.Edit + " " + Model.Name;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 id="title"><span class="content">@Model.Name</span> <a href="#">(Endre)</a></h1>
+<h1 id="title"><span class="content">@Model.Name</span> <a href="#">@Resources.Common.Edit</a></h1>
 
 <input type="hidden" id="sectionCount" value="@Model.CriteriaCategories.Count">
 <input type="hidden" id="qaTypeId" value="@ViewBag.Id">
@@ -13,19 +13,19 @@
     @foreach (CriteriaCategory category in Model.CriteriaCategories) { 
         <section class="editableCategory">
             <input type="hidden" value="@category.Id" class="categoryId">
-            <h1><span class="sectionIndex">@indexer</span> <span class="content">@category.Text</span> <a href="#">(Endre)</a></h1>
+            <h1><span class="sectionIndex">@indexer</span> <span class="content">@category.Text</span> <a href="#">(@Resources.Common.Edit)</a></h1>
             <ol>
             @foreach (QaCriteria criteria in category.Criterias) { 
-                <li><span class="content">@criteria.Text</span><a href="#" class="editButton">(Endre)</a><input type="hidden" value="@criteria.Id" class="criteriaId"></li>
+                <li><span class="content">@criteria.Text</span><a href="#" class="editButton">(@Resources.Common.Edit)</a><input type="hidden" value="@criteria.Id" class="criteriaId"></li>
             }
             </ol>
-            <span class="button addItemButton addCriteria"><a href="#">Legg til nytt kriterie</a></span> <div class="loader">Laster...</div>
+            <span class="button addItemButton addCriteria"><a href="#">@Resources.QaType.AddCriteria</a></span> <div class="loader">@Resources.Common.Loading</div>
         </section>
         indexer += 1;
     }
 
 </div>
-<span class="button addItemButton addCategory"><a href="#">Legg til ny seksjon</a></span><div class="loader">Laster...</div>
+<span class="button addItemButton addCategory"><a href="#">@Resources.QaType.AddCategory</a></span><div class="loader">@Resources.Common.Loading</div>
 
 @section AddScripts {
     <script src="/Scripts/editQaType.js" type="text/javascript"></script>

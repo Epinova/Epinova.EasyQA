@@ -6,18 +6,17 @@
 <table>
 <thead>
     <tr>
-        <th>Navn</th>
-        <th>QA-type</th>
-        <th>Publisert dato</th>
-        <th>Gjennomført av</th>
-        <th>Se på/endre</th>
-        <th>Score</th>
+        <th>@Resources.Home.Name</th>
+        <th>@Resources.Home.QaType</th>
+        <th>@Resources.Home.PublishDate</th>
+        <th>@Resources.Home.DoneBy</th>
+        <th>@Resources.Home.WatchOrEdit</th>
     </tr>
 </thead>
 <tbody>
     @if (Model.Count == 0) { 
         <tr>
-            <td colspan="5">Ingen QA-er er opprettet enda! På tide?</td>
+            <td colspan="5">@Resources.Home.NoQAYet</td>
         </tr>
     }
     
@@ -25,15 +24,15 @@
         <tr>
             <td>@Html.ActionLink(qa.Name, "View", new { controller = "Qa", id = qa.Id })
                 @if (qa.Score > 90) { 
-                    @:   <img src="/Styles/gfx/star.png" alt="Over 90% godkjent">
+                    @:   <img src="/Styles/gfx/star.png" alt="@(Resources.Home.ScoreOver90)">
                 }
                 else if (qa.Score > 70)
                 {
-                    @: <img src="/Styles/gfx/star-half.png" alt="Over 70% godkjent">
+                    @: <img src="/Styles/gfx/star-half.png" alt="@(Resources.Home.ScoreOver70)">
                 }
             </td>
             <td>@qa.QaTypeName</td>
-            <td>@(qa.Published ? @qa.PublishedDate.ToShortDateString() + " " +  @qa.PublishedDate.ToShortTimeString() : "Ikke publisert")</td>
+            <td>@(qa.Published ? @qa.PublishedDate.ToShortDateString() + " " +  @qa.PublishedDate.ToShortTimeString() : Resources.Home.NotPublished)</td>
             <td>@qa.User</td>
             <td>@Html.ActionLink("Endre", "Edit", new { controller = "Qa", id = qa.Id })</td>
         </tr>

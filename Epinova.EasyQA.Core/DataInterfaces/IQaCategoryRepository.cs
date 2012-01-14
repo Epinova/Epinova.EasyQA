@@ -8,7 +8,7 @@ namespace Epinova.EasyQA.Core.DataInterfaces
         /// Saves a new criteria category to a QA type.
         /// </summary>
         /// <param name="qaType">The ID of the QA type to save the criteria to.</param>
-        CriteriaCategory CreateCriteriaCategory(int qaType);
+        CriteriaCategory CreateCriteriaCategory(int qaType, string text);
 
         /// <summary>
         /// Updates 

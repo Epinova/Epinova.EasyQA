@@ -31,9 +31,9 @@ namespace Epinova.EasyQA.Services
             _qaInstanceRepository = qaInstanceRepository;
         }
 
-        public QaInstance CreateQaInstance(int qaTypeId, string username)
+        public QaInstance CreateQaInstance(int qaTypeId, string username, string qaName)
         {
-            QaInstance newQaInstance = new QaInstance(_qaTypeRepository.Get(qaTypeId), username);
+            QaInstance newQaInstance = new QaInstance(_qaTypeRepository.Get(qaTypeId), username, qaName);
             
             _qaInstanceRepository.SaveQaInstance(newQaInstance);
             return newQaInstance;

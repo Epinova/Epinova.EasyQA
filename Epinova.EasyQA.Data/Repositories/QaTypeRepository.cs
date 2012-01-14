@@ -22,9 +22,9 @@ namespace Epinova.EasyQA.Data.Repositories
             return _session.Load<QaType>(id);
         }
 
-        public QaType CreateQaType()
+        public QaType CreateQaType(string name)
         {
-            QaType newType = new QaType() { Name = Constants.DefaultQaTypeName };
+            QaType newType = new QaType() { Name = name };
             _session.Store(newType);
             _session.SaveChanges();
             return newType;

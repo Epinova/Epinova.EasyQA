@@ -8,7 +8,7 @@
 <body>
     <div id="pageWrap">
         <header>
-            <p id="logindisplay">Du er logget inn som <strong>@User.Identity.Name</strong> | @Html.ActionLink("Om Epinova.EasyQA", "About", "Home")</p>
+            <p id="logindisplay">@Resources.Home.LoggedInAs <strong>@User.Identity.Name</strong></p>
             <h1><a href="/">Epinova.EasyQA</a></h1>
             <nav>
                 <ul>
@@ -17,7 +17,7 @@
                             @{Html.RenderAction("QaTypesListPartial", "Home");}                            
                         </ul>
                     </li>
-                    <li class="button editQaType">@Html.ActionLink("Rediger QA-typer", "Index", "QaType")</li>
+                    <li class="button editQaType">@Html.ActionLink(Resources.QaType.EditQaTypes, "Index", "QaType")</li>
                 </ul>
             </nav>
             <div class="clear"></div>
@@ -26,7 +26,7 @@
             @RenderBody()
         </div>
         <footer>
-        <p>Epinova.EasyQA -<a href="https://github.com/Epinova/Epinova.EasyQA">Feel free to contribute</a></p>
+        <p>Epinova.EasyQA - <a href="https://github.com/Epinova/Epinova.EasyQA">Feel free to contribute</a></p>
     </footer>
     </div>
     

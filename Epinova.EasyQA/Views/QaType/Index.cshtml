@@ -1,14 +1,14 @@
 ﻿@{
-    ViewBag.Title = "Index";
+    ViewBag.Title = Resources.QaType.IndexTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";     
 }
 
-<h1>Edit QA-type</h1>
+<h1>@Resources.QaType.EditQaTypes</h1>
 <table>
 <thead>
     <tr>
-        <th>Navn</th>
-        <th>Antall kriterier</th>
+        <th>@Resources.QaType.Name</th>
+        <th>@Resources.QaType.NumberOfCriterias</th>
     </tr>
 </thead>
 <tbody>
@@ -20,4 +20,4 @@
   }
 </tbody>
 </table>
-<span class="button editQaType">@Html.ActionLink("Ny QA-type", "New")</span>
+<span class="button editQaType">@Html.ActionLink(Resources.QaType.NewQaType, "New")</span>

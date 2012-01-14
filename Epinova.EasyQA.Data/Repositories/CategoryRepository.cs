@@ -8,11 +8,11 @@ namespace Epinova.EasyQA.Data.Repositories
 {
     public class CategoryRepository : RepositoryBase, IQaCategoryRepository
     {
-        public CriteriaCategory CreateCriteriaCategory(int qaType)
+        public CriteriaCategory CreateCriteriaCategory(int qaType, string text)
         {
             QaType qaTypeToAddCatTo = _session.Load<QaType>(qaType);
             int newCategoryId = qaTypeToAddCatTo.GenerateNewCategoryId();
-            CriteriaCategory category = new CriteriaCategory() { Id = newCategoryId };
+            CriteriaCategory category = new CriteriaCategory() { Id = newCategoryId, Text = text };
             qaTypeToAddCatTo.CriteriaCategories.Add(category);
 
             _session.Store(qaTypeToAddCatTo);

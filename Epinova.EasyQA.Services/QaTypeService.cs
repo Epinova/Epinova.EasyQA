@@ -33,9 +33,9 @@ namespace Epinova.EasyQA.Services
 
         public QaTypeService() : this(new QaTypeRepository(), new CriteriaRepository(), new CategoryRepository()) { }
 
-        public QaCriteria CreateQaCriteria(int qaType, int categoryId)
+        public QaCriteria CreateQaCriteria(int qaType, int categoryId, string criteriaText)
         {
-            return _criteriaRepository.CreateQaCriteria(qaType, categoryId);
+            return _criteriaRepository.CreateQaCriteria(qaType, categoryId, criteriaText);
         }
 
         public QaCriteria UpdateQaCriteria(int qaType, int criteriaId, string title)
@@ -43,9 +43,9 @@ namespace Epinova.EasyQA.Services
             return _criteriaRepository.UpdateQaCriteria(qaType, criteriaId, title);
         }
 
-        public QaType CreateQaType()
+        public QaType CreateQaType(string name)
         {
-            return _qaTypeRepository.CreateQaType();
+            return _qaTypeRepository.CreateQaType(name);
         }
 
         public QaType UpdateQaType(int id, string title)
@@ -53,9 +53,9 @@ namespace Epinova.EasyQA.Services
             return _qaTypeRepository.UpdateQaType(id, title);
         }
 
-        public CriteriaCategory CreateCriteriaCategory(int qaType)
+        public CriteriaCategory CreateCriteriaCategory(int qaType, string text)
         {
-            return _categoryRepository.CreateCriteriaCategory(qaType);
+            return _categoryRepository.CreateCriteriaCategory(qaType, text);
         }
 
         public CriteriaCategory UpdateCriteriaCategory(int qaTypeId, int categoryId, string title)

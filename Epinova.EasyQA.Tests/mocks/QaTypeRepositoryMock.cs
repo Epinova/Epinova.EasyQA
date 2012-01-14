@@ -25,7 +25,7 @@ namespace Epinova.EasyQA.Tests.Mocks
             return qaTypes.Where(x => x.Id == id).SingleOrDefault();
         }
 
-        public QaType CreateQaType()
+        public QaType CreateQaType(string name)
         {
             QaType qaType = new QaType();
             qaTypes.Add(qaType);

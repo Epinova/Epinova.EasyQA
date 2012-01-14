@@ -8,7 +8,7 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         /// <summary>
         /// Creates a new criteria. Returns the ID of the new criteria.
         /// </summary>
-        QaCriteria CreateQaCriteria(int qaType, int categoryId);
+        QaCriteria CreateQaCriteria(int qaType, int categoryId, string criteriaText);
 
         /// <summary>
         /// Updates a criteria with new text.
@@ -22,7 +22,7 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         /// Creates a new QA type
         /// </summary>
         /// <returns>The ID of the newly created QA type</returns>
-        QaType CreateQaType();
+        QaType CreateQaType(string name);
 
         /// <summary>
         /// Updates a QA type
@@ -35,8 +35,9 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         /// Creates a new criteria category. Returns the ID of the new category.
         /// </summary>
         /// <param name="qaType">The ID of the QA type to which the category will belong</param>
+        /// <param name="text">The title of the category</param>
         /// <returns></returns>
-        CriteriaCategory CreateCriteriaCategory(int qaType);
+        CriteriaCategory CreateCriteriaCategory(int qaType, string text);
 
         /// <summary>
         /// Updates a criteria category.

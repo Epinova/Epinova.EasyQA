@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Constants.cs" />
     <Compile Include="DataInterfaces\ICriteriaRepository.cs" />
     <Compile Include="DataInterfaces\IQaCategoryRepository.cs" />
     <Compile Include="DataInterfaces\IQaTypeRepository.cs" />
