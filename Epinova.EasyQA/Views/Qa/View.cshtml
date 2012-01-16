@@ -41,18 +41,18 @@
             else if (criteria.Status == InstanceCriteriaStatus.NotOk) { 
                 <span class="status statusN">NotOk</span>
                 if (ViewBag.CanMarkAsFixed) { 
-                    @:<input type="radio" name="resolvedas" @(criteria.ResolvedAs == ResolvedType.Fixed  ? "checked" : string.Empty) value="f" class="radioFixed statusChooser">
-                    @: <input type="radio" name="resolvedas" @(criteria.ResolvedAs == ResolvedType.WontFix ? "checked" : string.Empty) value="wf" class="radioWontfix statusChooser"/>
+                    @:<input type="radio" name="resolvedas@(criteriaIndexer)" @(criteria.ResolvedAs == ResolvedType.Fixed  ? "checked" : string.Empty) value="f" class="radioFixed statusChooser">
+                    @: <input type="radio" name="resolvedas@(criteriaIndexer)" @(criteria.ResolvedAs == ResolvedType.WontFix ? "checked" : string.Empty) value="wf" class="radioWontfix statusChooser"/>
                 }
             }
             else if (criteria.Status == InstanceCriteriaStatus.Ok) { 
                 <span class="status statusY">Ok</span>
             }   
 
-            @if (!ViewBag.CanMarkAsFixed && criteria.ResolvedAs == ResolvedType.Fixed) {
+            @if (!ViewBag.CanMarkAsFixed && criteria.Status == InstanceCriteriaStatus.NotOk && criteria.ResolvedAs == ResolvedType.Fixed) {
                 <span class="status statusF" title="Fixed">Fixed</span>
             }
-            else if (!ViewBag.CanMarkAsFixed && criteria.ResolvedAs == ResolvedType.WontFix) {
+            else if (!ViewBag.CanMarkAsFixed && criteria.Status == InstanceCriteriaStatus.NotOk && criteria.ResolvedAs == ResolvedType.WontFix) {
                 <span class="status statusWF" title="Won't fix">Won't fix</span>
             }
             <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span>
