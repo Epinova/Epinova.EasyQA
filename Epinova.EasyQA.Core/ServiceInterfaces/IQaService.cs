@@ -22,9 +22,9 @@ namespace Epinova.EasyQA.Core.ServiceInterfaces
         QaInstanceCriteria UpdateCriteriaStatus(int criteriaId, int qaId, InstanceCriteriaStatus status);
 
         /// <summary>
-        /// Updates a criterias fixed state 
+        /// Updates a criterias resolved state 
         /// </summary>
-        QaInstanceCriteria ToggleCriteriaFixed(int criteriaId, int qaId);
+        QaInstanceCriteria ResolveCriteria(int criteriaId, int qaId, ResolvedType resolvedAs);
 
         /// <summary>
         /// Updates a QA Instance with a new name

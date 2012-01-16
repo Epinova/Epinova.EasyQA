@@ -36,7 +36,7 @@ namespace Epinova.EasyQA.Core.Entities
                     instanceCategory.Criterias.Add(new QaInstanceCriteria()
                                                   {
                                                       Comment = string.Empty,
-                                                      Fixed = false,
+                                                      ResolvedAs = ResolvedType.NotSet,
                                                       Id = ++idCounter,
                                                       Text = criteria.Text,
                                                       Status = InstanceCriteriaStatus.NotSet

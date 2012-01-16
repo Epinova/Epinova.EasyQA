@@ -56,6 +56,7 @@
     <Compile Include="InstanceCriteriaStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\QaInstanceCriteria.cs" />
+    <Compile Include="ResolvedType.cs" />
     <Compile Include="ServiceInterfaces\IQaService.cs" />
     <Compile Include="ServiceInterfaces\IQaTypeService.cs" />
   </ItemGroup>

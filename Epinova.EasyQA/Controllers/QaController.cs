@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Resources;
 using System.Web;
 using System.Web.Caching;
 using System.Web.Mvc;
-using System.Web.Script.Serialization;
-using Epinova.EasyQA.App_GlobalResources;
 using Epinova.EasyQA.Common.Utilities;
 using Epinova.EasyQA.Core;
 using Epinova.EasyQA.Core.Entities;
@@ -55,7 +55,7 @@ namespace Epinova.EasyQA.Controllers
 
         public ActionResult New(int id)
         {
-            QaInstance newQa = _qaService.CreateQaInstance(id, HttpContext.User.Identity.Name, Qa.DefaultName);
+            QaInstance newQa = _qaService.CreateQaInstance(id, HttpContext.User.Identity.Name, App_GlobalResources.Qa.DefaultName);
             return RedirectToAction("Edit", new { id = newQa.Id});
         }
 
@@ -96,10 +96,9 @@ namespace Epinova.EasyQA.Controllers
         {
             try
             {
-                if (status == "f") 
+                if (status == "f" || status == "wf") 
                 {
-                    QaInstanceCriteria criteria = _qaService.ToggleCriteriaFixed(criteriaId, qaId);
-
+                    QaInstanceCriteria criteria = _qaService.ResolveCriteria(criteriaId, qaId, status == "f" ? ResolvedType.Fixed : ResolvedType.WontFix);
                     _jsonResult.Data = new NewEntityModel() { Id = criteria.Id, Text = criteria.Status.ToString() };
                 }
                 else { 

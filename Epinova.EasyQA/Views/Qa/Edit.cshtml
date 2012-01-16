@@ -1,7 +1,7 @@
 ﻿@model Epinova.EasyQA.Core.Entities.QaInstance
 
 @{
-    ViewBag.Title = @Resources.Qa.Edit + " " + Model.Name ;
+    ViewBag.Title = @Resources.Common.Edit + " " + Model.Name ;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <input type="hidden" value="@(Model.Id)" id="qaId">
@@ -63,7 +63,7 @@
 
     <div id="publishButton" class="button qaInstanceButton publish" @Html.Raw(Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">@Resources.Qa.Publish</a></div>
     <div id="unpublishButton" class="button qaInstanceButton unpublish" @Html.Raw(!Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">@Resources.Qa.Unpublish</a></div>
-    <div id="publishLoader">@Resources.Home.Loading</div>
+    <div id="publishLoader">@Resources.Common.Loading</div>
 @section AddScripts {
     <script src="/Scripts/jquery.uniform.min.js"></script>
     <script src="/Scripts/editQaInstance.js"></script>
