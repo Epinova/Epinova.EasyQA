@@ -223,10 +223,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\Qa.no.resx">
+    <EmbeddedResource Include="App_GlobalResources\Qa.no.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Qa.no.designer.cs</LastGenOutput>
-    </Content>
+    </EmbeddedResource>
     <EmbeddedResource Include="App_GlobalResources\Qa.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Qa.Designer.cs</LastGenOutput>

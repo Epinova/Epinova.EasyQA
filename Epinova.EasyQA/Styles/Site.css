@@ -104,7 +104,7 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap .addItemButton { clear: both; }
 #contentWrap .addItemButton a {  background: url(/Styles/gfx/icons.png) no-repeat 8px -360px;  }
 #contentWrap ol { margin: 0 20px; }
-#contentWrap ol li { padding: 0 8px; }
+#contentWrap ol li { margin-left: 10px; padding: 0 8px; }
 #contentWrap ol li a { display: none;  }
 #contentWrap .editableCategory ol li:hover { background: rgba(255,255,255,.5); border-radius: 6px; }
 #contentWrap ol li:hover a { display: inline;  }
