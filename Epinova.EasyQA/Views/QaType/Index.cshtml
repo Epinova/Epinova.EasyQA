@@ -1,14 +1,14 @@
 ﻿@{
-    ViewBag.Title = Resources.QaType.IndexTitle;
+    ViewBag.Title = Epinova.EasyQA.App_GlobalResources.QaType.IndexTitle;
     Layout = "~/Views/Shared/_Layout.cshtml";     
 }
 
-<h1>@Resources.QaType.EditQaTypes</h1>
+<h1>@Epinova.EasyQA.App_GlobalResources.QaType.EditQaTypes</h1>
 <table>
 <thead>
     <tr>
-        <th>@Resources.QaType.Name</th>
-        <th>@Resources.QaType.NumberOfCriterias</th>
+        <th>@Epinova.EasyQA.App_GlobalResources.QaType.Name</th>
+        <th>@Epinova.EasyQA.App_GlobalResources.QaType.NumberOfCriterias</th>
     </tr>
 </thead>
 <tbody>
@@ -20,4 +20,4 @@
   }
 </tbody>
 </table>
-<span class="button editQaType">@Html.ActionLink(Resources.QaType.NewQaType, "New")</span>
+<span class="button editQaType">@Html.ActionLink(Epinova.EasyQA.App_GlobalResources.QaType.NewQaType, "New")</span>

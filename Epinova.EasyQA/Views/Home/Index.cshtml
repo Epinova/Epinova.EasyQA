@@ -6,17 +6,17 @@
 <table>
 <thead>
     <tr>
-        <th>@Resources.Home.Name</th>
-        <th>@Resources.Home.QaType</th>
-        <th>@Resources.Home.PublishDate</th>
-        <th>@Resources.Home.DoneBy</th>
-        <th>@Resources.Home.WatchOrEdit</th>
+        <th>@Epinova.EasyQA.App_GlobalResources.Home.Name</th>
+        <th>@Epinova.EasyQA.App_GlobalResources.Home.QaType</th>
+        <th>@Epinova.EasyQA.App_GlobalResources.Home.PublishDate</th>
+        <th>@Epinova.EasyQA.App_GlobalResources.Home.DoneBy</th>
+        <th>@Epinova.EasyQA.App_GlobalResources.Home.WatchOrEdit</th>
     </tr>
 </thead>
 <tbody>
     @if (Model.Count == 0) { 
         <tr>
-            <td colspan="5">@Resources.Home.NoQAYet</td>
+            <td colspan="5">@Epinova.EasyQA.App_GlobalResources.Home.NoQAYet</td>
         </tr>
     }
     
@@ -24,15 +24,15 @@
         <tr>
             <td>@Html.ActionLink(qa.Name, "View", new { controller = "Qa", id = qa.Id })
                 @if (qa.Score > 90) { 
-                    @:   <img src="/Styles/gfx/star.png" alt="@(Resources.Home.ScoreOver90)">
+                    @:   <img src="/Styles/gfx/star.png" alt="@(Epinova.EasyQA.App_GlobalResources.Home.ScoreOver90)">
                 }
                 else if (qa.Score > 70)
                 {
-                    @: <img src="/Styles/gfx/star-half.png" alt="@(Resources.Home.ScoreOver70)">
+                    @: <img src="/Styles/gfx/star-half.png" alt="@(Epinova.EasyQA.App_GlobalResources.Home.ScoreOver70)">
                 }
             </td>
             <td>@qa.QaTypeName</td>
-            <td>@(qa.Published ? @qa.PublishedDate.ToShortDateString() + " " +  @qa.PublishedDate.ToShortTimeString() : Resources.Home.NotPublished)</td>
+            <td>@(qa.Published ? @qa.PublishedDate.ToShortDateString() + " " + @qa.PublishedDate.ToShortTimeString() : Epinova.EasyQA.App_GlobalResources.Home.NotPublished)</td>
             <td>@qa.User</td>
             <td>@Html.ActionLink("Endre", "Edit", new { controller = "Qa", id = qa.Id })</td>
         </tr>

@@ -8,10 +8,10 @@
 
 <h1 id="title">@Model.Name</h1>
 <dl>
-    <dt>@Resources.Home.DoneBy:</dt>
+    <dt>@Epinova.EasyQA.App_GlobalResources.Home.DoneBy:</dt>
         <dd>@Model.User</dd>
 
-    <dt>@Resources.Qa.ProjectMembers:</dt>
+    <dt>@Epinova.EasyQA.App_GlobalResources.Qa.ProjectMembers:</dt>
         <dd>
           @foreach (string member in Model.ProjectMembers)
           {
@@ -19,7 +19,7 @@
           }
         </dd>
 
-    <dt>@Resources.Qa.PresentAtReview</dt>
+    <dt>@Epinova.EasyQA.App_GlobalResources.Qa.PresentAtReview</dt>
         <dd>@Model.PresentAtReview</dd>
 </dl>
 <input type="hidden" value="@Model.Id" id="qaId">
@@ -68,11 +68,11 @@
 }
 
 <section>
-    <h1>@Resources.Qa.Miscellaneous</h1>
+    <h1>@Epinova.EasyQA.App_GlobalResources.Qa.Miscellaneous</h1>
     @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Miscellaneous))
 </section>
 <section>
-    <h1>@Resources.Qa.Summary</h1>
+    <h1>@Epinova.EasyQA.App_GlobalResources.Qa.Summary</h1>
     @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Summary))
 </section>
 

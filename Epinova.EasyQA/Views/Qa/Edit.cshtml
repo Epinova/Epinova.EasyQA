@@ -1,13 +1,13 @@
 ﻿@model Epinova.EasyQA.Core.Entities.QaInstance
 
 @{
-    ViewBag.Title = @Resources.Common.Edit + " " + Model.Name ;
+    ViewBag.Title = @Epinova.EasyQA.App_GlobalResources.Common.Edit + " " + Model.Name ;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <input type="hidden" value="@(Model.Id)" id="qaId">
-<h1 id="title"><span class="content">@Model.Name</span> <a href="#">(@Resources.Common.Edit)</a></h1>
+<h1 id="title"><span class="content">@Model.Name</span> <a href="#">(@Epinova.EasyQA.App_GlobalResources.Common.Edit)</a></h1>
 <div class="clear"></div>
-<label for="projectMembers">@Resources.Qa.ProjectMembers</label>
+<label for="projectMembers">@Epinova.EasyQA.App_GlobalResources.Qa.ProjectMembers</label>
 <div id="projectMembersContainer">
   <input type="text" id="projectMembers" autocomplete="off">
   <div>
@@ -22,7 +22,7 @@
     <ul></ul>
 </div>
 
-<label for="presentAtReview">@Resources.Qa.PresentAtReview</label>
+<label for="presentAtReview">@Epinova.EasyQA.App_GlobalResources.Qa.PresentAtReview</label>
 <input type="text" id="presentAtReview" value="@Model.PresentAtReview">
 
 @{var categoryIndexer = 1; }
@@ -40,7 +40,7 @@
             <input type="radio" name="r@(criteriaIndexer)" @(criteria.Status == InstanceCriteriaStatus.NeedsExplanation ? "checked" : string.Empty) value="q" class="radioQuestion statusChooser"> 
             <input type="radio" name="r@(criteriaIndexer)" value="n" @(criteria.Status == InstanceCriteriaStatus.NotOk ? "checked" : string.Empty) class="radioNo statusChooser"> 
             <input type="radio" name="r@(criteriaIndexer)" value="y" @(criteria.Status == InstanceCriteriaStatus.Ok ? "checked" : string.Empty) class="radioYes statusChooser"> 
-            <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span><a href="#" class="addComment">@Resources.Qa.AddComment</a>
+            <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span><a href="#" class="addComment">@Epinova.EasyQA.App_GlobalResources.Qa.AddComment</a>
             <div class="commentArea">
                 <textarea>@criteria.Comment</textarea>
             </div>
@@ -51,19 +51,19 @@
 </section>
 }
 <section>
-    <h1>@Resources.Qa.Miscellaneous</h1>
+    <h1>@Epinova.EasyQA.App_GlobalResources.Qa.Miscellaneous</h1>
     <textarea id="misc">@Model.Miscellaneous</textarea>
 </section>
 
 <section>
-    <h1>@Resources.Qa.Summary</h1>
+    <h1>@Epinova.EasyQA.App_GlobalResources.Qa.Summary</h1>
     <textarea id="summary">@Model.Summary</textarea>
 </section>
 <div class="clear"></div>
 
-    <div id="publishButton" class="button qaInstanceButton publish" @Html.Raw(Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">@Resources.Qa.Publish</a></div>
-    <div id="unpublishButton" class="button qaInstanceButton unpublish" @Html.Raw(!Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">@Resources.Qa.Unpublish</a></div>
-    <div id="publishLoader">@Resources.Common.Loading</div>
+    <div id="publishButton" class="button qaInstanceButton publish" @Html.Raw(Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">@Epinova.EasyQA.App_GlobalResources.Qa.Publish</a></div>
+    <div id="unpublishButton" class="button qaInstanceButton unpublish" @Html.Raw(!Model.Published ? " style=\"display: none\"" : string.Empty)><a href="#">@Epinova.EasyQA.App_GlobalResources.Qa.Unpublish</a></div>
+    <div id="publishLoader">@Epinova.EasyQA.App_GlobalResources.Common.Loading</div>
 @section AddScripts {
     <script src="/Scripts/jquery.uniform.min.js"></script>
     <script src="/Scripts/editQaInstance.js"></script>
