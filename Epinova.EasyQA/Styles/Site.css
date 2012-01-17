@@ -5,7 +5,7 @@ body { background: url(/Styles/gfx/bodyBg.png); color: #333; font-family: Arial,
 .clear { clear: both; }
 
 #pageWrap { width: 900px; margin: auto; }
-#pageWrap #errorWindow { background: #CC0000; padding: 20px; color: #FFF; position: absolute; width: 860px; display: none;}
+#pageWrap #errorWindow { background: #CC0000; padding: 20px; color: #FFF; position: fixed; width: 860px; top: 0; display: none;}
 #pageWrap > header { display: block; }
 #pageWrap > header h1 { font-family: Consolas, Courier, Monospace; font-size: 2.2em; float: left; margin-top: 30px; }
 #pageWrap > header #logindisplay { float: right; margin-bottom: 20px; font-size: .8em; clear: both; width: 400px; text-align: right; }

@@ -11,13 +11,14 @@
     titleFieldLink.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
-        $(this).siblings('span').empty().append('<input type="text" class="editableTitle editing" value="' + text + '">');
+        $(this).siblings('span').empty().append('<input type="text" class="editableTitle editing" value=\'' + text + '\'>');
     });
 
     var editableTitle = $('.editableTitle');
     editableTitle.live('blur', function (e) {
         var editField = $(this);
         var text = $(this).val();
+        text = text.replace(/"/g, '\\"');
         postAjax('/QaType/UpdateQaTypeTitle/', '{ "id": ' + qaTypeId + ', "text": "' + text + '" }', editField, function (data) {
             editField.parent().text(data.Text);
             editField.remove();
@@ -45,8 +46,7 @@
     editTextButtons.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
-        console.log(text);
-        $(this).siblings('.content').empty().append('<input type="text" class="editableCriteria editing" value="' + text + '">');
+        $(this).siblings('.content').empty().append('<input type="text" class="editableCriteria editing" value=\'' + text + '\'>');
         $(this).siblings('.editableCriteria').val(text);
     });
 
@@ -58,6 +58,7 @@
         var criteriaId = li.children('.criteriaId').val();
         var categoryId = $(this).closest('section.editableCategory').children('.categoryId').val();
         var text = $(this).val();
+        text = text.replace(/"/g, '\\"');
 
         postAjax('/QaType/UpdateCriteriaText/', '{ "qaType":' + qaTypeId + ', "criteriaId":' + criteriaId + ', "text": "' + text + '" }', clickedElement, function (data) {
             $(li).find('.editableCriteria').remove();
@@ -84,7 +85,7 @@
     editCategoryHeadingButtons.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
-        $(this).siblings('.content').empty().append('<input type="text" class="editableCategoryTitle editing" value="' + text + '">');
+        $(this).siblings('.content').empty().append('<input type="text" class="editableCategoryTitle editing" value=\'' + text + '\'>');
         $(this).siblings('.editableCategoryTitle').val(text);
     });
 
@@ -92,6 +93,7 @@
     editableCategoryTitle.live('blur', function (e) {
         var h1field = $(this).closest('h1');
         var text = $(this).val();
+        text = text.replace(/"/g, '\\"');
         var categoryId = $(this).closest('section').find('.categoryId').val();
         if (categoryId == "")
             categoryId = 0;

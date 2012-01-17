@@ -1,5 +1,5 @@
 ﻿function displayError(errorData) {
-    var errorWindow = $('<div id="errorWindow"><p>' + errorData + '</p></div>');
+    var errorWindow = $('<div id="errorWindow"><p>Some kind of error occured: ' + errorData + '</p></div>');
     $('#pageWrap').prepend(errorWindow);
     $('#errorWindow').show();
     $('#errorWindow').fadeOut(7000);

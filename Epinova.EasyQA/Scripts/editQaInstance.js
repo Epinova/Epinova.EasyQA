@@ -11,31 +11,35 @@
     titleFieldLink.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
-        $(this).siblings('span').empty().append('<input type="text" class="editableTitle editing" value="' + text + '">');
+        $(this).siblings('span').empty().append('<input type="text" class="editableTitle editing" value=\'' + text + '\'>');
     });
 
     var editableTitle = $('.editableTitle');
     editableTitle.live('blur', function (e) {
-        var editField = $(this);
-        postAjax('/Qa/UpdateTitle/', '{ "id": ' + qaId + ', "title": "' + $(this).val() + '" }', editField, function (data) {
-            editField.parent().text(data.Text);
-            editField.remove();
+        var inputField = $(this);
+        var text = inputField.val().replace(/"/g, '\\"');
+        postAjax('/Qa/UpdateTitle/', '{ "id": ' + qaId + ', "title": "' + text + '" }', inputField, function (data) {
+            inputField.parent().text(data.Text);
+            inputField.remove();
         });
     });
 
     $('#presentAtReview').live('blur', function (e) {
         var inputField = $(this);
-        postAjax('/Qa/UpdatePresentAtReview/', '{ "qaId": ' + qaId + ', "presentAtReview": "' + inputField.val() + '" }', inputField, null);
+        var text = inputField.val().replace(/"/g, '\\"');
+        postAjax('/Qa/UpdatePresentAtReview/', '{ "qaId": ' + qaId + ', "presentAtReview": "' + text + '" }', inputField, null);
     });
 
     $('#summary').live('blur', function (e) {
         var inputField = $(this);
-        postAjax('/Qa/UpdateSummary/', '{ "qaId": ' + qaId + ', "summary": "' + inputField.val() + '" }', inputField, null);
+        var text = inputField.val().replace(/"/g, '\\"');
+        postAjax('/Qa/UpdateSummary/', '{ "qaId": ' + qaId + ', "summary": "' + text + '" }', inputField, null);
     });
 
     $('#misc').live('blur', function (e) {
         var inputField = $(this);
-        postAjax('/Qa/UpdateMisc/', '{ "qaId": ' + qaId + ', "misc": "' + inputField.val() + '" }', inputField, null);
+        var text = inputField.val().replace(/"/g, '\\"');
+        postAjax('/Qa/UpdateMisc/', '{ "qaId": ' + qaId + ', "misc": "' + text + '" }', inputField, null);
     });
 
     $('.statusChooser').live('click', function (e) {
@@ -54,7 +58,8 @@
     $('.commentArea textarea').live('blur', function (e) {
         var criteriaId = $(this).closest('li').children('.criteriaInstanceId').val();
         var textArea = $(this);
-        postAjax('/Qa/UpdateCriteriaComment/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "text": "' + $(this).val() + '" }', textArea, null);
+        var text = inputField.val().replace(/"/g, '\\"');
+        postAjax('/Qa/UpdateCriteriaComment/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "text": "' + text + '" }', textArea, null);
     });
 
     $('#publishButton').live('click', function (e) {
