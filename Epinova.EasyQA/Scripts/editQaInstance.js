@@ -58,7 +58,7 @@
     $('.commentArea textarea').live('blur', function (e) {
         var criteriaId = $(this).closest('li').children('.criteriaInstanceId').val();
         var textArea = $(this);
-        var text = inputField.val().replace(/"/g, '\\"');
+        var text = textArea.val().replace(/"/g, '\\"');
         postAjax('/Qa/UpdateCriteriaComment/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "text": "' + text + '" }', textArea, null);
     });
 
