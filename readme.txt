@@ -12,6 +12,8 @@ It's basically an advanced checklist. You create your checklist criterias, and c
 
 Whoever (users come from your membership provider) is set as project member can later mark a failed criteria as fixed/won't fix.
 
+It's all based around snappy AJAX-interaction. There are no explicit save-buttons anywhere. Everything is supposed to be click-BAM-SAVED RIGHT AWAY!
+
 It might not make sense for you, but it does (hopefully) work for us.
 
 
