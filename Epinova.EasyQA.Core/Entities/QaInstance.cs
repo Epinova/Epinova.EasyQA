@@ -71,9 +71,6 @@ namespace Epinova.EasyQA.Core.Entities
                             case InstanceCriteriaStatus.Ok:
                                 ok++;
                                 break;
-                            case InstanceCriteriaStatus.NotSet:
-                                totalCount--;
-                                break;
                             case InstanceCriteriaStatus.NeedsExplanation:
                                 needsExplanation++;
                                 break;
