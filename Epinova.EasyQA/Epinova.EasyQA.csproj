@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.1.2.11\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="MarkdownSharp">
       <HintPath>..\lib\MarkdownSharp.dll</HintPath>
     </Reference>
@@ -190,7 +193,7 @@
     <Content Include="Views\Qa\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Content Include="log4net.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Epinova.EasyQA.Common\Epinova.EasyQA.Common.csproj">
