@@ -16,9 +16,13 @@ function postAjax(url, data, elementToGetLoadingClass, successCallback) {
         data: data,
         contentType: 'application/json; charset=utf-8',
         success: function (data) {
+            if (!data.Id) {
+                displayError("Session has expired. Refresh to log back in.");
+            }
             if (data.Error) {
                 displayError(data.Error);
             }
+            
             if (elementToGetLoadingClass) {
                 elementToGetLoadingClass.removeClass(loadingClass);
             }

@@ -40,7 +40,11 @@ namespace Epinova.EasyQA.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View(_qaService.Get(HttpContext.User.Identity.Name, id));
+            QaInstance qaInstance = _qaService.Get(HttpContext.User.Identity.Name, id);
+            if (qaInstance.User != HttpContext.User.Identity.Name)
+                throw new Exception("No access!");
+
+            return View(qaInstance);
         }
 
         public ActionResult View(int id)

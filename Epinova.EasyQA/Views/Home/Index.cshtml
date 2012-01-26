@@ -34,7 +34,10 @@
             <td>@qa.QaTypeName</td>
             <td>@(qa.Published ? @qa.PublishedDate.ToShortDateString() + " " + @qa.PublishedDate.ToShortTimeString() : Epinova.EasyQA.App_GlobalResources.Home.NotPublished)</td>
             <td>@qa.User</td>
-            <td>@Html.ActionLink("Endre", "Edit", new { controller = "Qa", id = qa.Id })</td>
+            <td>@if(qa.User.Equals(HttpContext.Current.User.Identity.Name)) {
+                   @Html.ActionLink("Endre", "Edit", new { controller = "Qa", id = qa.Id });
+                }
+            </td>
         </tr>
     }
 </tbody>

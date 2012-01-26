@@ -11,6 +11,7 @@ using Epinova.EasyQA.Data;
 using Epinova.EasyQA.Data.Repositories;
 using Epinova.EasyQA.Models;
 using Epinova.EasyQA.Services;
+using log4net;
 
 namespace Epinova.EasyQA.Controllers
 {
@@ -19,6 +20,7 @@ namespace Epinova.EasyQA.Controllers
     {
         private IQaTypeService _qaTypeService;
         private JsonResult _jsonResult;
+        private ILog _logger = LogManager.GetLogger("EasyQA");
 
         public QaTypeController()
         {
