@@ -22,7 +22,7 @@ function postAjax(url, data, elementToGetLoadingClass, successCallback) {
             if (data.Error) {
                 displayError(data.Error);
             }
-            
+
             if (elementToGetLoadingClass) {
                 elementToGetLoadingClass.removeClass(loadingClass);
             }
@@ -32,7 +32,7 @@ function postAjax(url, data, elementToGetLoadingClass, successCallback) {
         },
         error: function (data) {
             displayError(data);
-            console.error(data);
+            console.error("ERROR:" + data);
         }
     });
 }

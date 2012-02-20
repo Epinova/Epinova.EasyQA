@@ -7,12 +7,12 @@ using System.Web.Security;
 
 namespace Epinova.EasyQA.Common.Utilities
 {
-    public static class UserManager
+    public class UserManager
     {
         const string UserNameListCacheName = "EQAUsers";
 
-        private static List<string> _usernames;
-        public static List<string> Usernames
+        private List<string> _usernames;
+        public List<string> Usernames
         {
             get {
                 if (_usernames == null)
@@ -29,7 +29,7 @@ namespace Epinova.EasyQA.Common.Utilities
             }
         }
 
-        private static List<string> RetrieveUsernames(MembershipUserCollection allUsers)
+        private List<string> RetrieveUsernames(MembershipUserCollection allUsers)
         {
             return (from MembershipUser user in allUsers select user.UserName).ToList();
         }

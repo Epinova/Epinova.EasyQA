@@ -24,9 +24,10 @@
 </dl>
 <input type="hidden" value="@Model.Id" id="qaId">
 @{var categoryIndexer = 1; }
-@{var criteriaIndexer = 1; }
+@{int criteriaIndexer; }
 @foreach (QaInstanceCategory category in Model.Categories)
-{ 
+{
+    criteriaIndexer = 1;
 <section>
     <h1>@categoryIndexer. @category.Text</h1>
     <ul class="viewQaInstanceList">
@@ -57,10 +58,10 @@
             }
             <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span>
             <div class="commentArea">
-                @Html.Raw(ViewBag.MarkdownEngine.Transform(criteria.Comment))
+                @Html.Raw(ViewBag.MarkdownEngine.Transform(Html.Encode(criteria.Comment)))
             </div>
         </li>    
-            criteriaIndexer += 1;
+            criteriaIndexer++;
         }        
     </ul>
 </section>

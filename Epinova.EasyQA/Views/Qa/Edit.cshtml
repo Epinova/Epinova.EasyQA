@@ -28,7 +28,8 @@
 @{var categoryIndexer = 1; }
 @{var criteriaIndexer = 1; }
 @foreach (QaInstanceCategory category in Model.Categories)
-{ 
+{
+    criteriaIndexer = 1;
     <section class="editableCategory">
         <h1>@categoryIndexer. @category.Text</h1>
         <ul class="qaInstanceList">
@@ -37,9 +38,9 @@
             { 
                 <li>
                     <input type="hidden" class="criteriaInstanceId" value="@(criteria.Id)">
-                    <input type="radio" name="r@(criteriaIndexer)" @(criteria.Status == InstanceCriteriaStatus.NeedsExplanation ? "checked" : string.Empty) value="q" class="radioQuestion statusChooser"> 
-                    <input type="radio" name="r@(criteriaIndexer)" value="n" @(criteria.Status == InstanceCriteriaStatus.NotOk ? "checked" : string.Empty) class="radioNo statusChooser"> 
-                    <input type="radio" name="r@(criteriaIndexer)" value="y" @(criteria.Status == InstanceCriteriaStatus.Ok ? "checked" : string.Empty) class="radioYes statusChooser"> 
+                    <input type="radio" name="r@(categoryIndexer + "_" + criteriaIndexer)" @(criteria.Status == InstanceCriteriaStatus.NeedsExplanation ? "checked" : string.Empty) value="q" class="radioQuestion statusChooser"> 
+                    <input type="radio" name="r@(categoryIndexer + "_" + criteriaIndexer)" value="n" @(criteria.Status == InstanceCriteriaStatus.NotOk ? "checked" : string.Empty) class="radioNo statusChooser"> 
+                    <input type="radio" name="r@(categoryIndexer + "_" + criteriaIndexer)" value="y" @(criteria.Status == InstanceCriteriaStatus.Ok ? "checked" : string.Empty) class="radioYes statusChooser"> 
                     <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span><a href="#" class="addComment">@Epinova.EasyQA.App_GlobalResources.Qa.AddComment</a>
                     <div class="commentArea">
                         <textarea>@criteria.Comment</textarea>

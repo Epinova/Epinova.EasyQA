@@ -21,6 +21,7 @@ namespace Epinova.EasyQA.Controllers
     {
         IQaService _qaService;
         JsonResult _jsonResult;
+        UserManager _userNamanger;
 
         public QaController()
         {
@@ -31,6 +32,7 @@ namespace Epinova.EasyQA.Controllers
                                   ContentType = "application/json",
                                   JsonRequestBehavior = JsonRequestBehavior.DenyGet
                               };
+            _userNamanger = new UserManager();
         }
 
         public QaController(IQaTypeService qaTypeService, IQaService qaService)
@@ -245,9 +247,9 @@ namespace Epinova.EasyQA.Controllers
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet
             };
             if (string.IsNullOrEmpty(id))
-                jsonResult.Data = new { Users = new List<string>() };
-            else 
-                jsonResult.Data = new { Users = UserManager.Usernames.Where(x => x.StartsWith(id)).ToList() };
+                jsonResult.Data = new { Users = new List<string>(), Id = "0" };
+            else
+                jsonResult.Data = new { Users = _userNamanger.Usernames.Where(x => x.StartsWith(id)).ToList(), Id = id };
             return jsonResult; 
         }
     }

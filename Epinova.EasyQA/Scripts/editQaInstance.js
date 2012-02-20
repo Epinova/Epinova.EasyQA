@@ -4,7 +4,7 @@
     $('input.radioYes').uniform({ radioClass: 'radio yes' });
     $('input.radioFixed').uniform({ radioClass: 'radio fixed' });
     $('input.radioWontfix').uniform({ radioClass: 'radio wontfix' });
-    
+
     var titleFieldLink = $('#title a');
     var qaId = $('#qaId').val();
 
@@ -98,6 +98,8 @@
 
     $('#projectMembers').live('keydown', function (e) {
         var inputField = $(this);
+        if (inputField.val() == "")
+            return;
         switch (e.keyCode) {
             case 38: // up
                 e.preventDefault();
@@ -147,10 +149,7 @@
             inputValue = inputField.val();
             inputValue = inputValue.substr(0, inputValue.length - 1);
         }
-
         var currentWord = getCurrentWord(inputValue, document.getElementById('projectMembers').selectionStart);
-        console.log("|" + currentWord + "|");
-
         postAjax('/Qa/FindUser/', '{ "id": "' + currentWord + '"}', inputField, function (data) {
             autoSuggestList.empty();
             if (data.Users.length > 0) {
@@ -166,12 +165,6 @@
         });
     });
 
-
-    //    function removeCurrentWord(inputValue, caretPosition) {
-
-    //    }
-
-    //    function getCurrentWordPositions() { }
     function getCurrentWord(inputValue, caretPosition) {
         inputValue = $.trim(inputValue);
         if (inputValue.indexOf(" ") == -1)

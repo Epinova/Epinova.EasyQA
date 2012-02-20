@@ -8,4 +8,5 @@
 
 *.suo
 
-Web.Config
+membership.Config
+connectionStrings.Config

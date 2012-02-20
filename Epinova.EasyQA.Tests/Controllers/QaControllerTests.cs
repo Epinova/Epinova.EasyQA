@@ -15,7 +15,7 @@ namespace Epinova.EasyQA.Tests.Controllers
         public void Setup()
         {
             qaController = new QaController();
-            UserManager.Usernames = new List<string> { "arve.systad", "ola.nordman", "kari.nordman" };
+            new UserManager().Usernames = new List<string> { "arve.systad", "ola.nordman", "kari.nordman" };
         }
 
         [Test]

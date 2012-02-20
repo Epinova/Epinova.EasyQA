@@ -15,6 +15,7 @@ namespace Epinova.EasyQA.Services
     {
         private IQaTypeRepository _qaTypeRepository;
         private IQaInstanceRepository _qaInstanceRepository;
+        private UserManager _userManager;
 
         public QaService() : this(new QaTypeRepository(), new QaInstanceRepository()) { }
 
@@ -26,7 +27,7 @@ namespace Epinova.EasyQA.Services
             if (qaInstanceRepository == null)
                 throw new NullReferenceException("qaInstanceRepository cannot be null!");
 
-           
+            _userManager = new UserManager();
             _qaTypeRepository = qaTypeRepository;
             _qaInstanceRepository = qaInstanceRepository;
         }
@@ -123,7 +124,7 @@ namespace Epinova.EasyQA.Services
 
         public QaInstance AddQaProjectMember(int qaInstanceId, string projectMember)
         {
-            if(!UserManager.Usernames.Contains(projectMember))
+            if(!_userManager.Usernames.Contains(projectMember))
                 throw new ArgumentException("No such user: " + projectMember);
 
             QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
@@ -136,7 +137,7 @@ namespace Epinova.EasyQA.Services
 
         public QaInstance RemoveQaProjectMember(int qaInstanceId, string projectMember)
         {
-            if (!UserManager.Usernames.Contains(projectMember))
+            if (!_userManager.Usernames.Contains(projectMember))
                 throw new ArgumentException("No such user: " + projectMember);
 
             QaInstance qa = _qaInstanceRepository.Get(qaInstanceId);
