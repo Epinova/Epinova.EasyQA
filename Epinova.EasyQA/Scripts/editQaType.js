@@ -11,15 +11,13 @@
     titleFieldLink.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
-        $(this).siblings('span').empty().append('<input type="text" class="editableTitle editing" value=\'' + text + '\'>');
+        $(this).siblings('span').empty().append('<input type="text" class="editableTitle editing" value="' + htmlEscapeString(text) + '">');
     });
 
     var editableTitle = $('.editableTitle');
     editableTitle.live('blur', function (e) {
         var editField = $(this);
-        var text = $(this).val();
-        text = text.replace(/"/g, '\\"');
-        postAjax('/QaType/UpdateQaTypeTitle/', '{ "id": ' + qaTypeId + ', "text": "' + text + '" }', editField, function (data) {
+        postAjax('/QaType/UpdateQaTypeTitle/', '{ "id": ' + qaTypeId + ', "text": "' + escapeString(editField.val()) + '" }', editField, function (data) {
             editField.parent().text(data.Text);
             editField.remove();
         });
@@ -46,7 +44,8 @@
     editTextButtons.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
-        $(this).siblings('.content').empty().append('<input type="text" class="editableCriteria editing" value=\'' + text + '\'>');
+        console.log(text);
+        $(this).siblings('.content').empty().append('<input type="text" class="editableCriteria editing" value="' + htmlEscapeString(text) + '">');
         $(this).siblings('.editableCriteria').val(text);
     });
 
@@ -57,10 +56,8 @@
         var li = $(this).closest('li');
         var criteriaId = li.children('.criteriaId').val();
         var categoryId = $(this).closest('section.editableCategory').children('.categoryId').val();
-        var text = $(this).val();
-        text = text.replace(/"/g, '\\"');
 
-        postAjax('/QaType/UpdateCriteriaText/', '{ "qaType":' + qaTypeId + ', "criteriaId":' + criteriaId + ', "text": "' + text + '" }', clickedElement, function (data) {
+        postAjax('/QaType/UpdateCriteriaText/', '{ "qaType":' + qaTypeId + ', "criteriaId":' + criteriaId + ', "text": "' + escapeString(clickedElement.val()) + '" }', clickedElement, function (data) {
             $(li).find('.editableCriteria').remove();
             $(li).find('.content').text(data.Text);
         });
@@ -85,7 +82,7 @@
     editCategoryHeadingButtons.live('click', function (e) {
         e.preventDefault();
         var text = $(this).siblings('.content').text();
-        $(this).siblings('.content').empty().append('<input type="text" class="editableCategoryTitle editing" value=\'' + text + '\'>');
+        $(this).siblings('.content').empty().append('<input type="text" class="editableCategoryTitle editing" value="' + htmlEscapeString(text) + '">');
         $(this).siblings('.editableCategoryTitle').val(text);
     });
 
@@ -93,12 +90,12 @@
     editableCategoryTitle.live('blur', function (e) {
         var h1field = $(this).closest('h1');
         var text = $(this).val();
-        text = text.replace(/"/g, '\\"');
         var categoryId = $(this).closest('section').find('.categoryId').val();
         if (categoryId == "")
             categoryId = 0;
+
         var clickedElement = $(this);
-        postAjax('/QaType/UpdateCategoryTitle/', '{ "qaTypeId": ' + qaTypeId + ', "categoryId":' + categoryId + ', "text": "' + text + '" }', clickedElement, function (data) {
+        postAjax('/QaType/UpdateCategoryTitle/', '{ "qaTypeId": ' + qaTypeId + ', "categoryId":' + categoryId + ', "text": "' + escapeString(text) + '" }', clickedElement, function (data) {
             $(h1field).find('.editableCategoryTitle').remove();
             $(h1field).find('.content').text(data.Text);
         });

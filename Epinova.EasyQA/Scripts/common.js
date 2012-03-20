@@ -32,7 +32,18 @@ function postAjax(url, data, elementToGetLoadingClass, successCallback) {
         },
         error: function (data) {
             displayError(data);
-            console.error("ERROR:" + data);
+            console.error(data);
         }
     });
+}
+
+function escapeString(input) {
+    var replacement = input.replace(/\\/g, '\\\\');
+    replacement = replacement.replace(/"/g, '\\"');
+    return replacement;
+}
+
+function htmlEscapeString(input) {
+    var replacement = input.replace(/"/g, '&quot;');
+    return replacement;
 }

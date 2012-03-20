@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = Model.Name;
-    ViewBag.MarkdownEngine = new Markdown(new MarkdownOptions() { AutoHyperlink = true });
+    ViewBag.MarkdownEngine = new Markdown(new MarkdownOptions() { AutoHyperlink = true,AutoNewlines=true, LinkEmails = true, EmptyElementSuffix = ">" });
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -58,7 +58,7 @@
             }
             <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span>
             <div class="commentArea">
-                @Html.Raw(ViewBag.MarkdownEngine.Transform(Html.Encode(criteria.Comment)))
+                @Html.Raw(ViewBag.MarkdownEngine.Transform(HttpUtility.HtmlEncode(criteria.Comment)))
             </div>
         </li>    
             criteriaIndexer++;
@@ -70,11 +70,11 @@
 
 <section>
     <h1>@Epinova.EasyQA.App_GlobalResources.Qa.Miscellaneous</h1>
-    @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Miscellaneous))
+    @Html.Raw(ViewBag.MarkdownEngine.Transform(HttpUtility.HtmlEncode(Model.Miscellaneous)))
 </section>
 <section>
     <h1>@Epinova.EasyQA.App_GlobalResources.Qa.Summary</h1>
-    @Html.Raw(ViewBag.MarkdownEngine.Transform(Model.Summary))
+    @Html.Raw(ViewBag.MarkdownEngine.Transform(HttpUtility.HtmlEncode(Model.Summary)))
 </section>
 
 @section AddScripts {

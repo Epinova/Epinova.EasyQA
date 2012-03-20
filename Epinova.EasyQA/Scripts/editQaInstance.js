@@ -17,8 +17,7 @@
     var editableTitle = $('.editableTitle');
     editableTitle.live('blur', function (e) {
         var inputField = $(this);
-        var text = inputField.val().replace(/"/g, '\\"');
-        postAjax('/Qa/UpdateTitle/', '{ "id": ' + qaId + ', "title": "' + text + '" }', inputField, function (data) {
+        postAjax('/Qa/UpdateTitle/', '{ "id": ' + qaId + ', "title": "' + escapeString(text) + '" }', inputField, function (data) {
             inputField.parent().text(data.Text);
             inputField.remove();
         });
@@ -26,20 +25,17 @@
 
     $('#presentAtReview').live('blur', function (e) {
         var inputField = $(this);
-        var text = inputField.val().replace(/"/g, '\\"');
-        postAjax('/Qa/UpdatePresentAtReview/', '{ "qaId": ' + qaId + ', "presentAtReview": "' + text + '" }', inputField, null);
+        postAjax('/Qa/UpdatePresentAtReview/', '{ "qaId": ' + qaId + ', "presentAtReview": "' + escapeString(inputField.val()) + '" }', inputField, null);
     });
 
     $('#summary').live('blur', function (e) {
         var inputField = $(this);
-        var text = inputField.val().replace(/"/g, '\\"');
-        postAjax('/Qa/UpdateSummary/', '{ "qaId": ' + qaId + ', "summary": "' + text + '" }', inputField, null);
+        postAjax('/Qa/UpdateSummary/', '{ "qaId": ' + qaId + ', "summary": "' + escapeString(inputField.val()) + '" }', inputField, null);
     });
 
     $('#misc').live('blur', function (e) {
         var inputField = $(this);
-        var text = inputField.val().replace(/"/g, '\\"');
-        postAjax('/Qa/UpdateMisc/', '{ "qaId": ' + qaId + ', "misc": "' + text + '" }', inputField, null);
+        postAjax('/Qa/UpdateMisc/', '{ "qaId": ' + qaId + ', "misc": "' + escapeString(inputField.val()) + '" }', inputField, null);
     });
 
     $('.statusChooser').live('click', function (e) {
@@ -58,8 +54,7 @@
     $('.commentArea textarea').live('blur', function (e) {
         var criteriaId = $(this).closest('li').children('.criteriaInstanceId').val();
         var textArea = $(this);
-        var text = textArea.val().replace(/"/g, '\\"');
-        postAjax('/Qa/UpdateCriteriaComment/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "text": "' + text + '" }', textArea, null);
+        postAjax('/Qa/UpdateCriteriaComment/', '{ "criteriaId": ' + criteriaId + ', "qaId": ' + qaId + ', "text": "' + escapeString(textArea.val()) + '" }', textArea, null);
     });
 
     $('#publishButton').live('click', function (e) {
