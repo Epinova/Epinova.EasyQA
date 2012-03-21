@@ -17,7 +17,7 @@
     var editableTitle = $('.editableTitle');
     editableTitle.live('blur', function (e) {
         var inputField = $(this);
-        postAjax('/Qa/UpdateTitle/', '{ "id": ' + qaId + ', "title": "' + escapeString(text) + '" }', inputField, function (data) {
+        postAjax('/Qa/UpdateTitle/', '{ "id": ' + qaId + ', "title": "' + escapeString(inputField.val()) + '" }', inputField, function (data) {
             inputField.parent().text(data.Text);
             inputField.remove();
         });

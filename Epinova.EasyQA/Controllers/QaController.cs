@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using System.Resources;
-using System.Web;
-using System.Web.Caching;
 using System.Web.Mvc;
 using Epinova.EasyQA.Common.Utilities;
 using Epinova.EasyQA.Core;
@@ -12,7 +8,6 @@ using Epinova.EasyQA.Core.Entities;
 using Epinova.EasyQA.Core.ServiceInterfaces;
 using Epinova.EasyQA.Models;
 using Epinova.EasyQA.Services;
-using MarkdownSharp;
 
 namespace Epinova.EasyQA.Controllers
 {

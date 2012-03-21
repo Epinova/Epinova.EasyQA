@@ -1,4 +1,5 @@
 using System.Configuration;
+using Raven.Client;
 using Raven.Client.Document;
 
 namespace Epinova.EasyQA.Data
