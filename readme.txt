@@ -8,9 +8,9 @@
 
 This originated as a tool for our inhouse QA-process at Epinova. 
 
-It's basically an advanced checklist. You create your checklist criterias, and create a new "QA" (Quality Assurance) as we call it. For every criteria (your project) has fulfilled, mark it with a green check or red error-sign. Add comments etc. to every point.
+It's basically an advanced checklist. You create your checklist criterias, and create a new "QA" (Quality Assurance), as we call it. For every criteria (your project has) fulfilled or failed at, mark it with a green check or red error-sign. Or a blue question mark if you're just not sure. You can also add comments etc. to every point.
 
-Whoever (users come from your membership provider) is set as project member can later mark a failed criteria as fixed/won't fix.
+Whoever (users come from a membership provider of your choice) is set as project member can later mark a failed criteria as fixed/won't fix.
 
 It's all based around snappy AJAX-interaction. There are no explicit save-buttons anywhere. Everything is supposed to be click-BAM-SAVED RIGHT AWAY!
 
@@ -28,3 +28,5 @@ Conventions
 ===========
 
 1. All AJAX-responses should contain a property "Id". If this is not included, the app will tell you that your session has timed out and that you need to login again. This is by design.
+
+2. All <textarea> inputs should support formatting with markdown when being output.
