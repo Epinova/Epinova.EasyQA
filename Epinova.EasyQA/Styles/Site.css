@@ -119,7 +119,7 @@ div#contentWrap {background: rgba(255,255,255,.4); }
 #contentWrap dl { overflow: hidden; }
 #contentWrap dl dt { font-weight: bold; float: left; clear: left; padding-right: 10px; }
 #contentWrap .viewQaInstanceList { margin-left: 0; }
-#contentWrap .viewQaInstanceList li { list-style-type:none; }
+#contentWrap .viewQaInstanceList li { list-style-type:none; clear: both;}
 #contentWrap .viewQaInstanceList li .status { float: left; width: 20px; text-indent: -99999px; outline: 0; }
 #contentWrap .viewQaInstanceList li .statusN { background: url(/Styles/gfx/icons.png) no-repeat 0 -303px; }
 #contentWrap .viewQaInstanceList li .statusY { background: url(/Styles/gfx/icons.png) no-repeat 0 -271px; }

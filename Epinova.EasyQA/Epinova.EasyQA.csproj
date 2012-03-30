@@ -260,7 +260,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="connectionStrings.config" />
+    <Content Include="connectionStrings.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="membership.config" />
