@@ -31,7 +31,7 @@ namespace Epinova.EasyQA.Controllers
             IEnumerable<QaInstance> qaInstances = _qaService.GetAll(HttpContext.User.Identity.Name);
             if(qaInstances.Count() > 0)
             {
-                return View(qaInstances.ToList());
+                return View(qaInstances.OrderByDescending(x => x.PublishedDate).ToList());
             }
 
             return View(new List<QaInstance>());

@@ -27,6 +27,7 @@ namespace Epinova.EasyQA.Core.Entities
             int idCounter = 0;
             Categories = new List<QaInstanceCategory>();
             ProjectMembers = new List<string>();
+            PublishedDate = DateTime.MinValue;
 
             foreach (CriteriaCategory category in qaType.CriteriaCategories)
             {
