@@ -48,7 +48,10 @@
             }
             else if (criteria.Status == InstanceCriteriaStatus.Ok) { 
                 <span class="status statusY">Ok</span>
-            }   
+            }
+            else if (criteria.Status == InstanceCriteriaStatus.NotRelevant) {
+                <span class="status statusNotRelevant">Not relevant</span>
+            }  
 
             @if (!ViewBag.CanMarkAsFixed && criteria.Status == InstanceCriteriaStatus.NotOk && criteria.ResolvedAs == ResolvedType.Fixed) {
                 <span class="status statusF" title="Fixed">Fixed</span>

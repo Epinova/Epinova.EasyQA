@@ -5,6 +5,7 @@ namespace Epinova.EasyQA.Core
         NotSet,
         Ok,
         NotOk,
-        NeedsExplanation
+        NeedsExplanation,
+        NotRelevant
     }
 }

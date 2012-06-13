@@ -8,19 +8,21 @@
 <body>
     <div id="pageWrap">
         <header>
-            <p id="logindisplay">@Epinova.EasyQA.App_GlobalResources.Home.LoggedInAs <strong>@User.Identity.Name</strong></p>
-            <h1><a href="/">Epinova.EasyQA</a></h1>
-            <nav>
-                <ul>
-                    <li class="button newQaLink"><a>Ny QA</a>
-                        <ul>
-                            @{Html.RenderAction("QaTypesListPartial", "Home");}                            
-                        </ul>
-                    </li>
-                    <li class="button editQaType">@Html.ActionLink(Epinova.EasyQA.App_GlobalResources.QaType.EditQaTypes, "Index", "QaType")</li>
-                </ul>
-            </nav>
-            <div class="clear"></div>
+            <div>
+                <p id="logindisplay">@Epinova.EasyQA.App_GlobalResources.Home.LoggedInAs <strong>@User.Identity.Name</strong></p>
+                <h1><a href="/">Epinova.EasyQA</a></h1>
+                <nav>
+                    <ul>
+                        <li class="button newQaLink"><a>Ny QA</a>
+                            <ul>
+                                @{Html.RenderAction("QaTypesListPartial", "Home");}                            
+                            </ul>
+                        </li>
+                        <li class="button editQaType">@Html.ActionLink(Epinova.EasyQA.App_GlobalResources.QaType.EditQaTypes, "Index", "QaType")</li>
+                    </ul>
+                </nav>
+                <div class="clear"></div>
+            </div>
         </header>
         <div id="contentWrap">
             @RenderBody()
