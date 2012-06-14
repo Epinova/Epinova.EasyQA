@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Controllers\QaControllerTests.cs" />
     <Compile Include="EntityTests\QaInstanceTests.cs" />
+    <Compile Include="HelperTests\QaHelperTests.cs" />
     <Compile Include="Mocks\CategoryRepositoryMock.cs" />
     <Compile Include="Mocks\CriteriaRepository.cs" />
     <Compile Include="Mocks\QaInstanceRepositoryMock.cs" />

@@ -4,15 +4,15 @@ a:hover { color: #868482; }
 body { background:#EEE; color: #333; font-family: Arial, Helvetica,sans-serif; line-height: 1.8;}
 .clear { clear: both; }
 
-#pageWrap { min-width: 700px;}
+#pageWrap { min-width: 700px; }
 #pageWrap #errorWindow { background: #CC0000; padding: 20px; color: #FFF; position: fixed; width: 860px; top: 0; display: none;}
-#pageWrap > header { display: block; background: #333; color: #FFF;}
-#pageWrap > header > div { max-width: 1260px; margin-left: 40px; margin-right: 40px;}
-#pageWrap > header h1 { font-family: Consolas, Courier, Monospace; font-size: 2.2em; float: left; margin-top: 30px; }
+#pageWrap > header { display: block; background: #333; color: #FFF; }
+#pageWrap > header > div { max-width: 1260px; margin-left: 40px; margin-right: 40px; margin: auto; }
+#pageWrap > header h1 { font-family: Consolas, Courier, Monospace; font-size: 2.2em; float: left; margin: 30px 0 0 22px; }
 #pageWrap > header h1 a{color: #FFF; }
-#pageWrap > header #logindisplay { font-size: .8em; clear: both; text-align: right;  }
+#pageWrap > header #logindisplay { font-size: .8em; clear: both; text-align: right; margin-right: 22px }
 #pageWrap > header nav { display: block; }
-#pageWrap > header nav > ul { list-style-type: none; margin-top: 45px; float: right; }
+#pageWrap > header nav > ul { list-style-type: none; margin: 45px 22px 0 0; float: right; }
 #pageWrap > header nav > ul > li { float: right; margin-left: 20px; }
 #pageWrap > header nav ul ul { display: none; }
 #pageWrap > header nav ul li:hover ul { display: block; }
@@ -41,9 +41,10 @@ body { background:#EEE; color: #333; font-family: Arial, Helvetica,sans-serif; l
 #pageWrap .button a:active { text-decoration: underline; background-color: rgba(0,0,0,.1); }
 #pageWrap footer p { text-align: center; font-size: .8em; margin: 1em 0; }
 
-#contentWrap { background: #FFF; clear: both; margin: 20px 40px; padding: 20px; font-size: .85em; border: 2px solid rgba(0,0,0,.1); overflow: hidden; max-width: 1216px; }
+#contentWrap { background: #FFF; clear: both; margin: 20px auto; padding: 20px; font-size: .85em; border: 2px solid rgba(0,0,0,.1); overflow: hidden; max-width: 1216px; }
 #contentWrap p { margin: 1em 0; }
 #contentWrap table { background: #edf3f7; text-align: left; border-collapse: collapse; margin-top: 20px; width: 100%; }
+#contentWrap table img { vertical-align: middle; }
 #contentWrap table thead th { border-bottom: 1px solid #333; }
 #contentWrap table td, #contentWrap table th { padding: 5px 20px; }
 #contentWrap table a:hover { color: #FFf; background: #333;  }
@@ -86,10 +87,10 @@ body { background:#EEE; color: #333; font-family: Arial, Helvetica,sans-serif; l
 #contentWrap div.wontfix span { background: url(/Styles/gfx/icons.png) no-repeat 8px -451px;  }
 #contentWrap div.wontfix span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px -392px;  }
 #contentWrap .editableCategory .qaInstanceList li { clear: both; list-style-type: none; overflow: hidden; }
-#contentWrap .editableCategory .qaInstanceList li:hover { background: rgba(255,255,255,.5);  }
+#contentWrap .editableCategory .qaInstanceList li:hover { background: #EDF3F7;  }
 #contentWrap .editableCategory .qaInstanceList li:hover a.addComment { display: block; }
 #contentWrap .editableCategory .qaInstanceList a.addComment { display: none; float: right; padding: 0; text-indent: -999999px; width: 32px; height: 1.8em; background: url(/Styles/gfx/icons.png) no-repeat 9px -153px; }
-#contentWrap .editableCategory .qaInstanceList a.addComment:hover { background-color: #FFF; }
+#contentWrap .editableCategory .qaInstanceList a.addComment:hover { background-color: rgba(255,255,255,.5); }
 #contentWrap .qaInstanceButton { height: 40px; line-height: 40px; float: right; margin-left: 20px;}
 #contentWrap .qaInstanceButton a { line-height: 40px; padding: 13px 12px 13px 44px; font-size: 15px; } 
 #contentWrap .publish a { background: url(/Styles/gfx/tickBig.png) no-repeat 8px 10px;  }

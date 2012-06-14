@@ -40,7 +40,7 @@ namespace Epinova.EasyQA.Tests.EntityTests
             {
                 instanceCount += category.Criterias.Count;
             }
-            instanceCount.ShouldEqual(totalCatCount);
+            instanceCount.ShouldBe(totalCatCount);
         }
     }
 }

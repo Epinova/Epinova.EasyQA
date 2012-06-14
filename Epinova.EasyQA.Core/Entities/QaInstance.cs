@@ -55,7 +55,7 @@ namespace Epinova.EasyQA.Core.Entities
         {
             get
             {
-                if(_score > -1)
+                if (_score > -1)
                     return _score;
 
                 int ok = 0;
@@ -67,7 +67,7 @@ namespace Epinova.EasyQA.Core.Entities
                     foreach (QaInstanceCriteria criteria in category.Criterias)
                     {
                         totalCount++;
-                        switch(criteria.Status)
+                        switch (criteria.Status)
                         {
                             case InstanceCriteriaStatus.Ok:
                                 ok++;
@@ -86,6 +86,7 @@ namespace Epinova.EasyQA.Core.Entities
                 _score = (int)(((ok + ((double)needsExplanation / 2)) / totalCount) * 100);
                 return _score;
             }
+            set{_score= value;}
         }
     }
 }

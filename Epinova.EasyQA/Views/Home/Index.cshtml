@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<input type="text" id="tableFilterInput" placeholder="Søk...(ikke i drift enda)">
+@*<input type="text" id="tableFilterInput" placeholder="Søk...(ikke i drift enda)">*@
 <table>
 <thead>
     <tr>
@@ -23,13 +23,18 @@
     @foreach (QaInstance qa in Model) { 
         <tr>
             <td>@Html.ActionLink(qa.Name, "View", new { controller = "Qa", id = qa.Id })
-                @if (qa.Score > 90) { 
+            @if (qa.Published) { 
+                @:<img src="/Styles/gfx/die_@(QaHelper.GetScoreOutOfSix(qa)).png">
+            }
+            
+            
+               @* @if (qa.Score > 90) { 
                     @:   <img src="/Styles/gfx/star.png" alt="@(Epinova.EasyQA.App_GlobalResources.Home.ScoreOver90)">
                 }
                 else if (qa.Score > 70)
                 {
                     @:   <img src="/Styles/gfx/star-half.png" alt="@(Epinova.EasyQA.App_GlobalResources.Home.ScoreOver70)">
-                }
+                }*@
             </td>
             <td>@qa.QaTypeName</td>
             <td>@(qa.Published ? @qa.PublishedDate.ToShortDateString() + " " + @qa.PublishedDate.ToShortTimeString() : Epinova.EasyQA.App_GlobalResources.Home.NotPublished)</td>
