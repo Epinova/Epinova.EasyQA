@@ -177,8 +177,6 @@
     <Content Include="Styles\gfx\die_6.png" />
     <Content Include="Styles\gfx\icons.png" />
     <Content Include="Styles\gfx\inputLoader.gif" />
-    <Content Include="Styles\gfx\star-half.png" />
-    <Content Include="Styles\gfx\star.png" />
     <Content Include="Styles\gfx\tickBig.png" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\editQaInstance.js" />
