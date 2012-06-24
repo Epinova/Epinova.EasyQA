@@ -82,6 +82,8 @@ body { background:#EEE; color: #333; font-family: Arial, Helvetica,sans-serif; l
 #contentWrap .editableCategory .qaInstanceList div.yes span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px -272px; }
 #contentWrap .editableCategory .qaInstanceList div.no span { background: url(/Styles/gfx/icons.png) no-repeat 8px -212px;  }
 #contentWrap .editableCategory .qaInstanceList div.no span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px -302px;  }
+#contentWrap .editableCategory .qaInstanceList div.na span { background: url(/Styles/gfx/icons.png) no-repeat 8px -482px;  }
+#contentWrap .editableCategory .qaInstanceList div.na span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px -506px;  }
 #contentWrap div.fixed span { background: url(/Styles/gfx/icons.png) no-repeat 8px -422px;  }
 #contentWrap div.fixed span.checked { background: url(/Styles/gfx/icons.png) no-repeat 8px 4px;  }
 #contentWrap div.wontfix span { background: url(/Styles/gfx/icons.png) no-repeat 8px -451px;  }
@@ -124,6 +126,7 @@ body { background:#EEE; color: #333; font-family: Arial, Helvetica,sans-serif; l
 #contentWrap .viewQaInstanceList li .statusN { background: url(/Styles/gfx/icons.png) no-repeat 0 -303px; }
 #contentWrap .viewQaInstanceList li .statusY { background: url(/Styles/gfx/icons.png) no-repeat 0 -271px; }
 #contentWrap .viewQaInstanceList li .statusQ { background: url(/Styles/gfx/icons.png) no-repeat 0 -333px; }
+#contentWrap .viewQaInstanceList li .statusNa { background: url(/Styles/gfx/icons.png) no-repeat 0 -506px; }
 #contentWrap .viewQaInstanceList li .statusF { background: url(/Styles/gfx/icons.png) no-repeat 0 4px; } 
 #contentWrap .viewQaInstanceList li .statusWF { background: url(/Styles/gfx/icons.png) no-repeat 0 -392px; } 
 #contentWrap .viewQaInstanceList li .commentArea { margin-left: 42px; font-size: .9em; color: #666; }

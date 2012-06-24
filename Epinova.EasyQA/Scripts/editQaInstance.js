@@ -2,6 +2,7 @@
     $('input.radioQuestion').uniform({ radioClass: 'radio question' });
     $('input.radioNo').uniform({ radioClass: 'radio no' });
     $('input.radioYes').uniform({ radioClass: 'radio yes' });
+    $('input.radioNa').uniform({ radioClass: 'radio na' });
     $('input.radioFixed').uniform({ radioClass: 'radio fixed' });
     $('input.radioWontfix').uniform({ radioClass: 'radio wontfix' });
 

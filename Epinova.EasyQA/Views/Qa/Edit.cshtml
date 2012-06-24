@@ -38,7 +38,8 @@
             { 
                 <li>
                     <input type="hidden" class="criteriaInstanceId" value="@(criteria.Id)">
-                    <input type="radio" name="r@(categoryIndexer + "_" + criteriaIndexer)" @(criteria.Status == InstanceCriteriaStatus.NeedsExplanation ? "checked" : string.Empty) value="q" class="radioQuestion statusChooser"> 
+                    <input type="radio" name="r@(categoryIndexer + "_" + criteriaIndexer)" value="na" @(criteria.Status == InstanceCriteriaStatus.NotApplicable ? "checked" : string.Empty) class="radioNa statusChooser">
+                    <input type="radio" name="r@(categoryIndexer + "_" + criteriaIndexer)" value="q" @(criteria.Status == InstanceCriteriaStatus.NeedsExplanation ? "checked" : string.Empty)  class="radioQuestion statusChooser"> 
                     <input type="radio" name="r@(categoryIndexer + "_" + criteriaIndexer)" value="n" @(criteria.Status == InstanceCriteriaStatus.NotOk ? "checked" : string.Empty) class="radioNo statusChooser"> 
                     <input type="radio" name="r@(categoryIndexer + "_" + criteriaIndexer)" value="y" @(criteria.Status == InstanceCriteriaStatus.Ok ? "checked" : string.Empty) class="radioYes statusChooser"> 
                     <span class="number">@criteriaIndexer.</span> <span class="content">@criteria.Text</span><a href="#" class="addComment">@Epinova.EasyQA.App_GlobalResources.Qa.AddComment</a>

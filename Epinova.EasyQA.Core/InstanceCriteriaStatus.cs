@@ -6,6 +6,6 @@ namespace Epinova.EasyQA.Core
         Ok,
         NotOk,
         NeedsExplanation,
-        NotRelevant
+        NotApplicable
     }
 }

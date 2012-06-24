@@ -49,8 +49,8 @@
             else if (criteria.Status == InstanceCriteriaStatus.Ok) { 
                 <span class="status statusY">Ok</span>
             }
-            else if (criteria.Status == InstanceCriteriaStatus.NotRelevant) {
-                <span class="status statusNotRelevant">Not relevant</span>
+            else if (criteria.Status == InstanceCriteriaStatus.NotApplicable) {
+                <span class="status statusNa">Not relevant</span>
             }  
 
             @if (!ViewBag.CanMarkAsFixed && criteria.Status == InstanceCriteriaStatus.NotOk && criteria.ResolvedAs == ResolvedType.Fixed) {

@@ -108,6 +108,8 @@ namespace Epinova.EasyQA.Controllers
                         newStatus = InstanceCriteriaStatus.Ok;
                     else if (status == "n")
                         newStatus = InstanceCriteriaStatus.NotOk;
+                    else if(status == "na")
+                        newStatus = InstanceCriteriaStatus.NotApplicable;
                     else
                         newStatus = InstanceCriteriaStatus.NeedsExplanation;
                 
