@@ -47,7 +47,7 @@ namespace Epinova.EasyQA.Core.Entities
             }
         }
 
-        private int _score = -1;
+        private int _score;
         /// <summary>
         /// Gets the score (100 is max) for this QA, and basically gives a percentage of right vs wrong. Ignores criterias that has not been set as right/wrong/needs explanation.
         /// </summary>
@@ -55,7 +55,7 @@ namespace Epinova.EasyQA.Core.Entities
         {
             get
             {
-                if (_score > -1)
+                if (_score > 0)
                     return _score;
 
                 int ok = 0;
@@ -66,7 +66,9 @@ namespace Epinova.EasyQA.Core.Entities
                 {
                     foreach (QaInstanceCriteria criteria in category.Criterias)
                     {
-                        totalCount++;
+                        if(criteria.Status != InstanceCriteriaStatus.NotApplicable)
+                            totalCount++;
+
                         switch (criteria.Status)
                         {
                             case InstanceCriteriaStatus.Ok:
@@ -80,8 +82,6 @@ namespace Epinova.EasyQA.Core.Entities
                 }
                 if (totalCount == 0)
                     return 0;
-
-
 
                 _score = (int)(((ok + ((double)needsExplanation / 2)) / totalCount) * 100);
                 return _score;
