@@ -47,46 +47,47 @@ namespace Epinova.EasyQA.Core.Entities
             }
         }
 
+        public void SetScore(int score)
+        {
+            _score = score;
+        }
+
         private int _score;
         /// <summary>
         /// Gets the score (100 is max) for this QA, and basically gives a percentage of right vs wrong. Ignores criterias that has not been set as right/wrong/needs explanation.
         /// </summary>
-        public int Score
+        public int GetScore() 
         {
-            get
+            if (_score > 0)
+                return _score;
+
+            int ok = 0;
+            int totalCount = 0;
+            int needsExplanation = 0;
+
+            foreach (QaInstanceCategory category in Categories)
             {
-                if (_score > 0)
-                    return _score;
-
-                int ok = 0;
-                int totalCount = 0;
-                int needsExplanation = 0;
-
-                foreach (QaInstanceCategory category in Categories)
+                foreach (QaInstanceCriteria criteria in category.Criterias)
                 {
-                    foreach (QaInstanceCriteria criteria in category.Criterias)
-                    {
-                        if(criteria.Status != InstanceCriteriaStatus.NotApplicable)
-                            totalCount++;
+                    if(criteria.Status != InstanceCriteriaStatus.NotApplicable)
+                        totalCount++;
 
-                        switch (criteria.Status)
-                        {
-                            case InstanceCriteriaStatus.Ok:
-                                ok++;
-                                break;
-                            case InstanceCriteriaStatus.NeedsExplanation:
-                                needsExplanation++;
-                                break;
-                        }
+                    switch (criteria.Status)
+                    {
+                        case InstanceCriteriaStatus.Ok:
+                            ok++;
+                            break;
+                        case InstanceCriteriaStatus.NeedsExplanation:
+                            needsExplanation++;
+                            break;
                     }
                 }
-                if (totalCount == 0)
-                    return 0;
-
-                _score = (int)(((ok + ((double)needsExplanation / 2)) / totalCount) * 100);
-                return _score;
             }
-            set{_score= value;}
+            if (totalCount == 0)
+                return 0;
+
+            _score = (int)(((ok + ((double)needsExplanation / 2)) / totalCount) * 100);
+            return _score;
         }
     }
 }
