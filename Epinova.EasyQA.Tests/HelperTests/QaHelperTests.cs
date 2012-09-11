@@ -15,30 +15,34 @@ namespace Epinova.EasyQA.Tests.HelperTests
     public class QaHelperTests
     {
         [Test]
-        public void GetScoreOutOfSix_50points_ScoreShouldBe3() 
+        public void GetScoreOutOfSix_50points_ScoreShouldBe3()
         {
-            var qaInstance = new QaInstance() { Score = 50 };
+            var qaInstance = new QaInstance(); 
+            qaInstance.SetScore(50);
             QaHelper.GetScoreOutOfSix(qaInstance).ShouldBe(3);
         }
 
         [Test]
-        public void GetScoreOutOfSix_80points_ScoreShouldBe5() 
+        public void GetScoreOutOfSix_80points_ScoreShouldBe5()
         {
-            var qaInstance = new QaInstance() { Score = 80 };
+            var qaInstance = new QaInstance();
+            qaInstance.SetScore(80);
             QaHelper.GetScoreOutOfSix(qaInstance).ShouldBe(5);
         }
 
         [Test]
         public void GetScoreOutOfSix_20points_ScoreShouldBe1() 
         {
-            var qaInstance = new QaInstance() { Score = 20 };
+            var qaInstance = new QaInstance();
+            qaInstance.SetScore(20);
             QaHelper.GetScoreOutOfSix(qaInstance).ShouldBe(1);
         }
 
         [Test]
         public void GetScoreOutOfSix_90points_ScoreShouldBe6() 
         {
-            var qaInstance = new QaInstance() { Score = 90 };
+            var qaInstance = new QaInstance();
+            qaInstance.SetScore(90);
             QaHelper.GetScoreOutOfSix(qaInstance).ShouldBe(6);
         }
     }

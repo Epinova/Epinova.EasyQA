@@ -6,7 +6,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 id="title">@Model.Name</h1>
+<h1 id="title">@Model.Name</h1> 
 <dl>
     <dt>@Epinova.EasyQA.App_GlobalResources.Home.DoneBy:</dt>
         <dd>@Model.User</dd>
@@ -42,8 +42,8 @@
             else if (criteria.Status == InstanceCriteriaStatus.NotOk) { 
                 <span class="status statusN">NotOk</span>
                 if (ViewBag.CanMarkAsFixed) { 
-                    @:<input type="radio" name="resolvedas@(criteriaIndexer)" @(criteria.ResolvedAs == ResolvedType.Fixed  ? "checked" : string.Empty) value="f" class="radioFixed statusChooser">
-                    @: <input type="radio" name="resolvedas@(criteriaIndexer)" @(criteria.ResolvedAs == ResolvedType.WontFix ? "checked" : string.Empty) value="wf" class="radioWontfix statusChooser"/>
+                    @:<input type="radio" name="resolvedas@(criteriaIndexer)+@(categoryIndexer)" @(criteria.ResolvedAs == ResolvedType.Fixed  ? "checked" : string.Empty) value="f" class="radioFixed statusChooser">
+                    @: <input type="radio" name="resolvedas@(criteriaIndexer)+@(categoryIndexer)" @(criteria.ResolvedAs == ResolvedType.WontFix ? "checked" : string.Empty) value="wf" class="radioWontfix statusChooser"/>
                 }
             }
             else if (criteria.Status == InstanceCriteriaStatus.Ok) { 
