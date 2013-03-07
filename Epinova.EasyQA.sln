@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epinova.EasyQA", "Epinova.EasyQA\Epinova.EasyQA.csproj", "{BF9F8DD0-5885-4FFD-8E39-B577AD5FC2F8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epinova.EasyQA.Tests", "Epinova.EasyQA.Tests\Epinova.EasyQA.Tests.csproj", "{85117F0D-E8DB-4931-9C67-2229E4A31A25}"
