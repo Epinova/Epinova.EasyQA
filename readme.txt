@@ -1,3 +1,6 @@
+Development on this has kind of halted.
+A new version might appear in the future, somewhere.
+
 ***************************************
  __                   __        __      
 |_  _ . _  _    _    |_  _  _  /  \ /\  
@@ -12,21 +15,11 @@ It's basically an advanced checklist. You create your checklist criterias, and c
 
 Whoever (users come from a membership provider of your choice) is set as project member can later mark a failed criteria as fixed/won't fix.
 
-It's all based around snappy AJAX-interaction. There are no explicit save-buttons anywhere. Everything is supposed to be click-BAM-SAVED RIGHT AWAY!
-
-It might not make sense for you, but it does (hopefully) work for us.
-
 
 1. Uses RavenDB - http://ravendb.net/
+  -- Seems like licensing rules have changed quite drastically since this project spawned. Should be looked into.
+  Ayende has, however, said that projects deployed before this change is not affected (https://groups.google.com/forum/#!msg/ravendb/bDyQeteiciU/0AiHEbeLJ4AJ)
 
 2. Connection strings must be set in web.config
 
 3. Use authentication if you want to, and provide some sort of membershipprovider. This app comes with nothing by default. To do simple testing, use Windows authentication.
-
-
-Conventions
-===========
-
-1. All AJAX-responses should contain a property "Id". If this is not included, the app will tell you that your session has timed out and that you need to login again. This is by design.
-
-2. All <textarea> inputs should support formatting with markdown when being output.
