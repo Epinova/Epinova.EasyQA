@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Epinova.EasyQA.Core;
 using Epinova.EasyQA.Core.DataInterfaces;
 using Epinova.EasyQA.Core.Entities;
@@ -11,7 +12,7 @@ namespace Epinova.EasyQA.Data.Repositories
     {
         public IEnumerable<QaInstance> GetAll()
         {
-            return _session.Query<QaInstance>();
+            return _session.Query<QaInstance>().Take(1000);
         }
 
         public QaInstance Get(int id)
